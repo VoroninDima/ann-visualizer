@@ -1,0 +1,82 @@
+[
+  {
+    "name": "input",
+    "type": "input",
+    "unitsData": [
+      {
+        "num": 1,
+        "ActivationFunction": "HyperbolicTangent"
+      }
+    ]
+  },
+   {
+    "name": "input_2",
+    "type": "input",
+    "unitsData": [
+      {
+        "num": 7,
+        "ActivationFunction": "HyperbolicTangent"
+      }
+    ]
+  },
+
+  {
+    "name": "hidden_2",
+    "type": "hidden",
+    "unitsData": [
+      {
+        "num": 1313,
+        "ActivationFunction": "HyperbolicTangent"
+      }
+    ]
+  },
+  {
+    "name": "hidden_2",
+    "type": "hidden",
+    "unitsData": [
+      {
+        "num": 3,
+        "ActivationFunction": "HyperbolicTangent"
+      }
+    ]
+  },
+ {
+    "name": "hidden_4",
+    "type": "hidden",
+    "unitsData": [
+      {
+        "num": 58,
+        "ActivationFunction": "HyperbolicTangent"
+      }
+    ]
+  }, {
+    "name": "hidden_4",
+    "type": "hidden",
+    "unitsData": [
+      {
+        "num": 68,
+        "ActivationFunction": "HyperbolicTangent"
+      }
+    ]
+  },
+  {
+    "name": "output_2",
+    "type": "output",
+    "unitsData": [
+      {
+        "num": 112,
+        "ActivationFunction": "HyperbolicTangent"
+      }
+    ]
+  },
+   {
+    "name": "output_3",
+    "type": "output",
+    "unitsData": [
+      {
+        "num": 116,
+        "ActivationFunction": "HyperbolicTangent"
+      }
+    ]
+  }
+]
