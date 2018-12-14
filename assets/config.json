@@ -19,7 +19,16 @@
       }
     ]
   },
-
+  {
+    "name": "input_2",
+    "type": "input",
+    "unitsData": [
+      {
+        "num": 5,
+        "ActivationFunction": "HyperbolicTangent"
+      }
+    ]
+  },
   {
     "name": "hidden_2",
     "type": "hidden",
@@ -49,7 +58,18 @@
         "ActivationFunction": "HyperbolicTangent"
       }
     ]
-  }, {
+  },
+  {
+    "name": "hidden_4",
+    "type": "hidden",
+    "unitsData": [
+      {
+        "num": 68,
+        "ActivationFunction": "HyperbolicTangent"
+      }
+    ]
+  },
+  {
     "name": "hidden_4",
     "type": "hidden",
     "unitsData": [

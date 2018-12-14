@@ -7,45 +7,36 @@ body, ul, li {
 	margin-left: 300px;
 	
 }
+.visualizer {
+	margin: 0 auto;
+	width: 400px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
 .neuron {
 	height: 100px;
 	width: 100px;
 	background-color: red;
 	border-radius: 50%;
+	margin-top: 10px;
 	text-align: center;
-	position: absolute;
-	top: -70px;
+	display: flex;
+	align-items: center;
 }
 .neuron p {
-	padding-top: 15px;
+	display: block;
+	margin: 0 auto;
+	color: whitesmoke;
 }
-.input {
-	margin-left: -35px;
-}
-.hidden {
- 	margin-left: 204px;
- }
-.output {
- 	margin-left: 460px;
- }
 
 .line {
+  position: absolute;
   border-radius: 20px;
-  position:absolute;
-  top: 50px;
-  left: 80px;
   height: 1px;
   background-color: #bdbdbd;
-  width:100px;
-  z-index:-1;
-  transform-origin: left 
+  transform-origin: left;
 }
 
-.output .line {
- 	  left: 0px;
 
- }
-.input .line {
- 	  left: 100px;
 
- }
