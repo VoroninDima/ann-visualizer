@@ -4,19 +4,24 @@ import Line from '../line/Line.jsx'
 
 
 export default function LinesList (props) {
-	let lineMarginTop = props.size/2
+
 	let lines
-	if(props.inpPosition) {
-		lines = props.inpPosition.map((top, key) =>
-			<Line key={key} position={top} hidPosition={props.hidPosition}/>
+	let style
+	if(props.hidPositionArrayForInp) {
+		lines = props.hidPositionArrayForInp.map((top, key) =>
+			<Line lineColor={props.lineColor} key={key} position={top} hidPosition={props.inpPosition}/>
 		);
+		style = {
+			transform: `translateX(${props.size}px)`
+		}
 	}
-	if(props.outPosition) {
-		lines = props.outPosition.map((top, key) =>
-			<Line key={key} as={1} position={top} hidPosition={props.hidPosition}/>
+	if(props.hidPositionArrayForOut) {
+		lines = props.hidPositionArrayForOut.map((top, key) =>
+			<Line lineColor={props.lineColor} key={key} position={top} hidPosition={props.outPosition}/>
 		);
 	}
 
 
-	return <div className="lineList">{lines}</div>;
+
+	return <div style={style} className="lineList">{lines}</div>;
 }

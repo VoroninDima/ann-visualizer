@@ -28,8 +28,9 @@ export default function NeuronList({neurons}) {
 	);
 	return (
 		<div className="visualizer">
-			<div className="inputs">{inputs}</div>
+
 			<div className="hiddens">{hiddens}</div>
+			<div className="inputs">{inputs}</div>
 			<div className="outputs">{outputs}</div>
 		</div>
 	)

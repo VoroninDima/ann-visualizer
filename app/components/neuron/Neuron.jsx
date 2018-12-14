@@ -18,67 +18,80 @@ let rInp = random(1, 155),
 	bHid = random(1, 155),
 	rOut = random(1, 155),
 	gOut = random(1, 155),
-	bOut = random(1, 155)
+	bOut = random(1, 155);
 
-
-let inpPosition = [];
+let rect
+let inpPosition;
 let hidPosition;
 let hidPositionArray = [];
-let outPosition = [];
-
+let outPosition;
+let neuronSize;
 export default class Neuron extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {};
+		this.state = {
+			lineColor: '#bdbdbd'
+		};
+		this.handleHoverOn = this.handleHoverOn.bind(this)
+		this.handleHoverOff = this.handleHoverOff.bind(this)
 	}
 
 	componentDidMount() {
 		setTimeout(() => {
-			let rect = ReactDOM.findDOMNode(this);
-			console.dir(rect.getBoundingClientRect());
-			let neuronSize = rect.getBoundingClientRect().height;
+			rect = ReactDOM.findDOMNode(this);
+			neuronSize = rect.getBoundingClientRect().height;
 			if (rect.className === "neuron input") {
-				inpPosition.push(rect.getBoundingClientRect())
+				inpPosition = rect.getBoundingClientRect()
 			}
 			if (rect.className === "neuron hidden") {
 				hidPosition = rect.getBoundingClientRect();
 				hidPositionArray.push(hidPosition)
 			}
+
 			if (rect.className === "neuron output") {
 				outPosition = rect.getBoundingClientRect()
-			}	
-			this.setState({
-				inpPosition: inpPosition,
-				hidPosition: hidPosition,
-				outPosition: outPosition,
-				size: neuronSize
-			});
-			if (hidPositionArray.length === this.props.hidNum) {
-				this.setState({
-					hidPositionArray: hidPositionArray
-				})
 			}
+				this.setState({
+				})
+			console.log(this.props)
 		}, 0);
 	}
 
-	render() {
-			return this.renderComponent();
+	handleHoverOn() {
+		this.setState({
+			lineColor: 'red'
 
+		})
+		inpPosition = rect.getBoundingClientRect().top
+		outPosition = rect.getBoundingClientRect().top
 	}
-	renderComponent() {
+	handleHoverOff() {
+		this.setState({
+			lineColor: '#bdbdbd'
+
+		})
+	}
+	render() {
 		const neuron = this.props.neuron;
 		const type = neuron.type;
 		const classes = `neuron ${type}`;
+
 		if (type === "input") {
-			let style = {
+			const style = {
 				backgroundColor: `rgba(${rInp}, ${gInp}, ${bInp})`,
-				transform: `translateX(${-this.state.size}px)`
+				transform: `translateX(${-neuronSize}px)`
 			};
 
 			return (
-				<div ref={this.ref} style={style} className={classes}>
-					<p>{this.props.neuron.name}</p>
+				<div onMouseOver={this.handleHoverOn} onMouseLeave={this.handleHoverOff} style={style} className={classes}>
+					<LinesList
+						lineColor={this.state.lineColor}
+						size={neuronSize}
+						inpPosition={inpPosition}
+						hidPositionArrayForInp={hidPositionArray}/>
+					<p>{neuron.name}</p>
+
 				</div>
 			);
 		}
@@ -87,12 +100,10 @@ export default class Neuron extends Component {
 			const style = {
 				backgroundColor: `rgba(${rHid}, ${gHid}, ${bHid})`,
 			};
+
 			return (
-				<div style={style} ref={this.ref} className={classes}>
-					<LinesList size={this.state.size}
-							   hidPosition={hidPosition}
-							   inpPosition={this.state.inpPosition}/>
-					<p>{this.props.neuron.name}</p>
+				<div onMouseOver={this.handleHoverOn} onMouseLeave={this.handleHoverOff} style={style} className={classes}>
+					<p>{neuron.name}</p>
 				</div>
 			)
 		}
@@ -100,19 +111,22 @@ export default class Neuron extends Component {
 		if (type === "output") {
 			const style = {
 				backgroundColor: `rgba(${rOut}, ${gOut}, ${bOut})`,
-				transform: `translateX(${this.state.size}px)`
+				transform: `translateX(${neuronSize}px)`
 			};
 
 			return (
-				<div ref={this.ref} style={style} className={classes}>
-					<LinesList size={this.state.size}
-							   hidPosition={outPosition}
-							   outPosition={this.state.hidPositionArray}/>
-					<p>{this.props.neuron.name}</p>
+				<div onMouseOver={this.handleHoverOn} onMouseLeave={this.handleHoverOff} style={style} className={classes}>
+					<LinesList
+						lineColor={this.state.lineColor}
+						size={neuronSize}
+						outPosition={outPosition}
+						hidPositionArrayForOut={hidPositionArray}/>
+					<p>{neuron.name}</p>
 				</div>
 			)
 		}
 	}
+
 
 }
 

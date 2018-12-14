@@ -14,6 +14,10 @@ body, ul, li {
 	justify-content: space-between;
 	align-items: center;
 }
+.visualizer > .inputs { order: 1; }
+.visualizer > .hiddens { order: 2; }
+.visualizer > .outputs { order: 3; }
+
 .neuron {
 	height: 100px;
 	width: 100px;
@@ -24,8 +28,8 @@ body, ul, li {
 	display: flex;
 	align-items: center;
 }
+
 .neuron p {
-	display: block;
 	margin: 0 auto;
 	color: whitesmoke;
 }
@@ -34,8 +38,8 @@ body, ul, li {
   position: absolute;
   border-radius: 20px;
   height: 1px;
-  background-color: #bdbdbd;
   transform-origin: left;
+  background-color: #bdbdbd;
 }
 
 

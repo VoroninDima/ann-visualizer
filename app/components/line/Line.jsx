@@ -11,6 +11,7 @@ export default function Line (props) {
 	angle = Math.round(angle)
     let width = Math.abs(length)+'px';
 	let style = {
+		backgroundColor: props.lineColor,
 		width: width,
 		transform: `rotate(${angle}deg)`
 	}
