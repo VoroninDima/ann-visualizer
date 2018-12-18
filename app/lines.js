@@ -28,3 +28,17 @@ let line = () => {
     }
 }
 export default line;
+let aOffsetTop = props.hidPosition.top
+let aOffsetLeft = props.hidPosition.left
+let bOffsetTop = props.position.top
+let bOffsetLeft = props.position.left
+let angle= Math.atan2(bOffsetTop - aOffsetTop, bOffsetLeft - aOffsetLeft) * 180 / Math.PI;
+let length = Math.sqrt((bOffsetLeft-aOffsetLeft) * (bOffsetLeft-aOffsetLeft) + (bOffsetTop-aOffsetTop) * (bOffsetTop-aOffsetTop));
+length = Math.round(length)
+angle = Math.round(angle)
+let width = Math.abs(length)+'px';
+let style = {
+    backgroundColor: props.lineColor,
+    width: width,
+    transform: `rotate(${angle}deg)`
+}

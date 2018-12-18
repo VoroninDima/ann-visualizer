@@ -19,113 +19,115 @@ let rInp = random(1, 155),
 	rOut = random(1, 155),
 	gOut = random(1, 155),
 	bOut = random(1, 155);
-
-let rect
-let inpPosition;
-let hidPosition;
-let hidPositionArray = [];
-let outPosition;
-let neuronSize;
+let firstLinePositionArray = [];
+let secondLinePosition;
+let secondLineOffsetLeft;
+let firstLineOffsetLeft;
+let currentNum = 0;
+let ar = null;
+let style;
 export default class Neuron extends Component {
-	constructor(props) {
-		super(props);
-
+	constructor() {
+		super();
 		this.state = {
-			lineColor: '#bdbdbd'
-		};
-		this.handleHoverOn = this.handleHoverOn.bind(this)
-		this.handleHoverOff = this.handleHoverOff.bind(this)
+			secondLinePosition: null,
+            lineColor: '#bdbdbd'
+		}
+        this.changeLineColorOver = this.changeLineColorOver.bind(this);
+        this.refreshAr = this.refreshAr.bind(this);
+        this.changeLineColorOut = this.changeLineColorOut.bind(this);
 	}
-
 	componentDidMount() {
-		setTimeout(() => {
-			rect = ReactDOM.findDOMNode(this);
-			neuronSize = rect.getBoundingClientRect().height;
-			if (rect.className === "neuron input") {
-				inpPosition = rect.getBoundingClientRect()
-			}
-			if (rect.className === "neuron hidden") {
-				hidPosition = rect.getBoundingClientRect();
-				hidPositionArray.push(hidPosition)
-			}
-
-			if (rect.className === "neuron output") {
-				outPosition = rect.getBoundingClientRect()
-			}
-				this.setState({
-				})
-			console.log(this.props)
-		}, 0);
+		this.getPosition()
 	}
 
-	handleHoverOn() {
-		this.setState({
-			lineColor: 'red'
-
-		})
-		inpPosition = rect.getBoundingClientRect().top
-		outPosition = rect.getBoundingClientRect().top
-	}
-	handleHoverOff() {
-		this.setState({
-			lineColor: '#bdbdbd'
-
-		})
-	}
 	render() {
-		const neuron = this.props.neuron;
-		const type = neuron.type;
-		const classes = `neuron ${type}`;
-
-		if (type === "input") {
-			const style = {
-				backgroundColor: `rgba(${rInp}, ${gInp}, ${bInp})`,
-				transform: `translateX(${-neuronSize}px)`
-			};
-
-			return (
-				<div onMouseOver={this.handleHoverOn} onMouseLeave={this.handleHoverOff} style={style} className={classes}>
-					<LinesList
-						lineColor={this.state.lineColor}
-						size={neuronSize}
-						inpPosition={inpPosition}
-						hidPositionArrayForInp={hidPositionArray}/>
-					<p>{neuron.name}</p>
-
-				</div>
-			);
-		}
-
-		if (type === "hidden") {
-			const style = {
-				backgroundColor: `rgba(${rHid}, ${gHid}, ${bHid})`,
-			};
-
-			return (
-				<div onMouseOver={this.handleHoverOn} onMouseLeave={this.handleHoverOff} style={style} className={classes}>
-					<p>{neuron.name}</p>
-				</div>
-			)
-		}
-
-		if (type === "output") {
-			const style = {
-				backgroundColor: `rgba(${rOut}, ${gOut}, ${bOut})`,
-				transform: `translateX(${neuronSize}px)`
-			};
-
-			return (
-				<div onMouseOver={this.handleHoverOn} onMouseLeave={this.handleHoverOff} style={style} className={classes}>
-					<LinesList
-						lineColor={this.state.lineColor}
-						size={neuronSize}
-						outPosition={outPosition}
-						hidPositionArrayForOut={hidPositionArray}/>
-					<p>{neuron.name}</p>
-				</div>
-			)
-		}
+        this.setNeuronBgc();
+        let classes = `neuron ${this.props.listName} ${this.props.neuron}`;
+		return (
+			<div onMouseOut={this.changeLineColorOut} onMouseOver={this.changeLineColorOver} style={style} ref={(div) => {this.position = div}} className={classes}>
+				<LinesList  lineBgc={this.state.lineColor} secondLineOffsetLeft={secondLineOffsetLeft} firstLineOffsetLeft={firstLineOffsetLeft} firstLinePositionArray={ar} secondLinePosition={this.state.secondLinePosition}/>
+			</div>
+		)
 	}
+
+	getPosition() {
+		const neuronSublistLength = this.position.parentElement.children.length;
+		setTimeout(()  => {
+            currentNum = currentNum + 1;
+            if (currentNum <= neuronSublistLength) firstLinePositionArray.push(this.position.offsetTop);
+            if (neuronSublistLength === currentNum) {
+                currentNum = 0;
+            }
+            if (currentNum === 1) {
+
+                ar = [...firstLinePositionArray];
+				ar.splice(ar.length-1);
+                firstLinePositionArray = [];
+                firstLinePositionArray.push(this.position.offsetTop);
+            }
+            if (this.props.listName !== 'input') {
+                firstLineOffsetLeft = this.position.parentElement.parentElement.previousElementSibling.offsetLeft
+
+            }
+
+            secondLineOffsetLeft = this.position.offsetLeft-this.position.clientWidth
+            secondLinePosition = this.position.offsetTop;
+            this.setState({
+                secondLinePosition: secondLinePosition
+            })
+        },0)
+	}
+
+    setNeuronBgc() {
+        if(this.props.listName === 'input') {
+            style = {backgroundColor: `rgba(${rInp}, ${gInp}, ${bInp})`}
+        }
+        if(this.props.listName.includes('hidden')) {
+            style = {backgroundColor: `rgba(${rHid}, ${gHid}, ${bHid})`}
+        }
+        if(this.props.listName === 'output') {
+            style = {backgroundColor: `rgba(${rOut}, ${gOut}, ${bOut})`}
+        }
+    }
+
+    changeLineColorOver() {
+        if (this.props.listName !== 'output') {
+            const nextNeuronList = this.position.parentElement.parentElement.nextElementSibling.children[0].children
+            for (let i = 0; i < nextNeuronList.length; i++) {
+                nextNeuronList[i].children[0].children[this.props.neuronOrderNum].style.backgroundColor = 'red'
+            }
+        }
+	    if (this.props.listName !== 'input') {
+            this.setState({
+                lineColor: 'red'
+            });
+            this.refreshAr()
+        }
+
+    }
+
+    changeLineColorOut() {
+        if (this.props.listName !== 'output') {
+            const nextNeuronList = this.position.parentElement.parentElement.nextElementSibling.children[0].children
+            for(let i = 0; i < nextNeuronList.length; i++) {
+                nextNeuronList[i].children[0].children[this.props.neuronOrderNum].style.backgroundColor = '#bdbdbd'
+            }
+        }
+	    if (this.props.listName !== 'input') {
+            this.setState({
+                lineColor: '#bdbdbd'
+            })
+        }
+	}
+
+    refreshAr() {
+	    const prevNeuronList = this.position.parentElement.parentElement.previousElementSibling.children[0].children
+        ar = [];
+        for(let i = 0; i < prevNeuronList.length; i++) {
+            ar.push(prevNeuronList[i].offsetTop)
+        }
+    }
 
 
 }

@@ -1,39 +1,31 @@
 import React from 'react'
-import Neuron from '../neuron/Neuron.jsx'
+import NeuronSubList from '../neuron-sub-list/NeuronSubList.jsx'
 
-export default function NeuronList({neurons}) {
-	let hidNum = 0;
-	let inputsA = neurons.filter((num) => {
-		if (num.type === 'input') return num
-	});
-	let hiddensA = neurons.filter((num) => {
-		if (num.type === 'hidden') {
-			hidNum = hidNum + 1;
-			return num
-		}
-	});
+export default function NeuronList({list}) {
+	let subLists;
+	let ar = [];
+    subLists = list.unitsData.map((subList, key) =>
+        <NeuronSubList key={key} subList = {subList} subListName={list.name}/>
+    );
+	if(list.unitsData.length > 1) {
+        for (let i = 0; i < list.unitsData.length; i++) {
+            ar.push(...list.unitsData[i].names)
+        }
+		let ar2 = [{
+        	names: ar
+		}]
+        subLists = ar2.map((subList, key) =>
+            <NeuronSubList key={key} subList={subList} subListName={list.name}/>
+        );
+    }
 
-	let outputsA = neurons.filter((num) => {
-		if (num.type === 'output') return num
-	});
 
-	let inputs = inputsA.map((neuron, key) =>
-		<Neuron key={key} neuron = {neuron} />
-	);
-	let hiddens = hiddensA.map((neuron, key) =>
-		<Neuron key={key} neuron = {neuron}/>
-	);
-	let outputs = outputsA.map((neuron, key) =>
-		<Neuron key={key} neuron = {neuron} hidNum={hidNum}/>
-	);
-	return (
-		<div className="visualizer">
-
-			<div className="hiddens">{hiddens}</div>
-			<div className="inputs">{inputs}</div>
-			<div className="outputs">{outputs}</div>
+    return (
+    	<div className={`${list.type} ${list.name}`}>
+			{subLists}
 		</div>
 	)
+
 
 
 }

@@ -4,98 +4,70 @@
     "type": "input",
     "unitsData": [
       {
+        "num": 30,
+        "ActivationFunction": "HyperbolicTangent",
+        "names": [
+          "answer_speed_fact",
+          "base_fact",
+          "success_fact",
+          "theme_fact",
+          "factor_fact",
+          "multiplicand_fact"
+
+
+
+        ]
+      }
+    ]
+  },
+
+  {
+    "name": "hidden_2",
+    "type": "hidden",
+    "unitsData": [
+      {
+        "num": 10,
+        "ActivationFunction": "Areasinus"
+      }
+    ]
+  },
+  {
+    "name": "hidden_3",
+    "type": "hidden",
+    "unitsData": [
+      {
+        "num": 8,
+        "ActivationFunction": "HyperbolicTangent"
+      }
+    ]
+  },
+  {
+    "name": "output",
+    "type": "output",
+    "unitsData": [
+      {
+        "num": 8,
+        "ActivationFunction": "HyperbolicTangent",
+        "names": [
+          "answer_speed_weight",
+          "base_weight",
+          "factor_weight"
+
+        ]
+      },
+      {
         "num": 1,
-        "ActivationFunction": "HyperbolicTangent"
-      }
-    ]
-  },
-   {
-    "name": "input_2",
-    "type": "input",
-    "unitsData": [
+        "ActivationFunction": "UnitLinear",
+        "names": [
+          "success_weight"
+        ]
+      },
       {
-        "num": 7,
-        "ActivationFunction": "HyperbolicTangent"
-      }
-    ]
-  },
-  {
-    "name": "input_2",
-    "type": "input",
-    "unitsData": [
-      {
-        "num": 5,
-        "ActivationFunction": "HyperbolicTangent"
-      }
-    ]
-  },
-  {
-    "name": "hidden_2",
-    "type": "hidden",
-    "unitsData": [
-      {
-        "num": 1313,
-        "ActivationFunction": "HyperbolicTangent"
-      }
-    ]
-  },
-  {
-    "name": "hidden_2",
-    "type": "hidden",
-    "unitsData": [
-      {
-        "num": 3,
-        "ActivationFunction": "HyperbolicTangent"
-      }
-    ]
-  },
- {
-    "name": "hidden_4",
-    "type": "hidden",
-    "unitsData": [
-      {
-        "num": 58,
-        "ActivationFunction": "HyperbolicTangent"
-      }
-    ]
-  },
-  {
-    "name": "hidden_4",
-    "type": "hidden",
-    "unitsData": [
-      {
-        "num": 68,
-        "ActivationFunction": "HyperbolicTangent"
-      }
-    ]
-  },
-  {
-    "name": "hidden_4",
-    "type": "hidden",
-    "unitsData": [
-      {
-        "num": 68,
-        "ActivationFunction": "HyperbolicTangent"
-      }
-    ]
-  },
-  {
-    "name": "output_2",
-    "type": "output",
-    "unitsData": [
-      {
-        "num": 112,
-        "ActivationFunction": "HyperbolicTangent"
-      }
-    ]
-  },
-   {
-    "name": "output_3",
-    "type": "output",
-    "unitsData": [
-      {
-        "num": 116,
-        "ActivationFunction": "HyperbolicTangent"
+        "num": 1,
+        "ActivationFunction": "ZeroLinear",
+        "names": [
+          "right_answer_difference_weight"
+        ]
       }
     ]
   }
