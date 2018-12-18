@@ -13,13 +13,17 @@
 	display: flex;
 	align-items: center;
 	z-index: 1;
+	justify-content: center;
 }
 
 .neuron p {
-	position: absolute;
-	color: whitesmoke;
+	color: darkred;
+	padding: 0 20px;
+	margin: 0;
 }
-
+.lineList {
+	transform: translateX(-25px);
+}
 .line {
 	position: absolute;
 	border-radius: 20px;
@@ -27,6 +31,12 @@
 	transform-origin: left;
 	background-color: black;
 	z-index: -1;
+}
+.popup {
+	height: 30px;
+	background-color: lightblue;
+	position: absolute;
+	margin-top: 30px;
 }
 
 

@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import ReactDOM from 'react-dom';
 
 import LinesList from '../lines-list/LinesList.jsx';
+import NeuronPopup from '../neuron-popup/NeuronPopup.jsx';
 
 
 let random = (min, max) => {
@@ -31,11 +32,14 @@ export default class Neuron extends Component {
 		super();
 		this.state = {
 			secondLinePosition: null,
-            lineColor: '#bdbdbd'
+            lineColor: '#bdbdbd',
+            popupActive: false
 		}
-        this.changeLineColorOver = this.changeLineColorOver.bind(this);
+        this.mouseOverEvent = this.mouseOverEvent.bind(this);
         this.refreshAr = this.refreshAr.bind(this);
-        this.changeLineColorOut = this.changeLineColorOut.bind(this);
+        this.mouseOutEvent = this.mouseOutEvent.bind(this);
+        this.popupShow = this.popupShow.bind(this);
+        this.popupHide = this.popupHide.bind(this);
 	}
 	componentDidMount() {
 		this.getPosition()
@@ -45,9 +49,11 @@ export default class Neuron extends Component {
         this.setNeuronBgc();
         let classes = `neuron ${this.props.listName} ${this.props.neuron}`;
 		return (
-			<div onMouseOut={this.changeLineColorOut} onMouseOver={this.changeLineColorOver} style={style} ref={(div) => {this.position = div}} className={classes}>
-				<LinesList  lineBgc={this.state.lineColor} secondLineOffsetLeft={secondLineOffsetLeft} firstLineOffsetLeft={firstLineOffsetLeft} firstLinePositionArray={ar} secondLinePosition={this.state.secondLinePosition}/>
-			</div>
+			<div onMouseOut={this.mouseOutEvent} onMouseOver={this.mouseOverEvent} style={style} ref={(div) => {this.position = div}} className={classes}>
+                <LinesList lineBgc={this.state.lineColor} secondLineOffsetLeft={secondLineOffsetLeft} firstLineOffsetLeft={firstLineOffsetLeft} firstLinePositionArray={ar} secondLinePosition={this.state.secondLinePosition}/>
+                <NeuronPopup active={this.state.popupActive} neuronName={this.props.neuron}/>
+
+            </div>
 		)
 	}
 
@@ -91,33 +97,45 @@ export default class Neuron extends Component {
         }
     }
 
-    changeLineColorOver() {
-        if (this.props.listName !== 'output') {
-            const nextNeuronList = this.position.parentElement.parentElement.nextElementSibling.children[0].children
-            for (let i = 0; i < nextNeuronList.length; i++) {
-                nextNeuronList[i].children[0].children[this.props.neuronOrderNum].style.backgroundColor = 'red'
+    mouseOverEvent(e) {
+        ar = [];
+
+        if (e.target.className !== 'line') {
+            this.popupShow()
+
+            if (this.props.listName !== 'output') {
+                const nextNeuronList = this.position.parentElement.parentElement.nextElementSibling.children[0].children
+                for (let i = 0; i < nextNeuronList.length; i++) {
+                    nextNeuronList[i].children[0].children[this.props.neuronOrderNum].style.backgroundColor = 'red'
+                }
+            }
+            if (this.props.listName !== 'input') {
+                this.setState({
+                    lineColor: 'red'
+                });
+                this.refreshAr()
             }
         }
-	    if (this.props.listName !== 'input') {
-            this.setState({
-                lineColor: 'red'
-            });
-            this.refreshAr()
-        }
+
 
     }
 
-    changeLineColorOut() {
-        if (this.props.listName !== 'output') {
-            const nextNeuronList = this.position.parentElement.parentElement.nextElementSibling.children[0].children
-            for(let i = 0; i < nextNeuronList.length; i++) {
-                nextNeuronList[i].children[0].children[this.props.neuronOrderNum].style.backgroundColor = '#bdbdbd'
+    mouseOutEvent(e) {
+        if (e.target.className !== 'line') {
+
+            this.popupHide()
+
+            if (this.props.listName !== 'output') {
+                const nextNeuronList = this.position.parentElement.parentElement.nextElementSibling.children[0].children
+                for (let i = 0; i < nextNeuronList.length; i++) {
+                    nextNeuronList[i].children[0].children[this.props.neuronOrderNum].style.backgroundColor = '#bdbdbd'
+                }
             }
-        }
-	    if (this.props.listName !== 'input') {
-            this.setState({
-                lineColor: '#bdbdbd'
-            })
+            if (this.props.listName !== 'input') {
+                this.setState({
+                    lineColor: '#bdbdbd'
+                })
+            }
         }
 	}
 
@@ -129,6 +147,17 @@ export default class Neuron extends Component {
         }
     }
 
+    popupShow() {
+	    this.setState({
+            popupActive: true
+        })
+    }
+
+    popupHide() {
+	    this.setState({
+            popupActive: false
+        })
+    }
 
 }
 
