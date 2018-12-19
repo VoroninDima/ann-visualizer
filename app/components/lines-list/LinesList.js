@@ -1,8 +1,13 @@
 import React from 'react'
 
-import Line from '../line/Line.jsx'
-
-export default function LinesList (props) {
+import Line from 'components/line/Line'
+/**
+ * @param {{}} props
+ *     @param {{firstLinePositionArray:array}} props
+ * @returns {*}
+ * @constructor
+ */
+export function LinesList (props) {
 	let lines;
     if(props.firstLinePositionArray) {
 

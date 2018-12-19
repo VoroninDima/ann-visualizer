@@ -1,9 +1,9 @@
-var path = require('path');
+const path = require('path');
  
 module.exports = {
 	devtool: 'source-map', 
     entry: [
-       path.resolve(__dirname, 'app/app.jsx'),
+       path.resolve(__dirname, 'app/app.js'),
        path.resolve(__dirname, 'app/style/main.css')
    ], 
     output:{
@@ -11,14 +11,19 @@ module.exports = {
         publicPath: '/public/',
         filename: "bundle.js"       // название создаваемого файла
     },
+	resolve: {
+	    alias: {
+	        components: path.resolve(__dirname, 'app/components')
+        }
+    },
     module:{
-        rules:[   //загрузчик для jsx
+        rules:[
             {
-                test: /\.jsx?$/, // определяем тип файлов
-                exclude: /(node_modules)/,  // исключаем из обработки папку node_modules
-                loader: "babel-loader",   // определяем загрузчик
+                test: /\.jsx?$/,
+                exclude: /node_modules/,
+                loader: "babel-loader",
                 options:{
-                    presets:["@babel/preset-env", "@babel/preset-react"]    // используемые плагины
+                    presets:["@babel/preset-env", "@babel/preset-react"]
                 }
             },
 			{
@@ -27,4 +32,4 @@ module.exports = {
 			}
         ]
     }
-}
+};

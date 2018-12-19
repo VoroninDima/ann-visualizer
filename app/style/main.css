@@ -1,4 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+body {
+	padding: 0;
+	margin: 0;
+
+}
+button {
+	border-style: none;
+}
 #app {
+}
+.header {
+    height: 5vh;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+	background-color: #dcdcdc;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+}
+.header__btn {
+	margin-right: 15vh;
+	cursor: pointer;
+	font-family: 'Quicksand', sans-serif;
+	font-size: 3vh;
+    height: 4vh;
+    width: 30vh;
+    border: 0.1vh solid darkred;
+	border-radius: 10px;
+	float: right;
+	color: darkred;
+	background-image: linear-gradient(#d89b9b, #cacaca);
+	transition: .2s;
+
+}
+.header__btn:hover {
+	color: white;
+	border-color: white;
+
+}
+.main {
+	width: 1500px;
+	margin: 80px auto;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -12,15 +56,10 @@
 	text-align: center;
 	display: flex;
 	align-items: center;
-	z-index: 1;
 	justify-content: center;
 }
 
-.neuron p {
-	color: darkred;
-	padding: 0 20px;
-	margin: 0;
-}
+
 .lineList {
 	transform: translateX(-25px);
 }
@@ -33,10 +72,20 @@
 	z-index: -1;
 }
 .popup {
+	z-index: 1;
+	border-radius: 50px;
 	height: 30px;
-	background-color: lightblue;
+	background-color: #e0e0e0d4;
 	position: absolute;
-	margin-top: 30px;
+	margin-top: 35px;
+	align-items: center;
+}
+.popup p {
+	font-family: 'Quicksand', sans-serif;
+	color: darkred;
+	font-size: 20px;
+	padding: 5px 20px;
+	margin: 0;
 }
 
 
