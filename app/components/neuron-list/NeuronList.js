@@ -1,15 +1,13 @@
 import React from 'react'
 import {NeuronSubList} from 'components/neuron-sub-list'
 /**
- * @param {{}} props
- *     @param {{unitsData:string}}
+ * @param {{unitsData:string}} list
  * @returns {*}
  * @constructor
  */
 /**
- * @param {{}} list
- *     @param {{type:string}} list
- *     @param {{name:string}} list
+ * @param {{type:string}} list
+ * @param {{name:string}} list
  * @returns {*}
  * @constructor
  */
@@ -17,7 +15,7 @@ import {NeuronSubList} from 'components/neuron-sub-list'
 export function NeuronList({list}) {
 	let subLists;
 	let ar = [];
-	const unitsData = list.unitsData;
+	const {unitsData} = list;
     subLists = unitsData.map((subList, key) =>
         <NeuronSubList key={key} subList = {subList} subListName={list.name}/>
     );

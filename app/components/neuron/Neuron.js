@@ -1,175 +1,173 @@
 import React, {Component} from 'react'
+import classnames from 'classnames';
 
 import {LinesList} from 'components/lines-list';
 import {NeuronPopup} from 'components/neuron-popup';
 
-
-let firstLinePositionArray = [];
-let secondLinePosition;
-let secondLineOffsetLeft;
-let firstLineOffsetLeft;
-let currentNum = 0;
-let ar = null;
-/**
- * @param {{}} props
- *     @param {{listName:string}} props
- * @returns {*}
- * @constructor
- */
-/**
- * @param {{}} props
- *     @param {{neuron:string}} props
- * @returns {*}
- * @constructor
- */
-/**
- * @param {{}} props
- *     @param {{neuronListBgc:string}} props
- * @returns {*}
- * @constructor
- */
-/**
- * @param {{}} props
- *     @param {{offsetLeft:int}} previousElementSibling
- * @returns {*}
- * @constructor
- */
-/**
- * @param {{}} props
- *     @param {{neuronOrderNum:int}} props
- * @returns {*}
- * @constructor
- */
-/**
- * @param {{}} props
- *     @param {{setState:method}} props
- * @returns {*}
- * @constructor
- */
-
 export class Neuron extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
+
 		this.state = {
 			secondLinePosition: null,
             lineColor: '#bdbdbd',
-            popupActive: false
+            popupActive: false,
+            neuronListLength: null,
+            neuronProperties: {
+			    neuronWidth: null,
+                neuronOffsetLeft: null,
+                neuronOffsetTop: null
+            }
+
+
 		};
+		this.ref = React.createRef();
+        this.listName = this.props.listName;
+        this.neuron = this.props.neuron;
+        this.offsetTop;
+        this.neuronOrderNum = this.props.neuronOrderNum;
         this.mouseOverEvent = this.mouseOverEvent.bind(this);
-        this.refreshAr = this.refreshAr.bind(this);
         this.mouseOutEvent = this.mouseOutEvent.bind(this);
         this.popupShow = this.popupShow.bind(this);
         this.popupHide = this.popupHide.bind(this);
-	}
-	componentDidMount() {
-		this.getPosition();
+        this.getNeuronListLength = this.getNeuronListLength.bind(this);
 
+	}
+
+	componentDidMount() {
+        if (this.listName !== 'output') {
+            this.getNeuronPosition();
+            this.getNeuronListLength();
+        }
     }
 
 	render() {
-        let classes = `neuron ${this.props.listName} ${this.props.neuron}`;
+	    const {listName, neuron, neuronListBgc} = this.props;
+        const classes = classnames('neuron', listName, neuron);
 		return (
-			<div onMouseOut={this.mouseOutEvent} style = {this.props.neuronListBgc} onMouseOver={this.mouseOverEvent}  ref={(div) => {this.position = div}} className={classes}>
-                <LinesList
-                    lineBgc={this.state.lineColor}
-                    secondLineOffsetLeft={secondLineOffsetLeft}
-                    firstLineOffsetLeft={firstLineOffsetLeft}
-                    firstLinePositionArray={ar}
-                    secondLinePosition={this.state.secondLinePosition}/>
-                <NeuronPopup active={this.state.popupActive} neuronName={this.props.neuron}/>
+			<div
+                onMouseOver={this.mouseOverEvent}
+                onMouseOut={this.mouseOutEvent}
+                style={neuronListBgc}
+                ref={this.ref}
+                className={classes}>
 
+                {this.renderLinesList()}
+                {this.renderNeuronPopup()}
             </div>
 		)
 	}
 
-	getPosition() {
-		const neuronSublistLength = this.position.parentElement.children.length;
-		setTimeout(()  => {
-            currentNum = currentNum + 1;
-            if (currentNum <= neuronSublistLength) firstLinePositionArray.push(this.position.offsetTop);
-            if (neuronSublistLength === currentNum) {
-                currentNum = 0;
-            }
-            if (currentNum === 1) {
-
-                ar = [...firstLinePositionArray];
-				ar.splice(ar.length-1);
-                firstLinePositionArray = [];
-                firstLinePositionArray.push(this.position.offsetTop);
-            }
-            if (this.props.listName !== 'input') {
-                firstLineOffsetLeft = this.position.parentElement.parentElement.previousElementSibling.offsetLeft
-
-            }
-
-            secondLineOffsetLeft = this.position.offsetLeft-this.position.clientWidth;
-            secondLinePosition = this.position.offsetTop;
-            this.setState({
-                secondLinePosition: secondLinePosition
-            })
-        },0)
-	}
-
-    mouseOverEvent(e) {
-        ar = [];
-
-        if (e.target.className !== 'line') {
-            this.popupShow();
-
-            if (this.props.listName !== 'output') {
-                const nextNeuronList = this.position.parentElement.parentElement.nextElementSibling.children[0].children;
-                for (let i = 0; i < nextNeuronList.length; i++) {
-                    nextNeuronList[i].children[0].children[this.props.neuronOrderNum].style.backgroundColor = 'red'
-                }
-            }
-            if (this.props.listName !== 'input') {
-                this.setState({
-                    lineColor: 'red'
-                });
-                this.refreshAr()
-            }
-        }
-
-
+	renderLinesList() {
+	    if (this.state.neuronListLength && this.state.neuronProperties.neuronWidth) return (
+            <LinesList
+                lineBgc={this.state.lineColor}
+                neuronListLength={this.state.neuronListLength}
+                neuronProperties={this.state.neuronProperties}
+            />
+        )
     }
 
+    renderNeuronPopup() {
+	    return <NeuronPopup
+            active={this.state.popupActive}
+            neuronName={this.neuron}/>;
+    }
+
+
+    mouseOverEvent(e) {
+	    if (e.target.classList.value !== 'line') {
+            this.popupShow();
+            this.lineSelectedChangeColor();
+        }
+    }
+    lineSelectedChangeColor() {
+        if (this.listName !== 'input') {
+
+            for (let i = 0; i < this.getPrevNeuronList().length; i++) {
+                this.getPrevNeuronList()[i]
+                    .children[0]
+                    .children[this.props.neuronOrderNum]
+                    .style
+                    .backgroundColor = 'red'
+            }
+        }
+        this.setState({
+            lineColor: 'red'
+        })
+    }
+    lineUnselectedChangeColor() {
+	    const {neuronOrderNum} = this.props;
+
+        if (this.listName !== 'input') {
+            for (let i = 0; i < this.getPrevNeuronList().length; i++) {
+                this.getPrevNeuronList()[i]
+                    .children[0]
+                    .children[neuronOrderNum]
+                    .style
+                    .backgroundColor = '#bdbdbd'
+            }
+        }
+        this.setState({
+            lineColor: '#bdbdbd'
+        })
+    }
     mouseOutEvent(e) {
-
-        if (e.target.className !== 'line') {
-
+        if (e.target.classList.value !== 'line') {
+            this.lineUnselectedChangeColor();
             this.popupHide();
-            if (this.props.listName !== 'output') {
-                const nextNeuronList = this.position.parentElement.parentElement.nextElementSibling.children[0].children;
-                for (let i = 0; i < nextNeuronList.length; i++) {
-                    nextNeuronList[i].children[0].children[this.props.neuronOrderNum].style.backgroundColor = '#bdbdbd'
-                }
-            }
-            if (this.props.listName !== 'input') {
-                this.setState({
-                    lineColor: '#bdbdbd'
-                })
-            }
         }
-	}
+    }
 
-    refreshAr() {
-	    const prevNeuronList = this.position.parentElement.parentElement.previousElementSibling.children[0].children;
-        ar = [];
-        for(let i = 0; i < prevNeuronList.length; i++) {
-            ar.push(prevNeuronList[i].offsetTop)
-        }
+
+
+    getPrevNeuronList() {
+	    return this.ref
+            .current
+            .parentElement
+            .parentElement
+            .previousElementSibling
+            .children[0]
+            .children;
     }
 
     popupShow() {
 	    this.setState({
             popupActive: true
-        })
+        });
     }
 
     popupHide() {
 	    this.setState({
             popupActive: false
+        });
+    }
+
+    getNeuronListLength() {
+        const neuronListLength = this.ref.current.parentElement.parentElement.nextElementSibling.children[0].children.length;
+        this.setState({
+            neuronListLength
         })
+    }
+
+    getNeuronPosition() {
+	    const ref = this.ref.current;
+        setTimeout(() => {
+            const nextNeuronOffsetTop = ref.parentElement.parentElement.nextElementSibling.offsetTop;
+            const nextNeuronOffsetLeft = ref.parentElement.parentElement.nextElementSibling.offsetLeft;
+            const neuronWidth = ref.clientWidth;
+            const neuronOffsetLeft = ref.offsetLeft;
+            const neuronOffsetTop = ref.offsetTop;
+            this.setState({
+                 neuronProperties: {
+                     neuronWidth,
+                     neuronOffsetLeft,
+                     neuronOffsetTop,
+                     nextNeuronOffsetTop,
+                     nextNeuronOffsetLeft
+                 }
+            });
+        }, 0)
     }
 
 }

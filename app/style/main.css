@@ -21,17 +21,13 @@ button {
     z-index: 999;
 }
 .header__btn {
-	margin-right: 15vh;
+	margin-right: 12vh;
 	cursor: pointer;
 	font-family: 'Quicksand', sans-serif;
-	font-size: 3vh;
-    height: 4vh;
-    width: 30vh;
-    border: 0.1vh solid darkred;
-	border-radius: 10px;
+	font-size: 2vh;
+	width: 15vh;
 	float: right;
 	color: darkred;
-	background-image: linear-gradient(#d89b9b, #cacaca);
 	transition: .2s;
 
 }
@@ -61,7 +57,7 @@ button {
 
 
 .lineList {
-	transform: translateX(-25px);
+	transform: translateX(25px);
 }
 .line {
 	position: absolute;

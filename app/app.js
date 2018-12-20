@@ -3,7 +3,7 @@ import {render} from 'react-dom';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
 import {NeuronList} from './components/neuron-list';
-import {Header} from 'components/header';
+import Header from 'components/header/Header';
 
 let xhr = new XMLHttpRequest();
 xhr.open('GET', '../assets/config.json', false);
@@ -45,6 +45,5 @@ class App extends Component {
             </Provider>
         )
     }
-
 }
 render(<App />, document.getElementById('app'));

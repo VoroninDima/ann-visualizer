@@ -33,7 +33,6 @@ export function NeuronSubList(props) {
             });
    			return neurons
     	} else {
-
     		let neuronsNameArray = [];
     		let neuronName = props.subListName;
     		for (let i = 0; i < subList.num; i++) {

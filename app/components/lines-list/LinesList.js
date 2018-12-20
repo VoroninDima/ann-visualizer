@@ -1,21 +1,27 @@
 import React from 'react'
 
 import Line from 'components/line/Line'
-/**
- * @param {{}} props
- *     @param {{firstLinePositionArray:array}} props
- * @returns {*}
- * @constructor
- */
-export function LinesList (props) {
-	let lines;
-    if(props.firstLinePositionArray) {
 
-        lines = props.firstLinePositionArray.map((line, key) => <Line key={key} lineData={props} firstLinePosition = {line}/>)
-	}
+export function LinesList (props) {
+    const{neuronListLength, neuronProperties} = props;
+    let lineEndsOffsetTop = [];
+    let nextNeuronOffsetTop = neuronProperties.nextNeuronOffsetTop;
+    let getLineEndsOffsetTop = () => {
+        for (let i = 0; i < neuronListLength; i++) {
+            nextNeuronOffsetTop = nextNeuronOffsetTop + neuronProperties.neuronWidth+20;
+            lineEndsOffsetTop.push(nextNeuronOffsetTop)
+        }
+    };
+    getLineEndsOffsetTop();
+    const lines = lineEndsOffsetTop.map((line, key) =>
+        <Line key={key}
+              lineData={props}
+              lineEndsOffsetTop={line}
+        />);
+
 	return (
 		<div className="lineList">
-			{lines}
+            {lines}
 		</div>
 	)
 }
