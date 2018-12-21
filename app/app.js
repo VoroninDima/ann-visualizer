@@ -17,7 +17,7 @@ const store = createStore(rootReducer);
 const nika = JSON.parse(xhr.responseText);
 class App extends Component {
     static getNeuronColor() {
-        let randomColorArray = []
+        let randomColorArray = [];
         for (let i = 0; i < nika.length; i++) {
             const randomColor = RandColorGenerator();
             randomColorArray.push(randomColor)

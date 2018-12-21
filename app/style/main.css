@@ -40,6 +40,7 @@ button {
 
 }
 .main {
+    position: absolute;
 	width: 1500px;
 	margin: 80px auto;
 	display: flex;
