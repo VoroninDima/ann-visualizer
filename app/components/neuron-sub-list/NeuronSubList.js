@@ -1,48 +1,36 @@
 import React from 'react';
 
 import {Neuron} from 'components/neuron';
-import {RandColorGenerator} from '../../lib/RandColorGenerator';
-/**
- * @param {{}} props
- *     @param {{subList:string}} props
- * @returns {*}
- * @constructor
- */
-/**
- * @param {{}} props
- *     @param {{subListName:string}} props
- * @returns {*}
- * @constructor
- */
-/**
- * @param {{}} props
- *     @param {{num:int}} props
- * @returns {*}
- * @constructor
- */
+
 export function NeuronSubList(props) {
-    let style = RandColorGenerator();
+    const {neuronListNum,  neuronColor, subListName, subList} = props;
+    const {num} = subList;
     let neurons;
+
     let neuronOrderNum = -1;
-    const subList = props.subList;
+    let neuronMap = array => {
+        neurons = array.map((neuron, key) => {
+            neuronOrderNum = neuronOrderNum + 1;
+            return <Neuron
+                neuronListNum={neuronListNum}
+                neuronColor={neuronColor}
+                key={key}
+                neuronOrderNum={neuronOrderNum}
+                neuron={neuron}
+                listName={subListName}
+            />
+        });
+        return neurons
+    };
 	let renderSubList = () => {
-    	if (subList.names) {
-    		neurons = subList.names.map((neuron, key) => {
-                neuronOrderNum = neuronOrderNum + 1;
-                return <Neuron neuronListBgc={style} key={key} neuronOrderNum={neuronOrderNum} neuron={neuron} listName={props.subListName}/>
-            });
-   			return neurons
-    	} else {
+    	if (subList.names) return neuronMap(subList.names);
+    	else {
     		let neuronsNameArray = [];
-    		let neuronName = props.subListName;
-    		for (let i = 0; i < subList.num; i++) {
+    		let neuronName = subListName;
+    		for (let i = 0; i < num; i++) {
     			neuronsNameArray.push(neuronName)
     		}
-    		neurons = neuronsNameArray.map((neuron, key) => {
-                neuronOrderNum = neuronOrderNum + 1;
-    			return <Neuron neuronListBgc={style} key={key} neuronOrderNum={neuronOrderNum} neuron={neuron} listName={props.subListName}/>
-            });
-   			return neurons
+            return neuronMap(neuronsNameArray)
     	}
     };
 

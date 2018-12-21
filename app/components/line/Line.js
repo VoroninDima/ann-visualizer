@@ -3,17 +3,17 @@ import {connect} from 'react-redux';
 
 
 function Line (props) {
-    const {lineData, lineEndsOffsetTop, btnActive} = props;
-    const {lineBgc} = lineData;
-    const neuronProperties = lineData.neuronProperties;
-    let selectedColor = lineBgc;
-    let aOffsetTop = neuronProperties.neuronOffsetTop;
-    let aOffsetLeft = neuronProperties.neuronOffsetLeft+50;
-    let bOffsetTop = lineEndsOffsetTop-50;
-    let bOffsetLeft = neuronProperties.nextNeuronOffsetLeft;
-    let angle = Math.atan2(bOffsetTop - aOffsetTop, bOffsetLeft - aOffsetLeft) * 180 / Math.PI;
-    let length = Math.sqrt((bOffsetLeft - aOffsetLeft) * (bOffsetLeft - aOffsetLeft) + (bOffsetTop - aOffsetTop) * (bOffsetTop - aOffsetTop));
-    let width = Math.abs(length) + 'px';
+    const {lineData, lineEndsOffsetTop, btnActive} = props,
+          {lineBgc} = lineData,
+          neuronProperties = lineData.neuronProperties,
+          selectedColor = lineBgc,
+          aOffsetTop = neuronProperties.neuronOffsetTop,
+          aOffsetLeft = neuronProperties.neuronOffsetLeft+50,
+          bOffsetTop = lineEndsOffsetTop-50,
+          bOffsetLeft = neuronProperties.nextNeuronOffsetLeft,
+          angle = Math.atan2(bOffsetTop - aOffsetTop, bOffsetLeft - aOffsetLeft) * 180 / Math.PI,
+          length = Math.sqrt((bOffsetLeft - aOffsetLeft) * (bOffsetLeft - aOffsetLeft) + (bOffsetTop - aOffsetTop) * (bOffsetTop - aOffsetTop));
+    const width = Math.abs(length) + 'px';
     let style = {
         display: 'block',
         backgroundColor: selectedColor,
@@ -27,7 +27,7 @@ function Line (props) {
 
 export default connect(
     state => ({
-        btnActive: !state.btnActive
+        btnActive: !state.hideBtnClick.btnActive
 })
 
 )(Line)

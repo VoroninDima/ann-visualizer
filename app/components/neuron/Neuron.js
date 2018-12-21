@@ -7,7 +7,6 @@ import {NeuronPopup} from 'components/neuron-popup';
 export class Neuron extends Component {
 	constructor(props) {
 		super(props);
-
 		this.state = {
 			secondLinePosition: null,
             lineColor: '#bdbdbd',
@@ -18,20 +17,17 @@ export class Neuron extends Component {
                 neuronOffsetLeft: null,
                 neuronOffsetTop: null
             }
-
-
 		};
 		this.ref = React.createRef();
         this.listName = this.props.listName;
         this.neuron = this.props.neuron;
-        this.offsetTop;
         this.neuronOrderNum = this.props.neuronOrderNum;
         this.mouseOverEvent = this.mouseOverEvent.bind(this);
         this.mouseOutEvent = this.mouseOutEvent.bind(this);
         this.popupShow = this.popupShow.bind(this);
         this.popupHide = this.popupHide.bind(this);
         this.getNeuronListLength = this.getNeuronListLength.bind(this);
-
+        this.setColor = this.setColor.bind(this);
 	}
 
 	componentDidMount() {
@@ -42,13 +38,13 @@ export class Neuron extends Component {
     }
 
 	render() {
-	    const {listName, neuron, neuronListBgc} = this.props;
+	    const {listName, neuron} = this.props;
         const classes = classnames('neuron', listName, neuron);
 		return (
 			<div
                 onMouseOver={this.mouseOverEvent}
                 onMouseOut={this.mouseOutEvent}
-                style={neuronListBgc}
+                style={this.setColor()}
                 ref={this.ref}
                 className={classes}>
 
@@ -57,7 +53,11 @@ export class Neuron extends Component {
             </div>
 		)
 	}
-
+    setColor() {
+	    const {neuronListNum, neuronColor} = this.props;
+	    let color = neuronColor[neuronListNum];
+        return color
+    }
 	renderLinesList() {
 	    if (this.state.neuronListLength && this.state.neuronProperties.neuronWidth) return (
             <LinesList
@@ -74,7 +74,6 @@ export class Neuron extends Component {
             neuronName={this.neuron}/>;
     }
 
-
     mouseOverEvent(e) {
 	    if (e.target.classList.value !== 'line') {
             this.popupShow();
@@ -83,7 +82,6 @@ export class Neuron extends Component {
     }
     lineSelectedChangeColor() {
         if (this.listName !== 'input') {
-
             for (let i = 0; i < this.getPrevNeuronList().length; i++) {
                 this.getPrevNeuronList()[i]
                     .children[0]
@@ -119,8 +117,6 @@ export class Neuron extends Component {
         }
     }
 
-
-
     getPrevNeuronList() {
 	    return this.ref
             .current
@@ -144,7 +140,13 @@ export class Neuron extends Component {
     }
 
     getNeuronListLength() {
-        const neuronListLength = this.ref.current.parentElement.parentElement.nextElementSibling.children[0].children.length;
+        const neuronListLength = this.ref.current
+                                .parentElement
+                                .parentElement
+                                .nextElementSibling
+                                .children[0]
+                                .children
+                                .length;
         this.setState({
             neuronListLength
         })
@@ -152,9 +154,10 @@ export class Neuron extends Component {
 
     getNeuronPosition() {
 	    const ref = this.ref.current;
+	    const refNext = this.ref.current.parentElement.parentElement.nextElementSibling;
         setTimeout(() => {
-            const nextNeuronOffsetTop = ref.parentElement.parentElement.nextElementSibling.offsetTop;
-            const nextNeuronOffsetLeft = ref.parentElement.parentElement.nextElementSibling.offsetLeft;
+            const nextNeuronOffsetTop = refNext.offsetTop;
+            const nextNeuronOffsetLeft = refNext.offsetLeft;
             const neuronWidth = ref.clientWidth;
             const neuronOffsetLeft = ref.offsetLeft;
             const neuronOffsetTop = ref.offsetTop;

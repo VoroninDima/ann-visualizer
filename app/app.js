@@ -2,45 +2,34 @@ import React, {Component} from 'react' ;
 import {render} from 'react-dom';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
-import {NeuronList} from './components/neuron-list';
 import Header from 'components/header/Header';
+import Main from 'components/Main/Main';
+import rootReducer from './reducers/index';
+import {RandColorGenerator} from './lib/RandColorGenerator';
 
 let xhr = new XMLHttpRequest();
 xhr.open('GET', '../assets/config.json', false);
 xhr.send();
 
-const initialState = {
-    btnText: 'Hide lines',
-    btnActive: false
-};
-function btnText(state=initialState, action) {
-    if (action.type === 'changeText') {
-        return {
-            btnText: action.payload,
-            btnActive: !state.btnActive
-        };
-    }
-    return state
-}
 
-const store = createStore(btnText);
-let nika = JSON.parse(xhr.responseText);
-let lists;
+
+const store = createStore(rootReducer);
+const nika = JSON.parse(xhr.responseText);
 class App extends Component {
-    static returnLists() {
-        lists = nika.map((list, key) =>
-            <NeuronList key={key} list = {list} />
-        );
-        return lists
-	}
+    static getNeuronColor() {
+        let randomColorArray = []
+        for (let i = 0; i < nika.length; i++) {
+            const randomColor = RandColorGenerator();
+            randomColorArray.push(randomColor)
+        }
+        return randomColorArray
+    }
 	render() {
         return (
             <Provider store={store}>
                 <div className='app'>
                     <Header/>
-                    <div className='main'>
-                        {App.returnLists()}
-                    </div>
+                    <Main neuronColor={App.getNeuronColor()} nika={nika}/>
                 </div>
             </Provider>
         )
