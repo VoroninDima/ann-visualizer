@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce1f50df-6706-46f2-9edd-c54f92d9aab3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/main/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/slider/Slider.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/slider/Slider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/style/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/style/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/config.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,6 +31,15 @@
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RandColorGenerator.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/lib/RandColorGenerator.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="6" column="47" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -57,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/components/main/Main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="35" column="48" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="48" />
+            <state relative-caret-position="681">
+              <caret line="54" column="16" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -69,11 +80,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="config.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/config.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="651">
+              <caret line="58" column="17" selection-start-line="58" selection-start-column="17" selection-end-line="58" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Header.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/components/header/Header.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="2" column="25" selection-start-line="2" selection-end-line="3" />
+            <state relative-caret-position="21">
+              <caret line="1" column="23" selection-start-line="1" selection-end-line="2" />
             </state>
           </provider>
         </entry>
@@ -81,11 +101,20 @@
       <file leaf-file-name="Slider.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/components/slider/Slider.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+            <state relative-caret-position="378">
+              <caret line="18" column="21" selection-start-line="18" selection-end-line="19" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/style/main.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="282">
+              <caret line="57" column="19" selection-start-line="57" selection-start-column="19" selection-end-line="57" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -93,29 +122,8 @@
       <file leaf-file-name="sliderChange.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/reducers/sliderChange.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/style/main.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="42" column="23" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Neuron.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/components/neuron/Neuron.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="20" column="36" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="36" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="21">
+              <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -141,12 +149,14 @@
       <find>this.ref.current.</find>
       <find>let</find>
       <find>secondLinePosition</find>
+      <find>moveMain</find>
     </findStrings>
     <replaceStrings>
       <replace>this.ref</replace>
       <replace>this.ref.current.</replace>
       <replace>this.getRef().</replace>
       <replace>this.</replace>
+      <replace>onMouseDown</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -159,7 +169,6 @@
         <option value="$PROJECT_DIR$/app/components/NeuronList.jsx" />
         <option value="$PROJECT_DIR$/app/components/LinesList.jsx" />
         <option value="$PROJECT_DIR$/app/config.json" />
-        <option value="$PROJECT_DIR$/assets/config.json" />
         <option value="$PROJECT_DIR$/app/components/line/css.css" />
         <option value="$PROJECT_DIR$/app/components/neuron/css.css" />
         <option value="$PROJECT_DIR$/app/components/neuron-popup/neuronPopup.jsx" />
@@ -177,7 +186,6 @@
         <option value="$PROJECT_DIR$/webpack.config.js" />
         <option value="$PROJECT_DIR$/app/components/neuron-list/index.js" />
         <option value="$PROJECT_DIR$/app/components/neuron/index.js" />
-        <option value="$PROJECT_DIR$/app/lib/RandColorGenerator.js" />
         <option value="$PROJECT_DIR$/app/components/neuron-popup/NeuronPopup.js" />
         <option value="$PROJECT_DIR$/app/components/header-btn/index.js" />
         <option value="$PROJECT_DIR$/app/store.js" />
@@ -191,7 +199,6 @@
         <option value="$PROJECT_DIR$/app/components/slider/index.js" />
         <option value="$PROJECT_DIR$/app/components/line/index.js" />
         <option value="$PROJECT_DIR$/app/reducers/reducer.js" />
-        <option value="$PROJECT_DIR$/app/reducers/sliderChange.js" />
         <option value="$PROJECT_DIR$/app/actions/actionChangeSize.js" />
         <option value="$PROJECT_DIR$/app/actions/actionHideBtnClick.js" />
         <option value="$PROJECT_DIR$/app/reducers/hideBtnClick.js" />
@@ -201,10 +208,13 @@
         <option value="$PROJECT_DIR$/app/components/neuron-list/NeuronList.js" />
         <option value="$PROJECT_DIR$/app/components/neuron-sub-list/NeuronSubList.js" />
         <option value="$PROJECT_DIR$/app/components/header/Header.js" />
-        <option value="$PROJECT_DIR$/app/components/slider/Slider.js" />
         <option value="$PROJECT_DIR$/app/app.js" />
-        <option value="$PROJECT_DIR$/app/style/main.css" />
+        <option value="$PROJECT_DIR$/app/reducers/sliderChange.js" />
         <option value="$PROJECT_DIR$/app/components/main/Main.js" />
+        <option value="$PROJECT_DIR$/assets/config.json" />
+        <option value="$PROJECT_DIR$/app/lib/RandColorGenerator.js" />
+        <option value="$PROJECT_DIR$/app/components/slider/Slider.js" />
+        <option value="$PROJECT_DIR$/app/style/main.css" />
       </list>
     </option>
   </component>
@@ -309,6 +319,11 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="style" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ann-visualizer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ann-visualizer" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -370,12 +385,12 @@
       <workItem from="1545222510837" duration="13076000" />
       <workItem from="1545235626908" duration="60000" />
       <workItem from="1545289878131" duration="21907000" />
-      <workItem from="1545376889149" duration="25689000" />
+      <workItem from="1545376889149" duration="30105000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117145000" />
+    <option name="totallyTimeSpent" value="121561000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -423,13 +438,6 @@
     <entry file="file://$PROJECT_DIR$/app/components/Line.jsx" />
     <entry file="file://$PROJECT_DIR$/app/components/NeuronList.jsx" />
     <entry file="file://$PROJECT_DIR$/app/config.json" />
-    <entry file="file://$PROJECT_DIR$/assets/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/components/LinesList.jsx" />
     <entry file="file://$PROJECT_DIR$/node_modules/react/cjs/react.development.js" />
     <entry file="file://$PROJECT_DIR$/app/lines.js" />
@@ -620,78 +628,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/lib/RandColorGenerator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/react-input-range/lib/css/index.css">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret selection-end-line="82" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="618">
-          <caret line="31" column="25" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/reducers/sliderChange.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/neuron-list/NeuronList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="25" column="44" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/slider/Slider.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/header/Header.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="25" selection-start-line="2" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/neuron-sub-list/NeuronSubList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/style/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="42" column="23" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -705,13 +645,88 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/reducers/sliderChange.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="651">
+          <caret line="58" column="17" selection-start-line="58" selection-start-column="17" selection-end-line="58" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="618">
+          <caret line="31" column="25" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/components/main/Main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="35" column="48" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="48" />
+        <state relative-caret-position="681">
+          <caret line="54" column="16" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/lib/RandColorGenerator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="47" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/header/Header.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" column="23" selection-start-line="1" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/neuron-list/NeuronList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="25" column="44" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/neuron-sub-list/NeuronSubList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/slider/Slider.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="18" column="21" selection-start-line="18" selection-end-line="19" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/style/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="57" column="19" selection-start-line="57" selection-start-column="19" selection-end-line="57" selection-end-column="19" />
         </state>
       </provider>
     </entry>

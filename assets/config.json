@@ -32,11 +32,31 @@
     ]
   },
   {
+    "name": "hidden_2",
+    "type": "hidden",
+    "unitsData": [
+      {
+        "num": 15,
+        "ActivationFunction": "Areasinus"
+      }
+    ]
+  },
+  {
     "name": "hidden_3",
     "type": "hidden",
     "unitsData": [
       {
-        "num": 8,
+        "num": 5,
+        "ActivationFunction": "HyperbolicTangent"
+      }
+    ]
+  },
+  {
+    "name": "hidden_3",
+    "type": "hidden",
+    "unitsData": [
+      {
+        "num": 19,
         "ActivationFunction": "HyperbolicTangent"
       }
     ]
