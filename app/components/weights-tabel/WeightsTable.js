@@ -28,7 +28,7 @@ class WeightsTable extends React.Component {
         })
     }
     setStyle() {
-        let style
+        let style;
         this.state.isOpen ? style={display: 'block'} : style={display: 'none'};
         return style
     }
@@ -41,21 +41,26 @@ class WeightsTable extends React.Component {
                     <TableCell component="th" scope="row">
                         {name}
                     </TableCell>
-                    {this.props.tableData.weights[num].map((weight, key) => <TableCell key={key}>{weight}</TableCell> )}
+                    {this.props.tableData.weights[num].map((weight, key) =>
+                        <TableCell key={key}>{weight}</TableCell> )}
                 </TableRow>
             )
         });
     return rows
     }
     render() {
+        console.log(this.props)
         return (
             <Paper style={{margin: 10}}>
-                <Button className='table_btn' onClick={this.handleOpen.bind(this)}>Open</Button>
+                <Button className='table_btn' onClick={this.handleOpen.bind(this)}>
+                    {`Weights between ${this.props.tableData.layersName} and ${this.props.tableData.nextLayersName}`}
+                    </Button>
                 <Table style={this.setStyle()}>
                     <TableHead>
                         <TableRow className='weights_row'>
                             <TableCell></TableCell>
-                            {this.props.tableData.secondNeuronLayerNames.map((name, key) => <TableCell key={key}>{name}</TableCell> )}
+                            {this.props.tableData.secondNeuronLayerNames.map((name, key) =>
+                                <TableCell key={key}>{name}</TableCell> )}
                         </TableRow>
                     </TableHead>
                     <TableBody>

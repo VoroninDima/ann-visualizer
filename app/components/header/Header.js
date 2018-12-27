@@ -12,15 +12,14 @@ class Header extends Component{
         else this.props.onHideLinesBtnClicked('Show lines');
     }
     renderWeightsModal() {
-        if (this.props.names.length !== 0 ) return <WeightsModal weights={this.props.weights} names={this.props.names}/>
+        if (this.props.names.length !== 0 ) return <WeightsModal layersName={this.props.layersName}  weights={this.props.weights} names={this.props.names}/>
     }
     render() {
-
         return (
             <div className='header'>
                 <Settings/>
                 <Slide/>
-                {/*{this.renderWeightsModal()}*/}
+                {this.renderWeightsModal()}
                 <Button onClick={this.hideLinesBtnClicked.bind(this)} className='header__btn'>{this.props.innerText}</Button>
             </div>
         )
@@ -32,6 +31,7 @@ function mapStateToProps(state) {
         btnActive: !state.hideBtnClick.btnActive,
         weights: state.weightsValue.weights,
         names: state.neuronsNames.neuronsNamesArray,
+        layersName: state.neuronsNames.layersName,
 
     }
 }

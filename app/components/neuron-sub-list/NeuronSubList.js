@@ -2,7 +2,6 @@ import React from 'react';
 
 import Neuron from 'components/neuron/Neuron';
 import {connect} from 'react-redux'
-import actionAddNeuronsNames from "../../actions/actionAddNeuronsNames";
 
 export function NeuronSubList(props) {
     const {neuronListNum,  neuronColor, subListName, subList} = props;
@@ -29,18 +28,14 @@ export function NeuronSubList(props) {
 	let renderSubList = () => {
     	if (subList.names) {
 
-            props.addNames(subList.names);
     	    return neuronMap(subList.names);
         }
     	else {
 
     		let neuronsNameArray = [];
-    		let neuronName = subListName;
     		for (let i = 0; i < num; i++) {
-    			neuronsNameArray.push(neuronName)
+    			neuronsNameArray.push(subListName)
     		}
-            props.addNames(neuronsNameArray);
-
             return neuronMap(neuronsNameArray)
     	}
     };
@@ -54,11 +49,5 @@ function mapStateToProps(state) {
 
     }
 }
-function mapDispatchToProps(dispatch) {
-    return {
-        addNames: names => {
-            dispatch(actionAddNeuronsNames(names))
-        }
-    }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(NeuronSubList)
+
+export default connect(mapStateToProps)(NeuronSubList)

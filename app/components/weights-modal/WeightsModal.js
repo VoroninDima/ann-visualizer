@@ -34,6 +34,8 @@ class WeightsModal extends React.Component {
                 weights: this.props.weights[i],
                 firstNeuronLayerNames: this.props.names[i],
                 secondNeuronLayerNames: this.props.names[i+1],
+                layersName: this.props.layersName[i],
+                nextLayersName: this.props.layersName[i+1]
             })
         }
         return tablesArray
@@ -44,6 +46,7 @@ class WeightsModal extends React.Component {
     }
 
     render() {
+        console.log(this.props.layersName)
         return (
             <React.Fragment>
                 <Button className='weightTable__btn' onClick={this.handleClickOpen}>Weight Table</Button>
@@ -54,7 +57,7 @@ class WeightsModal extends React.Component {
                 >
                     <DialogTitle>Weight Table</DialogTitle>
                     <DialogContent>
-                       {/*{this.renderWeightsTable()}*/}
+                       {this.renderWeightsTable()}
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={this.handleClose} color="primary" autoFocus>
