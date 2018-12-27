@@ -18,8 +18,8 @@ button {
 .header {
     height: 5vh;
     position: fixed;
-	display: flex;
-	justify-content: space-between;
+	display: grid;
+    grid-template-columns: 4fr 1fr 1fr 1fr 1fr 1fr;
 	align-items: center;
 	background-color: #dcdcdc;
     width: 100%;
@@ -31,14 +31,13 @@ button {
 	height: 30px;
 	background-color: darkred;
 }
-.Slider-track-3 {
+.Slider-pointer-49 {
 	background-color: #754f4f !important;
 }
-.Slider-pointer-4 {
+.Slider-track-48 {
 	background-color: darkred !important;
 }
-.header__btn {
-	margin-right: 12vh;
+.header__btn, .settings__btn, .weightTable__btn, .refresh__btn {
 	cursor: pointer;
 	font-family: 'Quicksand', sans-serif;
 	font-size: 2vh;
@@ -46,32 +45,14 @@ button {
 	height: 5vh;
 	float: right;
 	color: darkred;
+    border-radius: 0;
+}
 
-}
-.refresh__btn {
-	cursor: pointer;
-	font-family: 'Quicksand', sans-serif;
-	font-size: 2vh;
-	width: 17vh;
-	height: 5vh;
-	color: darkred;
-}
 .settings__btn {
-	color: darkred;
-	cursor: pointer;
-	font-family: 'Quicksand', sans-serif;
-	font-size: 2vh;
-	margin-left: 50px;
+    float: left;
 }
-.header__btn:hover {
+.header__btn:hover, .refresh__btn:hover, .settings__btn:hover, .weightTable__btn:hover {
 	color: white;
-	border-color: white;
-
-}
-.refresh__btn:hover {
-	color: white;
-	border-color: white;
-
 }
 .main {
     position: absolute;
@@ -92,7 +73,9 @@ button {
 	align-items: center;
 	justify-content: center;
 }
-
+.MuiButton-textPrimary-4 {
+    color: darkred;
+}
 
 .lineList {
 	transform: translateX(25px);
@@ -105,20 +88,25 @@ button {
 	background-color: black;
 	z-index: -1;
 }
-
+.resizeText {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 2vh;
+    color: darkred;
+    margin-left: 50%;
+    margin-top: -5px;
+}
 .popup {
 	z-index: 1;
 	border-radius: 3px;
-	height: 30px;
 	background-color: #e0e0e0d4;
 	position: absolute;
-	margin-top: 35px;
+	margin-top: 55px;
 	align-items: center;
 }
 .popup p {
 	font-family: 'Quicksand', sans-serif;
 	color: darkred;
-	font-size: 20px;
+	font-size: 16px;
 	padding: 5px 20px;
 	margin: 0;
 }
@@ -133,7 +121,7 @@ button {
 	font-size: 14px;
 }
 .weights_row th {
-	font-size: 15px;
+	font-size: 12px;
 }
 .MuiDialog-paperWidthSm-38 {
 	max-width: none;
@@ -143,3 +131,7 @@ button {
 .table_btn {
 	width: 100%;
 }
+.activationFunction {
+    font-size: 15px!important;
+}
+

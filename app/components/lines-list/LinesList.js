@@ -16,7 +16,7 @@ function LinesList (props) {
     getLineEndsOffsetTop();
     let neuronNextNum = -1;
     const lines = lineEndsOffsetTop.map((line, key) => {
-        neuronNextNum = neuronNextNum + 1
+        neuronNextNum = neuronNextNum + 1;
         return (
             <Line key={key}
               neuronNextNum={neuronNextNum}

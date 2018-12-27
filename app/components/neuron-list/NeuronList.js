@@ -2,7 +2,7 @@ import React from 'react'
 import NeuronSubList from 'components/neuron-sub-list/NeuronSubList'
 
 export function NeuronList(props) {
-	const {neuronListNum, neuronColor} = props
+	const {neuronListNum, neuronColor} = props;
     let subLists;
 	let ar = [];
     const list = props.list;

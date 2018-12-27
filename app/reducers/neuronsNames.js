@@ -2,10 +2,18 @@ const xhr = new XMLHttpRequest();
 xhr.open('GET', '../assets/config.json', false);
 xhr.send();
 
+/**
+ * @param {{unitsData:array}} nika
+ * @param {{num:int}} data
+ * @returns {*}
+ * @constructor
+ */
 const nika = JSON.parse(xhr.responseText);
+
 let getNames = () => {
     let namesArray = [];
     let ar = [];
+
     for(let i = 0; i < nika.length; i++) {
         if (nika[i].unitsData.length === 1) {
             if (nika[i].unitsData[0].names) {
@@ -43,6 +51,6 @@ const initialState = {
     neuronsNamesArray: getNames(),
     layersName: getLayersNames()
 };
-export default function neuronsNames(state=initialState, action) {
+export default function neuronsNames(state=initialState) {
     return state
 }

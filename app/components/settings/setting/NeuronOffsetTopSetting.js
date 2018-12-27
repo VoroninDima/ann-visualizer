@@ -5,9 +5,7 @@ import {Slider} from "material-ui-slider";
 import {connect} from "react-redux";
 
 class LineSizeSetting extends React.Component {
-
     render() {
-        console.log(this.props.offsetTop)
         return <Slider
             value={this.props.offsetTop}
             onChange={value => this.props.setNeuronOffsetTopValue(value)}

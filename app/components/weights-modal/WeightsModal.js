@@ -46,7 +46,6 @@ class WeightsModal extends React.Component {
     }
 
     render() {
-        console.log(this.props.layersName)
         return (
             <React.Fragment>
                 <Button className='weightTable__btn' onClick={this.handleClickOpen}>Weight Table</Button>

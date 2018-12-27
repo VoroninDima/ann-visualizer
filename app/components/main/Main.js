@@ -16,14 +16,12 @@ class Main extends Component {
     renderMain() {
         const {nika, neuronColor} = this.props;
         let neuronListNum = -1;
-        const lists = nika.map((list, key) => {
+        return nika.map((list, key) => {
             neuronListNum = neuronListNum + 1;
             return (
                 <NeuronList neuronListNum={neuronListNum}  neuronColor={neuronColor} key={key} list = {list} />
             )
         });
-
-        return lists;
     }
 
     onMouseDown(e) {

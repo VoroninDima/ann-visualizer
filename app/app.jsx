@@ -1,27 +1,20 @@
 import React, {Component} from 'react' ;
 import {render} from 'react-dom';
-import NeuronList from './components/neuron-list/NeuronList.jsx';
+import {NeuronList} from './components/neuron-list/NeuronList';
 
 let xhr = new XMLHttpRequest();
 xhr.open('GET', '../assets/config.json', false);
 xhr.send();
 
-let nika = JSON.parse(xhr.responseText)
+let nika = JSON.parse(xhr.responseText);
 class App extends Component {
-	constructor() {
-		super()
-        this.returnLists = this.returnLists.bind(this)
-
-    }
-
-	returnLists() {
-        let lists = nika.map((list, key) =>
+	static returnLists() {
+        return nika.map((list, key) =>
             <NeuronList key={key} list = {list} />
         );
-        return lists
 	}
 	render() {
-        return this.returnLists()
+        return App.returnLists()
 	}
 }
-render(<App />, document.getElementById('app'))
+render(<App />, document.getElementById('app'));

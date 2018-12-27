@@ -8,6 +8,7 @@ class Slide extends Component {
     render() {
         return (
             <React.Fragment>
+                <p className='resizeText'>Resize:</p>
                 <Slider
                     type='range'
                     value={this.props.sliderValue}

@@ -32,7 +32,6 @@ class Neuron extends Component {
         this.setColor = this.setColor.bind(this);
         this.neuronSize = this.props.neuronSize
 	}
-
     componentWillReceiveProps() {
         if (this.listName !== 'output') {
             this.getNeuronPosition();
@@ -70,8 +69,8 @@ class Neuron extends Component {
 	}
     setColor() {
 	    const {neuronListNum, neuronColor} = this.props;
-	    let color = neuronColor[neuronListNum];
-        return color
+        return neuronColor[neuronListNum];
+
     }
 	renderLinesList() {
 	    if (this.state.neuronListLength && this.state.neuronProperties.neuronWidth) return (
@@ -88,9 +87,11 @@ class Neuron extends Component {
     }
 
     renderNeuronPopup() {
+	    const {activationFunction} = this.props;
 	    return <NeuronPopup
             active={this.state.popupActive}
-            neuronName={this.neuron}/>;
+            neuronName={this.neuron}
+            activationFunction={activationFunction}/>;
     }
 
     mouseOverEvent(e) {

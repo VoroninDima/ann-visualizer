@@ -1,9 +1,9 @@
-
-
 import React from 'react'
 import {connect} from 'react-redux';
 import {LinePopup} from 'components/linePopup'
 
+
+let num = 0;
 class Line extends React.Component {
     constructor(props) {
         super(props);
@@ -18,14 +18,16 @@ class Line extends React.Component {
     }
 
     getPosition() {
-        this.neuronProperties = this.props.lineData.neuronProperties,
-            this.selectedColor = this.props.lineData.lineBgc,
-            this.aOffsetTop = this.props.lineData.neuronProperties.neuronOffsetTop,
-            this.aOffsetLeft = this.props.lineData.neuronProperties.neuronOffsetLeft+this.props.neuronSize,
-            this.bOffsetTop = this.props.lineEndsOffsetTop-this.props.neuronSize,
-            this.bOffsetLeft = this.props.lineData.neuronProperties.nextNeuronOffsetLeft,
-            this.angle = Math.atan2(this.bOffsetTop - this.aOffsetTop, this.bOffsetLeft - this.aOffsetLeft) * 180 / Math.PI,
-            this.length = Math.sqrt((this.bOffsetLeft - this.aOffsetLeft) * (this.bOffsetLeft - this.aOffsetLeft) + (this.bOffsetTop - this.aOffsetTop) * (this.bOffsetTop - this.aOffsetTop));
+        const {lineData, lineEndsOffsetTop} = this.props;
+        const {lineBgc} = lineData;
+        this.neuronProperties = lineData.neuronProperties;
+        this.selectedColor = lineBgc;
+        this.aOffsetTop = lineData.neuronProperties.neuronOffsetTop;
+        this.aOffsetLeft = lineData.neuronProperties.neuronOffsetLeft+this.props.neuronSize;
+        this.bOffsetTop = lineEndsOffsetTop-this.props.neuronSize;
+        this.bOffsetLeft = lineData.neuronProperties.nextNeuronOffsetLeft;
+        this.angle = Math.atan2(this.bOffsetTop - this.aOffsetTop, this.bOffsetLeft - this.aOffsetLeft) * 180 / Math.PI;
+        this.length = Math.sqrt((this.bOffsetLeft - this.aOffsetLeft) * (this.bOffsetLeft - this.aOffsetLeft) + (this.bOffsetTop - this.aOffsetTop) * (this.bOffsetTop - this.aOffsetTop));
         this.width = Math.abs(this.length) + 'px';
 
         return {angle: this.angle, width: this.width}
@@ -45,7 +47,8 @@ class Line extends React.Component {
         return lineStyle
     }
     getLineWeights() {
-        return this.props.weights.weights[this.props.neuronListNum][this.props.neuronOrderNum][this.props.neuronNextNum]
+        const {neuronNextNum} = this.props;
+        return this.props.weights.weights[this.props.neuronListNum][this.props.neuronOrderNum][neuronNextNum]
     };
     showWeights() {
         this.setState({
@@ -58,6 +61,7 @@ class Line extends React.Component {
         })
     }
     render() {
+        num = num + 1;
         this.setStyle();
         return (
             <div style={this.setStyle()}

@@ -8,11 +8,11 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
+const styles = () => ({
     dialogButton: {
         display:  'none'
     }
-})
+});
 
 
 class WeightsTable extends React.Component {
@@ -20,7 +20,7 @@ class WeightsTable extends React.Component {
         super(props);
         this.state={
             isOpen: false
-        }
+        };
     }
     handleOpen() {
         this.setState({
@@ -29,43 +29,44 @@ class WeightsTable extends React.Component {
     }
     setStyle() {
         let style;
-        this.state.isOpen ? style={display: 'block'} : style={display: 'none'};
+        this.state.isOpen ? style={display: 'block', overflow: 'scroll', maxHeight: 400}
+                            : style={display: 'none', overflow: 'scroll', maxHeight: 400};
         return style
     }
     renderRow() {
+        const {tableData} =this.props;
+
         let num = -1;
-        let rows = this.props.tableData.firstNeuronLayerNames.map((name, key) => {
+        return tableData.firstNeuronLayerNames.map((name, key) => {
             num = num + 1;
             return(
                 <TableRow key={key}>
                     <TableCell component="th" scope="row">
                         {name}
                     </TableCell>
-                    {this.props.tableData.weights[num].map((weight, key) =>
-                        <TableCell key={key}>{weight}</TableCell> )}
+                    {tableData.weights[num].map((weight, key) => <TableCell key={key}>{weight}</TableCell> )}
                 </TableRow>
             )
         });
-    return rows
     }
     render() {
-        console.log(this.props)
+        const {tableData} =this.props;
+
         return (
             <Paper style={{margin: 10}}>
                 <Button className='table_btn' onClick={this.handleOpen.bind(this)}>
-                    {`Weights between ${this.props.tableData.layersName} and ${this.props.tableData.nextLayersName}`}
+                    {`Weights between ${tableData.layersName} and ${tableData.nextLayersName}`}
                     </Button>
                 <Table style={this.setStyle()}>
                     <TableHead>
                         <TableRow className='weights_row'>
-                            <TableCell></TableCell>
-                            {this.props.tableData.secondNeuronLayerNames.map((name, key) =>
+                            <TableCell>/</TableCell>
+                            {tableData.secondNeuronLayerNames.map((name, key) =>
                                 <TableCell key={key}>{name}</TableCell> )}
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {this.renderRow()}
-
                     </TableBody>
                 </Table>
             </Paper>
