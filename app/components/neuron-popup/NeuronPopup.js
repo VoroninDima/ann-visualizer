@@ -1,10 +1,5 @@
 import React from 'react'
-/**
- * @param {{}} props
- *     @param {{neuronName:string}} props
- * @returns {*}
- * @constructor
- */
+
 export function NeuronPopup(props) {
     let style;
     props.active ? style={display: 'flex'} : style={display: 'none'};
@@ -12,10 +7,7 @@ export function NeuronPopup(props) {
 
     return (
     	<div style={style} className='popup'>
-            <p>{props.neuronName}</p>
+            <p className='neuronPopupParagraph'>{props.neuronName}</p>
         </div>
 	)
-
-
-
 }

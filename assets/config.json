@@ -4,18 +4,13 @@
     "type": "input",
     "unitsData": [
       {
-        "num": 30,
+        "num": 4,
         "ActivationFunction": "HyperbolicTangent",
         "names": [
           "answer_speed_fact",
           "base_fact",
           "success_fact",
-          "theme_fact",
-          "factor_fact",
-          "multiplicand_fact"
-
-
-
+          "theme_fact"
         ]
       }
     ]
@@ -26,7 +21,7 @@
     "type": "hidden",
     "unitsData": [
       {
-        "num": 10,
+        "num": 6,
         "ActivationFunction": "Areasinus"
       }
     ]
@@ -36,31 +31,12 @@
     "type": "hidden",
     "unitsData": [
       {
-        "num": 15,
+        "num": 5,
         "ActivationFunction": "Areasinus"
       }
     ]
   },
-  {
-    "name": "hidden_3",
-    "type": "hidden",
-    "unitsData": [
-      {
-        "num": 5,
-        "ActivationFunction": "HyperbolicTangent"
-      }
-    ]
-  },
-  {
-    "name": "hidden_3",
-    "type": "hidden",
-    "unitsData": [
-      {
-        "num": 19,
-        "ActivationFunction": "HyperbolicTangent"
-      }
-    ]
-  },
+
   {
     "name": "output",
     "type": "output",

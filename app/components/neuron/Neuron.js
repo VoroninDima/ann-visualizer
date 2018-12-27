@@ -1,15 +1,16 @@
 import React, {Component} from 'react'
 import classnames from 'classnames';
 
-import {LinesList} from 'components/lines-list';
+import LinesList from 'components/lines-list/LinesList';
 import {NeuronPopup} from 'components/neuron-popup';
+import {connect} from 'react-redux'
 
-export class Neuron extends Component {
+class Neuron extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			secondLinePosition: null,
             lineColor: '#bdbdbd',
+            size: this.props.neuronSize,
             popupActive: false,
             neuronListLength: null,
             neuronProperties: {
@@ -22,15 +23,23 @@ export class Neuron extends Component {
         this.listName = this.props.listName;
         this.neuron = this.props.neuron;
         this.neuronOrderNum = this.props.neuronOrderNum;
+        this.neuronListNum = this.props.neuronListNum;
         this.mouseOverEvent = this.mouseOverEvent.bind(this);
         this.mouseOutEvent = this.mouseOutEvent.bind(this);
         this.popupShow = this.popupShow.bind(this);
         this.popupHide = this.popupHide.bind(this);
         this.getNeuronListLength = this.getNeuronListLength.bind(this);
         this.setColor = this.setColor.bind(this);
+        this.neuronSize = this.props.neuronSize
 	}
 
-	componentDidMount() {
+    componentWillReceiveProps() {
+        if (this.listName !== 'output') {
+            this.getNeuronPosition();
+            this.getNeuronListLength();
+        }
+    }
+    componentDidMount() {
         if (this.listName !== 'output') {
             this.getNeuronPosition();
             this.getNeuronListLength();
@@ -38,13 +47,19 @@ export class Neuron extends Component {
     }
 
 	render() {
-	    const {listName, neuron} = this.props;
+        const {listName, neuron} = this.props;
         const classes = classnames('neuron', listName, neuron);
+        let style = {
+            width: this.props.neuronSize,
+            height:this.props.neuronSize,
+            marginTop: this.props.offsetTop,
+            backgroundColor: this.setColor()
+        };
 		return (
 			<div
                 onMouseOver={this.mouseOverEvent}
                 onMouseOut={this.mouseOutEvent}
-                style={this.setColor()}
+                style={style}
                 ref={this.ref}
                 className={classes}>
 
@@ -61,9 +76,13 @@ export class Neuron extends Component {
 	renderLinesList() {
 	    if (this.state.neuronListLength && this.state.neuronProperties.neuronWidth) return (
             <LinesList
+                neuronListNum={this.neuronListNum}
+                neuronOrderNum={this.neuronOrderNum}
+                neuronSize={this.neuronSize}
                 lineBgc={this.state.lineColor}
                 neuronListLength={this.state.neuronListLength}
                 neuronProperties={this.state.neuronProperties}
+                offsetTop={this.props.offsetTop}
             />
         )
     }
@@ -75,7 +94,7 @@ export class Neuron extends Component {
     }
 
     mouseOverEvent(e) {
-	    if (e.target.classList.value !== 'line') {
+        if (e.target.classList[0] === 'neuron'|| e.target.classList[0] === 'neuronPopupParagraph') {
             this.popupShow();
             this.lineSelectedChangeColor();
         }
@@ -111,7 +130,7 @@ export class Neuron extends Component {
         })
     }
     mouseOutEvent(e) {
-        if (e.target.classList.value !== 'line') {
+        if (e.target.classList[0] === 'neuron'|| e.target.classList[0] === 'neuronPopupParagraph') {
             this.lineUnselectedChangeColor();
             this.popupHide();
         }
@@ -158,7 +177,7 @@ export class Neuron extends Component {
         setTimeout(() => {
             const nextNeuronOffsetTop = refNext.offsetTop;
             const nextNeuronOffsetLeft = refNext.offsetLeft;
-            const neuronWidth = ref.clientWidth;
+            const neuronWidth = 30;
             const neuronOffsetLeft = ref.offsetLeft;
             const neuronOffsetTop = ref.offsetTop;
             this.setState({
@@ -172,6 +191,12 @@ export class Neuron extends Component {
             });
         }, 0)
     }
-
 }
 
+function mapStateToProps(state) {
+    return {
+        offsetTop: state.changeSettings.offsetTop,
+
+    }
+}
+export default connect(mapStateToProps)(Neuron)

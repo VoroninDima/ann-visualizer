@@ -1,5 +1,5 @@
 import React from 'react'
-import {NeuronSubList} from 'components/neuron-sub-list'
+import NeuronSubList from 'components/neuron-sub-list/NeuronSubList'
 
 export function NeuronList(props) {
 	const {neuronListNum, neuronColor} = props

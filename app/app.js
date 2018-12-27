@@ -7,9 +7,10 @@ import Main from 'components/Main/Main';
 import rootReducer from './reducers/index';
 import {RandColorGenerator} from './lib/RandColorGenerator';
 
-let xhr = new XMLHttpRequest();
+const xhr = new XMLHttpRequest();
 xhr.open('GET', '../assets/config.json', false);
 xhr.send();
+
 
 
 

@@ -4,5 +4,6 @@ export function RandColorGenerator() {
         rand = Math.floor(rand);
         return rand;
     };
-    return {backgroundColor: `rgba(${random(1,155)}, ${random(1,155)}, ${random(1,155)})`};
+    let bgc = `rgba(${random(1,155)}, ${random(1,155)}, ${random(1,155)})`;
+    return bgc;
 }

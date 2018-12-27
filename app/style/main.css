@@ -4,18 +4,32 @@ body {
 	margin: 0;
 
 }
+p {
+	margin: 0;
+	padding: 0;
+}
 button {
 	border-style: none;
 }
-#app {
+.app {
+	display: flex;
+	justify-content: center;
 }
 .header {
     height: 5vh;
     position: fixed;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	background-color: #dcdcdc;
     width: 100%;
     top: 0;
     z-index: 999;
+}
+.MuiFab-sizeSmall-9 {
+	width: 30px;
+	height: 30px;
+	background-color: darkred;
 }
 .Slider-track-3 {
 	background-color: #754f4f !important;
@@ -35,14 +49,19 @@ button {
 
 }
 .refresh__btn {
-	margin-top: -40px;
 	cursor: pointer;
 	font-family: 'Quicksand', sans-serif;
 	font-size: 2vh;
 	width: 17vh;
 	height: 5vh;
 	color: darkred;
-
+}
+.settings__btn {
+	color: darkred;
+	cursor: pointer;
+	font-family: 'Quicksand', sans-serif;
+	font-size: 2vh;
+	margin-left: 50px;
 }
 .header__btn:hover {
 	color: white;
@@ -55,10 +74,8 @@ button {
 
 }
 .main {
-    transition: .2s;
     position: absolute;
-	width: 1500px;
-	margin: 80px auto;
+	margin-top: 80px;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -88,9 +105,10 @@ button {
 	background-color: black;
 	z-index: -1;
 }
+
 .popup {
 	z-index: 1;
-	border-radius: 50px;
+	border-radius: 3px;
 	height: 30px;
 	background-color: #e0e0e0d4;
 	position: absolute;
@@ -104,4 +122,24 @@ button {
 	padding: 5px 20px;
 	margin: 0;
 }
+.linePopup {
+	width: 120px;
+	margin: 0 auto;
+	position: relative;
+	text-align: center;
+	z-index: 9999;
+}
+.linePopup p {
+	font-size: 14px;
+}
+.weights_row th {
+	font-size: 15px;
+}
+.MuiDialog-paperWidthSm-38 {
+	max-width: none;
+	min-width: 800px;
+}
 
+.table_btn {
+	width: 100%;
+}

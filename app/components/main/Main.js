@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {NeuronList} from 'components/neuron-list';
 
 
-
 class Main extends Component {
     constructor(props) {
         super(props);
@@ -20,7 +19,7 @@ class Main extends Component {
         const lists = nika.map((list, key) => {
             neuronListNum = neuronListNum + 1;
             return (
-                <NeuronList neuronListNum={neuronListNum} neuronColor={neuronColor} key={key} list = {list} />
+                <NeuronList neuronListNum={neuronListNum}  neuronColor={neuronColor} key={key} list = {list} />
             )
         });
 
@@ -49,7 +48,9 @@ class Main extends Component {
 
     render() {
         const style = {
-            transform: `scale(${this.props.sliderValue/50}) translate(${this.state.left}px, ${this.state.top}px)`
+            transform: `scale(${this.props.sliderValue/50}) translate(${this.state.left}px, ${this.state.top}px)`,
+            width: this.props.netWidth,
+            display: `flex`
         };
         return (
             <div onMouseDown={this.onMouseDown} style={style} className="main">
@@ -63,7 +64,8 @@ class Main extends Component {
 
 export default connect(
     state => ({
-        sliderValue: state.changeSize.sliderValue
+        sliderValue: state.changeSize.sliderValue,
+        netWidth: state.changeSettings.netWidth
     })
 
 )(Main)
