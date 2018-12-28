@@ -1,13 +1,14 @@
-const xhr = new XMLHttpRequest();
-xhr.open('GET', '../assets/config.json', false);
-xhr.send();
-
 /**
  * @param {{unitsData:array}} nika
  * @param {{num:int}} data
  * @returns {*}
  * @constructor
  */
+
+const xhr = new XMLHttpRequest();
+xhr.open('GET', '../assets/config.json', false);
+xhr.send();
+
 const nika = JSON.parse(xhr.responseText);
 
 let getNames = () => {
@@ -15,18 +16,18 @@ let getNames = () => {
     let ar = [];
 
     for(let i = 0; i < nika.length; i++) {
-        if (nika[i].unitsData.length === 1) {
-            if (nika[i].unitsData[0].names) {
-                namesArray.push(nika[i].unitsData[0].names)
+        const neuronData = nika[i].unitsData;
+        if (neuronData.length === 1) {
+            if (neuronData[0].names) {
+                namesArray.push(neuronData[0].names)
             } else namesArray.push(...getNameless(nika[i]))
-        }
-        else nika[i].unitsData.forEach(el => ar.push(...el.names))
+        } else neuronData.forEach(el => ar.push(...el.names))
     }
     namesArray.push(ar);
 
     return namesArray
 };
-let getNameless = (array) => {
+let getNameless = array => {
     let ar = [];
     array.unitsData.forEach(data => {
         if (!data.names) {

@@ -1,26 +1,47 @@
 import React, {Component} from 'react'
+
 import Button from '@material-ui/core/Button';
 import Slide from 'components/slider/Slider';
 import Settings from 'components/settings/Settings';
-import {connect} from 'react-redux';
-import hideBtnClickAction from '../../actions/actionHideBtnClick'
 import WeightsModal from 'components/weights-modal/WeightsModal'
 
+import {connect} from 'react-redux';
+import hideBtnClickAction from '../../actions/actionHideBtnClick'
+
 class Header extends Component{
-    hideLinesBtnClicked() {
+    hideLinesBtnClicked =() => {
         if (!this.props.btnActive) this.props.onHideLinesBtnClicked('Hide lines');
         else this.props.onHideLinesBtnClicked('Show lines');
-    }
-    renderWeightsModal() {
-        if (this.props.names.length !== 0 ) return <WeightsModal layersName={this.props.layersName}  weights={this.props.weights} names={this.props.names}/>
-    }
+    };
+    renderWeightsModal =() => {
+        if (this.props.names.length !== 0 ) return (
+            <WeightsModal
+                layersName={this.props.layersName}
+                weights={this.props.weights}
+                names={this.props.names}
+            />
+        )
+    };
+
+    renderButton =() => {
+        return (
+            <Button
+                onClick={this.hideLinesBtnClicked}
+                className='header__btn'
+            >
+                {this.props.innerText}
+            </Button>
+        )
+
+    };
+
     render() {
         return (
             <div className='header'>
                 <Settings/>
                 <Slide/>
                 {this.renderWeightsModal()}
-                <Button onClick={this.hideLinesBtnClicked.bind(this)} className='header__btn'>{this.props.innerText}</Button>
+                {this.renderButton()}
             </div>
         )
     }

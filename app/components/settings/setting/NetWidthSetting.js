@@ -1,6 +1,6 @@
 import React from 'react';
-import changeNetWidthAction from '../../../actions/actionChangeNetWidth'
 
+import changeNetWidthAction from '../../../actions/actionChangeNetWidth'
 import {connect} from "react-redux";
 
 import {Slider} from "material-ui-slider";

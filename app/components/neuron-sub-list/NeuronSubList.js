@@ -4,13 +4,12 @@ import Neuron from 'components/neuron/Neuron';
 import {connect} from 'react-redux'
 
 export function NeuronSubList(props) {
-    const {neuronListNum,  neuronColor, subListName, subList} = props;
+    const {neuronListNum,  neuronColor, subListName, subList, neuronSize} = props;
     const {num, ActivationFunction} = subList;
-    let neurons;
-    const neuronSize = props.neuronSize;
+
     let neuronOrderNum = -1;
     let neuronMap = array => {
-        neurons = array.map((neuron, key) => {
+        return array.map((neuron, key) => {
             neuronOrderNum = neuronOrderNum + 1;
             return <Neuron
                 activationFunction={ActivationFunction}
@@ -24,7 +23,6 @@ export function NeuronSubList(props) {
                 listName={subListName}
             />
         });
-        return neurons
     };
 	let renderSubList = () => {
     	if (subList.names) {

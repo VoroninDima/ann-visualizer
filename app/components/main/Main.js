@@ -10,21 +10,26 @@ class Main extends Component {
             left: 0,
             top:0
         };
-        this.onMouseDown = this.onMouseDown.bind(this);
-
     }
+
+
     renderMain() {
         const {nika, neuronColor} = this.props;
         let neuronListNum = -1;
         return nika.map((list, key) => {
             neuronListNum = neuronListNum + 1;
             return (
-                <NeuronList neuronListNum={neuronListNum}  neuronColor={neuronColor} key={key} list = {list} />
+                <NeuronList
+                    neuronListNum={neuronListNum}
+                    neuronColor={neuronColor}
+                    key={key}
+                    list = {list}
+                />
             )
         });
     }
 
-    onMouseDown(e) {
+    onMouseDown = (e) => {
         e.preventDefault();
 
         const coordX = e.clientX;
@@ -42,11 +47,13 @@ class Main extends Component {
         };
 
         window.onmouseup = () => window.onmousemove = null;
-    }
+        window.onkeyup = () => window.onmousemove = null
+    };
 
     render() {
+        const transform = this.setNetTransform();
         const style = {
-            transform: `scale(${this.props.sliderValue/50}) translate(${this.state.left}px, ${this.state.top}px)`,
+            transform,
             width: this.props.netWidth,
             display: `flex`
         };
@@ -55,6 +62,12 @@ class Main extends Component {
                 {this.renderMain()}
             </div>
         )
+    }
+
+    setNetTransform() {
+        const scale = this.props.sliderValue / 50;
+        const {left, top} = this.state;
+        return `scale(${scale}) translate(${left}px, ${top}px)`
     }
 }
 
