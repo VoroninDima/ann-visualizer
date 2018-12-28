@@ -5,5 +5,5 @@ export function RandColorGenerator() {
         return rand;
     };
     let bgc = `rgba(${random(1,155)}, ${random(1,155)}, ${random(1,155)})`;
-    return bgc
+    return bgc;
 }

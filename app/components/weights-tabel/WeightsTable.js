@@ -1,15 +1,12 @@
 import React from 'react';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
-
-import {
-    TableBody,
-    TableCell,
-    TableHead,
-    TableRow,
-    Paper,
-    Button,
-    Table
-} from '@material-ui/core';
 
 const styles = () => ({
     dialogButton: {
@@ -24,7 +21,6 @@ class WeightsTable extends React.Component {
         this.state={
             isOpen: false
         };
-
     }
     handleOpen() {
         this.setState({
@@ -32,55 +28,11 @@ class WeightsTable extends React.Component {
         })
     }
     setStyle() {
-        const ifIsOpen = {
-            display: 'block',
-            overflow: 'scroll',
-            maxHeight: 400
-        };
-        const ifIsClosed = {
-            display: 'none',
-            overflow: 'scroll',
-            maxHeight: 400
-        };
-        return this.state.isOpen ? ifIsOpen : ifIsClosed;
-
+        let style;
+        this.state.isOpen ? style={display: 'block', overflow: 'scroll', maxHeight: 400}
+                            : style={display: 'none', overflow: 'scroll', maxHeight: 400};
+        return style
     }
-
-
-    render() {
-        return (
-            <Paper style={{margin: 10}}>
-                {this.renderButton()}
-                <Table style={this.setStyle()}>
-                    <TableHead>
-                        <TableRow className='weights_row'>
-                            <TableCell>/</TableCell>
-                            {this.renderFirstNeuronLayerRow()}
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {this.renderRow()}
-                    </TableBody>
-                </Table>
-            </Paper>
-        )
-    }
-
-
-    renderFirstNeuronLayerRow() {
-        const secondNeuronLayerNames = this.props.tableData.secondNeuronLayerNames;
-        return secondNeuronLayerNames.map((name, key) => <TableCell key={key}>{name}</TableCell> )
-    }
-
-    renderButton() {
-        const {tableData} = this.props;
-        return (
-            <Button className='table_btn' onClick={this.handleOpen.bind(this)}>
-                {`Weights between ${tableData.layersName} and ${tableData.nextLayersName}`}
-            </Button>
-        )
-    }
-
     renderRow() {
         const {tableData} =this.props;
 
@@ -95,8 +47,32 @@ class WeightsTable extends React.Component {
                     {tableData.weights[num].map((weight, key) => <TableCell key={key}>{weight}</TableCell> )}
                 </TableRow>
             )
-        })
+        });
     }
+    render() {
+        const {tableData} =this.props;
+
+        return (
+            <Paper style={{margin: 10}}>
+                <Button className='table_btn' onClick={this.handleOpen.bind(this)}>
+                    {`Weights between ${tableData.layersName} and ${tableData.nextLayersName}`}
+                    </Button>
+                <Table style={this.setStyle()}>
+                    <TableHead>
+                        <TableRow className='weights_row'>
+                            <TableCell>/</TableCell>
+                            {tableData.secondNeuronLayerNames.map((name, key) =>
+                                <TableCell key={key}>{name}</TableCell> )}
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {this.renderRow()}
+                    </TableBody>
+                </Table>
+            </Paper>
+        );
+    }
+
 }
 export default withStyles(styles)(WeightsTable);
 

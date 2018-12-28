@@ -8,47 +8,42 @@ import {connect} from 'react-redux'
 class Neuron extends Component {
 	constructor(props) {
 		super(props);
-		this.state = this.setDefaultState();
-
+		this.state = {
+            lineColor: '#bdbdbd',
+            size: this.props.neuronSize,
+            popupActive: false,
+            neuronListLength: null,
+            neuronProperties: {
+			    neuronWidth: null,
+                neuronOffsetLeft: null,
+                neuronOffsetTop: null
+            }
+		};
 		this.ref = React.createRef();
         this.listName = this.props.listName;
         this.neuron = this.props.neuron;
         this.neuronOrderNum = this.props.neuronOrderNum;
         this.neuronListNum = this.props.neuronListNum;
+        this.mouseOverEvent = this.mouseOverEvent.bind(this);
+        this.mouseOutEvent = this.mouseOutEvent.bind(this);
+        this.popupShow = this.popupShow.bind(this);
+        this.popupHide = this.popupHide.bind(this);
+        this.getNeuronListLength = this.getNeuronListLength.bind(this);
+        this.setColor = this.setColor.bind(this);
         this.neuronSize = this.props.neuronSize
 	}
-
-
-    setDefaultState = () => {
-	    return (
-            {
-                lineColor: '#bdbdbd',
-                size: this.props.neuronSize,
-                popupActive: false,
-                neuronListLength: null,
-                neuronProperties: {
-                    neuronWidth: null,
-                    neuronOffsetLeft: null,
-                    neuronOffsetTop: null
-                }
-            }
-        )
-    };
     componentWillReceiveProps() {
         if (this.listName !== 'output') {
             this.getNeuronPosition();
             this.getNeuronListLength();
         }
     }
-
     componentDidMount() {
         if (this.listName !== 'output') {
             this.getNeuronPosition();
             this.getNeuronListLength();
         }
     }
-
-
 
 	render() {
         const {listName, neuron} = this.props;
@@ -65,54 +60,47 @@ class Neuron extends Component {
                 onMouseOut={this.mouseOutEvent}
                 style={style}
                 ref={this.ref}
-                className={classes}
-            >
+                className={classes}>
+
                 {this.renderLinesList()}
                 {this.renderNeuronPopup()}
             </div>
 		)
 	}
-
-
-
-    setColor = () => {
+    setColor() {
 	    const {neuronListNum, neuronColor} = this.props;
         return neuronColor[neuronListNum];
 
-    };
-
-	renderLinesList = () => {
-	    const {neuronListLength, neuronProperties, lineColor, } = this.state;
-	    if (neuronListLength && neuronProperties.neuronWidth) return (
+    }
+	renderLinesList() {
+	    if (this.state.neuronListLength && this.state.neuronProperties.neuronWidth) return (
             <LinesList
                 neuronListNum={this.neuronListNum}
                 neuronOrderNum={this.neuronOrderNum}
                 neuronSize={this.neuronSize}
-                lineBgc={lineColor}
-                neuronListLength={neuronListLength}
-                neuronProperties={neuronProperties}
+                lineBgc={this.state.lineColor}
+                neuronListLength={this.state.neuronListLength}
+                neuronProperties={this.state.neuronProperties}
                 offsetTop={this.props.offsetTop}
             />
         )
-    };
+    }
 
-    renderNeuronPopup = () => {
+    renderNeuronPopup() {
 	    const {activationFunction} = this.props;
 	    return <NeuronPopup
             active={this.state.popupActive}
             neuronName={this.neuron}
             activationFunction={activationFunction}/>;
-    };
+    }
 
-    mouseOverEvent = (e) => {
-        const classes = e.target.classList[0];
-        if (classes === 'neuron'|| classes === 'neuronPopupParagraph') {
+    mouseOverEvent(e) {
+        if (e.target.classList[0] === 'neuron'|| e.target.classList[0] === 'neuronPopupParagraph') {
             this.popupShow();
             this.lineSelectedChangeColor();
         }
-    };
-
-    lineSelectedChangeColor = () => {
+    }
+    lineSelectedChangeColor() {
         if (this.listName !== 'input') {
             for (let i = 0; i < this.getPrevNeuronList().length; i++) {
                 this.getPrevNeuronList()[i]
@@ -125,9 +113,8 @@ class Neuron extends Component {
         this.setState({
             lineColor: 'red'
         })
-    };
-
-    lineUnselectedChangeColor = () => {
+    }
+    lineUnselectedChangeColor() {
 	    const {neuronOrderNum} = this.props;
 
         if (this.listName !== 'input') {
@@ -142,18 +129,15 @@ class Neuron extends Component {
         this.setState({
             lineColor: '#bdbdbd'
         })
-    };
-
-    mouseOutEvent = (e) => {
-        const classes = e.target.classList[0];
-
-        if (classes === 'neuron'|| classes === 'neuronPopupParagraph') {
+    }
+    mouseOutEvent(e) {
+        if (e.target.classList[0] === 'neuron'|| e.target.classList[0] === 'neuronPopupParagraph') {
             this.lineUnselectedChangeColor();
             this.popupHide();
         }
-    };
+    }
 
-    getPrevNeuronList = () => {
+    getPrevNeuronList() {
 	    return this.ref
             .current
             .parentElement
@@ -161,21 +145,21 @@ class Neuron extends Component {
             .previousElementSibling
             .children[0]
             .children;
-    };
+    }
 
-    popupShow = () => {
+    popupShow() {
 	    this.setState({
             popupActive: true
         });
-    };
+    }
 
-    popupHide = () => {
+    popupHide() {
 	    this.setState({
             popupActive: false
         });
-    };
+    }
 
-    getNeuronListLength = () => {
+    getNeuronListLength() {
         const neuronListLength = this.ref.current
                                 .parentElement
                                 .parentElement
@@ -186,9 +170,9 @@ class Neuron extends Component {
         this.setState({
             neuronListLength
         })
-    };
+    }
 
-    getNeuronPosition = () => {
+    getNeuronPosition() {
 	    const ref = this.ref.current;
 	    const refNext = this.ref.current.parentElement.parentElement.nextElementSibling;
         setTimeout(() => {
