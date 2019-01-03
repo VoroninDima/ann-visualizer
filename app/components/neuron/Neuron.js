@@ -78,7 +78,6 @@ class Neuron extends Component {
     setColor = () => {
 	    const {neuronListNum, neuronColor} = this.props;
         return neuronColor[neuronListNum];
-
     };
 
 	renderLinesList = () => {

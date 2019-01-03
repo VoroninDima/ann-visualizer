@@ -16,10 +16,10 @@ button {
 	justify-content: center;
 }
 .header {
-    height: 5vh;
+    height: 50px;
     position: fixed;
 	display: grid;
-    grid-template-columns: 4fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 4fr 1fr 1fr 1fr 1fr ;
 	align-items: center;
 	background-color: #dcdcdc;
     width: 100%;
@@ -40,9 +40,9 @@ button {
 .header__btn, .settings__btn, .weightTable__btn, .refresh__btn {
 	cursor: pointer;
 	font-family: 'Quicksand', sans-serif;
-	font-size: 2vh;
-	width: 17vh;
-	height: 5vh;
+	font-size: 16px;
+	width: 200px;
+	height: 50px;
 	float: right;
 	color: darkred;
     border-radius: 0;

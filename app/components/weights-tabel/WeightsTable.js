@@ -22,15 +22,11 @@ class WeightsTable extends React.Component {
     constructor(props) {
         super(props);
         this.state={
-            isOpen: false
         };
 
     }
-    handleOpen() {
-        this.setState({
-            isOpen: !this.state.isOpen
-        })
-    }
+
+
     setStyle() {
         const ifIsOpen = {
             display: 'block',
@@ -42,7 +38,7 @@ class WeightsTable extends React.Component {
             overflow: 'scroll',
             maxHeight: 400
         };
-        return this.state.isOpen ? ifIsOpen : ifIsClosed;
+        return this.props.isOpen ? ifIsOpen : ifIsClosed;
 
     }
 
@@ -66,16 +62,15 @@ class WeightsTable extends React.Component {
         )
     }
 
-
     renderFirstNeuronLayerRow() {
         const secondNeuronLayerNames = this.props.tableData.secondNeuronLayerNames;
         return secondNeuronLayerNames.map((name, key) => <TableCell key={key}>{name}</TableCell> )
     }
 
     renderButton() {
-        const {tableData} = this.props;
+        const {tableData, onButtonClick} = this.props;
         return (
-            <Button className='table_btn' onClick={this.handleOpen.bind(this)}>
+            <Button className='table_btn' onClick={onButtonClick}>
                 {`Weights between ${tableData.layersName} and ${tableData.nextLayersName}`}
             </Button>
         )
@@ -83,7 +78,6 @@ class WeightsTable extends React.Component {
 
     renderRow() {
         const {tableData} =this.props;
-
         let num = -1;
         return tableData.firstNeuronLayerNames.map((name, key) => {
             num = num + 1;

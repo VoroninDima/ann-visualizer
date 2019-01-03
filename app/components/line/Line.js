@@ -8,6 +8,16 @@ class Line extends React.Component {
         this.state = {
             weightsShow: false
         };
+        this.ref = React.createRef();
+
+    }
+
+    zIndexIncrease = () => {
+        this.ref.current.parentElement.style.zIndex = '111'
+    };
+
+    zIndexDecrease = () => {
+        this.ref.current.parentElement.style.zIndex = '0'
     }
 
     getPosition = () => {
@@ -33,25 +43,36 @@ class Line extends React.Component {
         return {angle: this.angle, width: this.width}
     };
 
-
-
     setStyle = () => {
         let lineStyle = {
             display: 'block',
             backgroundColor: this.selectedColor,
             height: this.props.lineSize,
             width: this.getPosition().width,
+            zIndex: 1,
             transform: `rotate(${this.getPosition().angle}deg)`
         };
         if(!this.props.btnActive) lineStyle.display = 'none';
-        if(this.state.weightsShow) lineStyle.backgroundColor = 'red';
+        if(this.state.weightsShow) {lineStyle.backgroundColor = 'red'; lineStyle.zIndex = 11}
 
         return lineStyle
     };
+
     getLineWeights = () => {
         const {neuronNextNum, neuronOrderNum, neuronListNum} = this.props;
         return this.props.weights.weights[neuronListNum][neuronOrderNum][neuronNextNum]
     };
+
+    handleMouseOver = () => {
+        this.showWeights();
+        this.zIndexIncrease()
+    };
+
+    handleMouseOut = () => {
+        this.hideWeights();
+        this.zIndexDecrease()
+    };
+
     showWeights = () => {
         this.setState({
             weightsShow: true
@@ -65,10 +86,12 @@ class Line extends React.Component {
     render() {
         this.setStyle();
         return (
-            <div style={this.setStyle()}
-                 onMouseOver={this.showWeights}
-                 onMouseOut={this.hideWeights}
-                 className="line">
+            <div
+                ref={this.ref}
+                style={this.setStyle()}
+                onMouseOver={this.handleMouseOver}
+                onMouseOut={this.handleMouseOut}
+                className="line">
                 <LinePopup active={this.state.weightsShow}
                            rotate={this.getPosition().angle}
                            weightsValue={this.getLineWeights()}

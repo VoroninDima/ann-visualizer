@@ -52,7 +52,6 @@
     "type": "output",
     "unitsData": [
       {
-        "num": 8,
         "ActivationFunction": "HyperbolicTangent",
         "names": [
           "answer_speed_weight",
@@ -61,14 +60,12 @@
         ]
       },
       {
-        "num": 1,
         "ActivationFunction": "UnitLinear",
         "names": [
           "success_weight"
         ]
       },
       {
-        "num": 1,
         "ActivationFunction": "ZeroLinear",
         "names": [
           "right_answer_difference_weight"

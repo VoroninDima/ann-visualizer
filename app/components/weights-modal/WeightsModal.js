@@ -14,23 +14,23 @@ class WeightsModal extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            open: false
+            open: false,
+            openTableId: false
         };
-        this.handleClose = this.handleClose.bind(this);
-        this.handleClickOpen = this.handleClickOpen.bind(this);
     }
 
-    handleClickOpen() {
+    handleClickOpen = () => {
         this.setState({ open: true });
-    }
+    };
 
-    handleClose () {
+    handleClose = () => {
         this.setState({ open: false });
-    }
+    };
     createTableArray() {
         let tablesArray = [];
         for (let i = 0; i<this.props.weights.length; i++) {
             tablesArray.push({
+                id: i,
                 weights: this.props.weights[i],
                 firstNeuronLayerNames: this.props.names[i],
                 secondNeuronLayerNames: this.props.names[i+1],
@@ -42,8 +42,17 @@ class WeightsModal extends React.Component {
     }
 
     renderWeightsTable() {
-        return this.createTableArray().map((table, key) => <WeightsTable key={key} tableData={table}/> )
+        return this.createTableArray().map((table, key) =>
+            <WeightsTable
+                onButtonClick={this.handleClick.bind(this, table.id)}
+                key={key}
+                isOpen={this.state.openTableId === table.id}
+                tableData={table}/> )
     }
+
+    handleClick = openTableId => {
+        this.setState({ openTableId })
+    };
 
     render() {
         return (
