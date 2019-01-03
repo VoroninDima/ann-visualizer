@@ -1,1 +1,0 @@
-export {Neuron} from './Neuron';
