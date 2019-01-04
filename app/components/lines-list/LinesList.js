@@ -4,7 +4,7 @@ import Line from 'components/line/Line'
 import {connect} from "react-redux";
 
 function LinesList (props) {
-    const{neuronListLength, neuronProperties, neuronOrderNum, neuronListNum} = props;
+    const{neuronListLength, isActive, listName, getNextListName, neuronProperties, neuronOrderNum, neuronListNum, neuronSize, offsetTop} = props;
 
     let lineEndsOffsetTop = [];
 
@@ -12,11 +12,10 @@ function LinesList (props) {
 
     let getLineEndsOffsetTop = () => {
         for (let i = 0; i < neuronListLength; i++) {
-            nextNeuronOffsetTop = nextNeuronOffsetTop + props.neuronSize+props.offsetTop;
+            nextNeuronOffsetTop = nextNeuronOffsetTop + neuronSize+offsetTop;
             lineEndsOffsetTop.push(nextNeuronOffsetTop)
         }
     };
-
     getLineEndsOffsetTop();
 
     let neuronNextNum = -1;
@@ -25,6 +24,8 @@ function LinesList (props) {
         neuronNextNum = neuronNextNum + 1;
         return (
             <Line key={key}
+              isActive={isActive}
+              getNextListName={getNextListName()}
               neuronNextNum={neuronNextNum}
               neuronListLength={neuronListLength}
               neuronOrderNum={neuronOrderNum}
@@ -32,6 +33,7 @@ function LinesList (props) {
               neuronSize={props.neuronSize}
               lineData={props}
               lineEndsOffsetTop={line}
+              listName={listName}
         />);
     });
 

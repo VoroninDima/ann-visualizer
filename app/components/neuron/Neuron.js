@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import LinesList from 'components/lines-list/LinesList';
 import {NeuronPopup} from 'components/neuron-popup';
 import {connect} from 'react-redux'
+import changeLinesColorAction from '../../actions/actionChangeLinesColor';
 
 class Neuron extends Component {
 	constructor(props) {
@@ -22,9 +23,8 @@ class Neuron extends Component {
     setDefaultState = () => {
 	    return (
             {
-                lineColor: '#bdbdbd',
+                isActive: false,
                 size: this.props.neuronSize,
-                popupActive: false,
                 neuronListLength: null,
                 neuronProperties: {
                     neuronWidth: null,
@@ -49,8 +49,8 @@ class Neuron extends Component {
     }
 
 
-
 	render() {
+
         const {listName, neuron} = this.props;
         const classes = classnames('neuron', listName, neuron);
         let style = {
@@ -74,23 +74,25 @@ class Neuron extends Component {
 	}
 
 
-
     setColor = () => {
 	    const {neuronListNum, neuronColor} = this.props;
         return neuronColor[neuronListNum];
     };
 
 	renderLinesList = () => {
-	    const {neuronListLength, neuronProperties, lineColor, } = this.state;
+	    const {neuronListLength, isActive,  neuronProperties} = this.state;
+	    const {offsetTop, listName} = this.props;
 	    if (neuronListLength && neuronProperties.neuronWidth) return (
             <LinesList
+                getNextListName={this.getNextListName}
                 neuronListNum={this.neuronListNum}
                 neuronOrderNum={this.neuronOrderNum}
                 neuronSize={this.neuronSize}
-                lineBgc={lineColor}
+                isActive={isActive}
                 neuronListLength={neuronListLength}
                 neuronProperties={neuronProperties}
-                offsetTop={this.props.offsetTop}
+                offsetTop={offsetTop}
+                listName={listName}
             />
         )
     };
@@ -98,81 +100,66 @@ class Neuron extends Component {
     renderNeuronPopup = () => {
 	    const {activationFunction} = this.props;
 	    return <NeuronPopup
-            active={this.state.popupActive}
+            active={this.state.isActive}
             neuronName={this.neuron}
             activationFunction={activationFunction}/>;
     };
 
+
     mouseOverEvent = (e) => {
         const classes = e.target.classList[0];
         if (classes === 'neuron'|| classes === 'neuronPopupParagraph') {
-            this.popupShow();
-            this.lineSelectedChangeColor();
+            this.setActive();
+            this.prevLineChangeColorActive();
+            this.getPrevListName();
         }
-    };
-
-    lineSelectedChangeColor = () => {
-        if (this.listName !== 'input') {
-            for (let i = 0; i < this.getPrevNeuronList().length; i++) {
-                this.getPrevNeuronList()[i]
-                    .children[0]
-                    .children[this.props.neuronOrderNum]
-                    .style
-                    .backgroundColor = 'red'
-            }
-        }
-        this.setState({
-            lineColor: 'red'
-        })
-    };
-
-    lineUnselectedChangeColor = () => {
-	    const {neuronOrderNum} = this.props;
-
-        if (this.listName !== 'input') {
-            for (let i = 0; i < this.getPrevNeuronList().length; i++) {
-                this.getPrevNeuronList()[i]
-                    .children[0]
-                    .children[neuronOrderNum]
-                    .style
-                    .backgroundColor = '#bdbdbd'
-            }
-        }
-        this.setState({
-            lineColor: '#bdbdbd'
-        })
     };
 
     mouseOutEvent = (e) => {
         const classes = e.target.classList[0];
-
         if (classes === 'neuron'|| classes === 'neuronPopupParagraph') {
-            this.lineUnselectedChangeColor();
-            this.popupHide();
+            this.setDisactive();
+            this.prevLineChangeColorDisactive()
         }
     };
 
-    getPrevNeuronList = () => {
-	    return this.ref
-            .current
-            .parentElement
-            .parentElement
-            .previousElementSibling
-            .children[0]
-            .children;
+
+    prevLineChangeColorActive = () => {
+        this.props.setLineColorActive(this.getPrevListName())
+    };
+    prevLineChangeColorDisactive = () => {
+        this.props.setLineColorActive(null)
     };
 
-    popupShow = () => {
-	    this.setState({
-            popupActive: true
-        });
+
+    setActive = () => this.setState({ isActive: true });
+    setDisactive = () => this.setState({ isActive: false });
+
+
+
+    getNextListName = () => {
+        let className = this.ref.current
+            .parentElement
+            .parentElement
+            .nextSibling
+            .classList[1];
+        if (!className) className = 'output';
+        return className
+
     };
 
-    popupHide = () => {
-	    this.setState({
-            popupActive: false
-        });
+    getPrevListName = () => {
+        if(this.props.listName === 'input') return
+        let className = this.ref.current
+            .parentElement
+            .parentElement
+            .previousSibling
+            .classList[1];
+        if (!className) className = 'input';
+        return `from_${className}_to_${this.props.listName}_num_${this.props.neuronOrderNum+1}`
+
     };
+
 
     getNeuronListLength = () => {
         const neuronListLength = this.ref.current
@@ -211,8 +198,15 @@ class Neuron extends Component {
 
 function mapStateToProps(state) {
     return {
-        offsetTop: state.changeSettings.offsetTop,
-
+        offsetTop: state.changeSettings.offsetTop
     }
 }
-export default connect(mapStateToProps)(Neuron)
+
+function mapDispatchToProps(dispatch) {
+    return {
+        setLineColorActive: className => {
+            dispatch(changeLinesColorAction(className))
+        }
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Neuron)

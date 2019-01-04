@@ -2,15 +2,18 @@ import React from 'react'
 import {connect} from 'react-redux';
 import {LinePopup} from 'components/linePopup'
 
+
 class Line extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            weightsShow: false
+            weightsShow: false,
+            isActive: false
         };
         this.ref = React.createRef();
 
     }
+
 
     zIndexIncrease = () => {
         this.ref.current.parentElement.style.zIndex = '111'
@@ -18,12 +21,12 @@ class Line extends React.Component {
 
     zIndexDecrease = () => {
         this.ref.current.parentElement.style.zIndex = '0'
-    }
+    };
+
 
     getPosition = () => {
         const {lineData, lineEndsOffsetTop} = this.props;
-        const {lineBgc, neuronProperties} = lineData;
-        this.selectedColor = lineBgc;
+        const {neuronProperties} = lineData;
         this.aOffsetTop = neuronProperties.neuronOffsetTop;
         this.aOffsetLeft = neuronProperties.neuronOffsetLeft+this.props.neuronSize;
         this.bOffsetTop = lineEndsOffsetTop-this.props.neuronSize;
@@ -43,19 +46,33 @@ class Line extends React.Component {
         return {angle: this.angle, width: this.width}
     };
 
+    color = () => {
+        if (this.setClassName() === this.props.lineClassSelected) return 'red';
+        if (this.props.isActive) return 'red'
+
+        else return this.setLineColor()
+    };
+
     setStyle = () => {
         let lineStyle = {
             display: 'block',
-            backgroundColor: this.selectedColor,
+            backgroundColor: this.color(),
             height: this.props.lineSize,
+            zIndex: 0,
             width: this.getPosition().width,
-            zIndex: 1,
             transform: `rotate(${this.getPosition().angle}deg)`
         };
         if(!this.props.btnActive) lineStyle.display = 'none';
-        if(this.state.weightsShow) {lineStyle.backgroundColor = 'red'; lineStyle.zIndex = 11}
+        if(this.state.weightsShow) {lineStyle.backgroundColor = 'red'; lineStyle.zIndex= 111;}
 
         return lineStyle
+    };
+
+    setLineColor = () => {
+        const redColor = () => Math.floor((this.getLineWeights()/10) * 500);
+        const greenColor = () => Math.floor((1 - this.getLineWeights()/10) * 500);
+        return `rgb(${redColor()}, ${greenColor()}, 0)`
+
     };
 
     getLineWeights = () => {
@@ -71,6 +88,12 @@ class Line extends React.Component {
     handleMouseOut = () => {
         this.hideWeights();
         this.zIndexDecrease()
+    };
+
+    setClassName = () => {
+        const {listName, neuronNextNum, getNextListName} = this.props;
+        return `from_${listName}_to_${getNextListName}_num_${neuronNextNum+1}`
+
     };
 
     showWeights = () => {
@@ -91,7 +114,7 @@ class Line extends React.Component {
                 style={this.setStyle()}
                 onMouseOver={this.handleMouseOver}
                 onMouseOut={this.handleMouseOut}
-                className="line">
+                className='line'>
                 <LinePopup active={this.state.weightsShow}
                            rotate={this.getPosition().angle}
                            weightsValue={this.getLineWeights()}
@@ -105,6 +128,7 @@ export default connect(
     state => ({
         btnActive: !state.hideBtnClick.btnActive,
         lineSize: state.changeSettings.lineSize,
-        weights: state.weightsValue
+        weights: state.weightsValue,
+        lineClassSelected: state.changeLineColor.lineClassName
     })
 )(Line);

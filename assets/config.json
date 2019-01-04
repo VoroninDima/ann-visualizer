@@ -32,7 +32,7 @@
     "type": "hidden",
     "unitsData": [
       {
-        "num": 10,
+        "num": 9,
         "ActivationFunction": "Areasinus"
       }
     ]

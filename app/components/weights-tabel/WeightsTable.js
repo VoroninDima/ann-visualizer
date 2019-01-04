@@ -19,14 +19,6 @@ const styles = () => ({
 
 
 class WeightsTable extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state={
-        };
-
-    }
-
-
     setStyle() {
         const ifIsOpen = {
             display: 'block',
