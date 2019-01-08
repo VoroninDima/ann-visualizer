@@ -1,3 +1,4 @@
+import Main from 'components/main/Main';
 import React from 'react'
 import {connect} from 'react-redux';
 import {LinePopup} from 'components/linePopup'
@@ -8,7 +9,8 @@ class Line extends React.Component {
         super(props);
         this.state = {
             weightsShow: false,
-            isActive: false
+            isActive: false,
+            popupPos: null
         };
         this.ref = React.createRef();
     }
@@ -24,12 +26,13 @@ class Line extends React.Component {
 
 
     getPosition = () => {
-        const {lineData, lineEndsOffsetTop} = this.props;
+        const {lineData, lineEndsOffsetTop, neuronSize} = this.props;
         const {neuronProperties} = lineData;
-        this.aOffsetTop = neuronProperties.neuronOffsetTop;
-        this.aOffsetLeft = neuronProperties.neuronOffsetLeft+this.props.neuronSize;
-        this.bOffsetTop = lineEndsOffsetTop-this.props.neuronSize;
-        this.bOffsetLeft = neuronProperties.nextNeuronOffsetLeft;
+        const {neuronOffsetTop, neuronOffsetLeft, nextNeuronOffsetLeft} = neuronProperties;
+        this.aOffsetTop = neuronOffsetTop;
+        this.aOffsetLeft = neuronOffsetLeft+neuronSize;
+        this.bOffsetTop = lineEndsOffsetTop-neuronSize;
+        this.bOffsetLeft = nextNeuronOffsetLeft;
         this.angle = Math.atan2(
             this.bOffsetTop - this.aOffsetTop,
             this.bOffsetLeft - this.aOffsetLeft
@@ -46,9 +49,10 @@ class Line extends React.Component {
     };
 
     color = () => {
-        if (this.setClassName() === this.props.lineClassSelected) return 'red';
-        if (this.props.isActive) return 'red';
-        if (this.props.hideHeatMap) return '#bdbdbd';
+        const {lineClassSelected, isActive, hideHeatMap} = this.props;
+        if (this.setClassName() === lineClassSelected) return 'red';
+        if (isActive) return 'red';
+        if (hideHeatMap) return '#bdbdbd';
 
         else return this.setLineColor()
     };
@@ -68,6 +72,12 @@ class Line extends React.Component {
         return lineStyle
     };
 
+    setLineHeight = () => {
+        const {weightsToSize, lineSize} = this.props;
+        if (weightsToSize) return lineSize + this.getLineWeights()/2-1;
+        return lineSize
+    };
+
     setLineColor = () => {
         const redColor = () => Math.floor((this.getLineWeights()/10) * 500);
         const greenColor = () => Math.floor((1 - this.getLineWeights()/10) * 500);
@@ -80,9 +90,10 @@ class Line extends React.Component {
         return this.props.weights.weights[neuronListNum][neuronOrderNum][neuronNextNum]
     };
 
-    handleMouseOver = () => {
+    handleMouseOver = (e) => {
         this.showWeights();
         this.zIndexIncrease();
+        this.setPopupPosition(e)
     };
 
     handleMouseOut = () => {
@@ -96,22 +107,29 @@ class Line extends React.Component {
 
     };
 
-    setLineHeight = () => {
-        const {weightsToSize, lineSize} = this.props;
-        if (weightsToSize) return lineSize + this.getLineWeights()/2-1;
-        return lineSize
-    };
-
     showWeights = () => {
         this.setState({
             weightsShow: true
         })
     };
+
     hideWeights = () => {
         this.setState({
             weightsShow: false
         })
     };
+
+    setPopupPosition = (e) => {
+        const rect = e.target.getBoundingClientRect();
+        const angle = this.getPosition().angle;
+        let top = Math.pow(e.clientY-rect.top, 2);
+        if (angle < 0) top = Math.pow(e.clientY-rect.bottom, 2);
+        const left = Math.pow(e.clientX-rect.left, 2);
+        let popupPos = Math.sqrt(top+left) - 50;
+        if (angle < 0) popupPos = popupPos - 20;
+        this.setState({ popupPos })
+    };
+
     render() {
         this.setStyle();
         return (
@@ -124,6 +142,7 @@ class Line extends React.Component {
                 <LinePopup active={this.state.weightsShow}
                            rotate={this.getPosition().angle}
                            weightsValue={this.getLineWeights()}
+                           popupPos={this.state.popupPos}
                 />
             </div>
         )

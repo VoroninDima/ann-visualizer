@@ -2,11 +2,11 @@ import React from 'react'
 
 export function LinePopup(props) {
     const setStyle = () => {
-        const {rotate} = props;
+        const {rotate, popupPos} = props;
         const isShow = {
-            display: 'flex',
+            display: 'block',
+            marginLeft: popupPos,
             transform: `rotate(${-rotate}deg)`,
-            marginLeft: props.popUpPosition
         };
         const isHidden = {
             display: 'none',
