@@ -5,6 +5,8 @@ import changeSettings from './changeSettings'
 import weightsValue from './weightsValue'
 import neuronsNames from './neuronsNames'
 import changeLineColor from './changeLineColor'
+import hideHeatMap from './hideHeatMap'
+import lineWeightsToSize from './lineWeightsToSize'
 
 const rootReducer = combineReducers({
     hideBtnClick,
@@ -12,7 +14,9 @@ const rootReducer = combineReducers({
     changeSettings,
     weightsValue,
     neuronsNames,
-    changeLineColor
+    changeLineColor,
+    hideHeatMap,
+    lineWeightsToSize
 
 });
 export default rootReducer

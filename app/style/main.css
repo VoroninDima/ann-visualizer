@@ -19,13 +19,14 @@ button {
     height: 50px;
     position: fixed;
 	display: grid;
-    grid-template-columns: 4fr 1fr 1fr 1fr 1fr ;
+    grid-template-columns: 4fr 1fr 1fr 1fr 1fr 1fr 1fr;
 	align-items: center;
 	background-color: #dcdcdc;
     width: 100%;
     top: 0;
     z-index: 999;
 }
+
 .MuiFab-sizeSmall-9 {
 	width: 30px;
 	height: 30px;
@@ -37,7 +38,7 @@ button {
 .Slider-track-48 {
 	background-color: darkred !important;
 }
-.header__btn, .settings__btn, .weightTable__btn, .refresh__btn {
+.header button {
 	cursor: pointer;
 	font-family: 'Quicksand', sans-serif;
 	font-size: 16px;
@@ -100,7 +101,7 @@ button {
 	border-radius: 3px;
 	background-color: #e0e0e0d4;
 	position: absolute;
-	margin-top: 55px;
+	margin-top: 50px;
 	align-items: center;
 }
 .popup p {

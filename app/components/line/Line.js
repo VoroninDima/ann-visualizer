@@ -11,7 +11,6 @@ class Line extends React.Component {
             isActive: false
         };
         this.ref = React.createRef();
-
     }
 
 
@@ -48,7 +47,8 @@ class Line extends React.Component {
 
     color = () => {
         if (this.setClassName() === this.props.lineClassSelected) return 'red';
-        if (this.props.isActive) return 'red'
+        if (this.props.isActive) return 'red';
+        if (this.props.hideHeatMap) return '#bdbdbd';
 
         else return this.setLineColor()
     };
@@ -57,7 +57,7 @@ class Line extends React.Component {
         let lineStyle = {
             display: 'block',
             backgroundColor: this.color(),
-            height: this.props.lineSize,
+            height: this.setLineHeight(),
             zIndex: 0,
             width: this.getPosition().width,
             transform: `rotate(${this.getPosition().angle}deg)`
@@ -82,7 +82,7 @@ class Line extends React.Component {
 
     handleMouseOver = () => {
         this.showWeights();
-        this.zIndexIncrease()
+        this.zIndexIncrease();
     };
 
     handleMouseOut = () => {
@@ -94,6 +94,12 @@ class Line extends React.Component {
         const {listName, neuronNextNum, getNextListName} = this.props;
         return `from_${listName}_to_${getNextListName}_num_${neuronNextNum+1}`
 
+    };
+
+    setLineHeight = () => {
+        const {weightsToSize, lineSize} = this.props;
+        if (weightsToSize) return lineSize + this.getLineWeights()/2-1;
+        return lineSize
     };
 
     showWeights = () => {
@@ -129,6 +135,8 @@ export default connect(
         btnActive: !state.hideBtnClick.btnActive,
         lineSize: state.changeSettings.lineSize,
         weights: state.weightsValue,
-        lineClassSelected: state.changeLineColor.lineClassName
+        lineClassSelected: state.changeLineColor.lineClassName,
+        hideHeatMap: state.hideHeatMap.isActive,
+        weightsToSize: state.lineWeightsToSize.isActive
     })
 )(Line);

@@ -4,7 +4,7 @@ weightsJSON.send();
 const weights = JSON.parse(weightsJSON.responseText);
 
 const initialState = {
-    weights: weights,
+    weights: weights
 };
 export default function weightsValue(state=initialState) {
     return state

@@ -51,12 +51,13 @@ class Neuron extends Component {
 
 	render() {
 
-        const {listName, neuron} = this.props;
+        const {listName, neuron, neuronSize, offsetTop} = this.props;
         const classes = classnames('neuron', listName, neuron);
+
         let style = {
-            width: this.props.neuronSize,
-            height:this.props.neuronSize,
-            marginTop: this.props.offsetTop,
+            width: neuronSize,
+            height: neuronSize,
+            marginTop: offsetTop,
             backgroundColor: this.setColor()
         };
 		return (
@@ -111,7 +112,6 @@ class Neuron extends Component {
         if (classes === 'neuron'|| classes === 'neuronPopupParagraph') {
             this.setActive();
             this.prevLineChangeColorActive();
-            this.getPrevListName();
         }
     };
 
@@ -149,14 +149,15 @@ class Neuron extends Component {
     };
 
     getPrevListName = () => {
-        if(this.props.listName === 'input') return
+        const {listName, neuronOrderNum} = this.props;
+        if(listName === 'input') return;
         let className = this.ref.current
             .parentElement
             .parentElement
             .previousSibling
             .classList[1];
         if (!className) className = 'input';
-        return `from_${className}_to_${this.props.listName}_num_${this.props.neuronOrderNum+1}`
+        return `from_${className}_to_${listName}_num_${neuronOrderNum+1}`
 
     };
 
@@ -169,9 +170,8 @@ class Neuron extends Component {
                                 .children[0]
                                 .children
                                 .length;
-        this.setState({
-            neuronListLength
-        })
+
+        this.setState({ neuronListLength})
     };
 
     getNeuronPosition = () => {
