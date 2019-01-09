@@ -1,7 +1,7 @@
 const initialState = {
-    netWidth: 1000,
+    netWidth: 1200,
     offsetTop: 20,
-    neuronSize: 50,
+    neuronSize: 60,
     lineSize: 1
 };
 export default function changeSettings(state=initialState, action) {

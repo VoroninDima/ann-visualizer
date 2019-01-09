@@ -2,7 +2,7 @@
 body {
 	padding: 0;
 	margin: 0;
-
+    background-color: black;
 }
 p {
 	margin: 0;
@@ -64,11 +64,7 @@ button {
 	transform: scale(1.2, 1.2);
 }
 .neuron {
-	height: 50px;
-	width: 50px;
-	background-color: red;
 	border-radius: 50%;
-	margin-top: 20px;
 	text-align: center;
 	display: flex;
 	align-items: center;
@@ -78,9 +74,6 @@ button {
     color: darkred;
 }
 
-.lineList {
-	transform: translateX(25px);
-}
 .line {
 	position: absolute;
 	border-radius: 20px;
@@ -97,7 +90,7 @@ button {
     margin-top: -5px;
 }
 .popup {
-	z-index: 1;
+	z-index: 10;
 	border-radius: 3px;
 	background-color: #e0e0e0d4;
 	position: absolute;
@@ -114,7 +107,7 @@ button {
 .linePopup {
 	width: 120px;
 	margin: 0;
-    margin-top: 5px;
+    margin-top: -5px;
 	position: relative;
 	text-align: center;
 	z-index: 9999;

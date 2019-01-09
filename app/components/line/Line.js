@@ -30,7 +30,7 @@ class Line extends React.Component {
         const {neuronProperties} = lineData;
         const {neuronOffsetTop, neuronOffsetLeft, nextNeuronOffsetLeft} = neuronProperties;
         this.aOffsetTop = neuronOffsetTop;
-        this.aOffsetLeft = neuronOffsetLeft+neuronSize;
+        this.aOffsetLeft = neuronOffsetLeft+neuronSize+12;
         this.bOffsetTop = lineEndsOffsetTop-neuronSize;
         this.bOffsetLeft = nextNeuronOffsetLeft;
         this.angle = Math.atan2(
@@ -74,7 +74,7 @@ class Line extends React.Component {
 
     setLineHeight = () => {
         const {weightsToSize, lineSize} = this.props;
-        if (weightsToSize) return lineSize + this.getLineWeights()/2-1;
+        if (weightsToSize) return lineSize + this.getLineWeights()/3;
         return lineSize
     };
 
@@ -93,7 +93,9 @@ class Line extends React.Component {
     handleMouseOver = (e) => {
         this.showWeights();
         this.zIndexIncrease();
-        this.setPopupPosition(e)
+        if (e.target.classList.value === 'line') {
+            this.setPopupPosition(e)
+        }
     };
 
     handleMouseOut = () => {
@@ -120,14 +122,15 @@ class Line extends React.Component {
     };
 
     setPopupPosition = (e) => {
+        const zoomValue = this.props.sliderValue/50;
         const rect = e.target.getBoundingClientRect();
         const angle = this.getPosition().angle;
-        let top = Math.pow(e.clientY-rect.top, 2);
-        if (angle < 0) top = Math.pow(e.clientY-rect.bottom, 2);
-        const left = Math.pow(e.clientX-rect.left, 2);
-        let popupPos = Math.sqrt(top+left) - 50;
+        let top = Math.pow((e.clientY-rect.top)/zoomValue, 2);
+        if (angle < 0) top = Math.pow((rect.bottom-e.clientY)/zoomValue, 2);
+        const left = Math.pow((e.clientX-rect.left)/zoomValue, 2);
+        let popupPos = Math.sqrt(top+left) ;
         if (angle < 0) popupPos = popupPos - 20;
-        this.setState({ popupPos })
+        this.setState({ popupPos });
     };
 
     render() {
@@ -156,6 +159,7 @@ export default connect(
         weights: state.weightsValue,
         lineClassSelected: state.changeLineColor.lineClassName,
         hideHeatMap: state.hideHeatMap.isActive,
-        weightsToSize: state.lineWeightsToSize.isActive
+        weightsToSize: state.lineWeightsToSize.isActive,
+        sliderValue: state.changeSize.sliderValue,
     })
 )(Line);

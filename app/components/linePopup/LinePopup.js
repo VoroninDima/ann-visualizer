@@ -5,12 +5,11 @@ export function LinePopup(props) {
         const {rotate, popupPos} = props;
         const isShow = {
             display: 'block',
-            marginLeft: popupPos,
+            marginLeft: popupPos-50,
             transform: `rotate(${-rotate}deg)`,
         };
         const isHidden = {
             display: 'none',
-            transform: `rotate(${-rotate}deg)`
         };
         return props.active ? isShow : isHidden;
 

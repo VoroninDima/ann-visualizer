@@ -58,7 +58,7 @@ class Neuron extends Component {
             width: neuronSize,
             height: neuronSize,
             marginTop: offsetTop,
-            backgroundColor: this.setColor()
+            border: `5px solid ${this.setColor()}`
         };
 		return (
 			<div

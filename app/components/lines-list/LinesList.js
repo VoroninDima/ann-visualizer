@@ -8,11 +8,11 @@ function LinesList (props) {
 
     let lineEndsOffsetTop = [];
 
-    let nextNeuronOffsetTop = neuronProperties.nextNeuronOffsetTop;
+    let nextNeuronOffsetTop = neuronProperties.nextNeuronOffsetTop-10;
 
     let getLineEndsOffsetTop = () => {
         for (let i = 0; i < neuronListLength; i++) {
-            nextNeuronOffsetTop = nextNeuronOffsetTop + neuronSize+offsetTop;
+            nextNeuronOffsetTop = nextNeuronOffsetTop + neuronSize+offsetTop+10;
             lineEndsOffsetTop.push(nextNeuronOffsetTop)
         }
     };
@@ -38,7 +38,7 @@ function LinesList (props) {
     });
 
     const setStyle = () => {
-        const translate = props.neuronSize / 2;
+        const translate = props.neuronSize / 2+6;
         const transform = `translateX(${translate}px)`;
         return {transform}
     };
