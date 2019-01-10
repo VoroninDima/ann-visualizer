@@ -9,8 +9,8 @@ class NetWidthSetting extends React.Component {
     render() {
         return <Slider
             value={this.props.netWidth}
-            min='20'
-            max='200'
+            min='1000'
+            max='2000'
             onChange={value => this.props.setNetWidthValue(value)}
 
         />

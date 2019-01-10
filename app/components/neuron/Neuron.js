@@ -112,11 +112,10 @@ class Neuron extends Component {
             activationFunction={activationFunction}/>;
     };
 
-    changeLinesListZIndex = linesListZIndex => {
-        this.setState({linesListZIndex})
-    }
+    changeLinesListZIndex = linesListZIndex => this.setState({linesListZIndex})
 
     mouseOverEvent = (e) => {
+        if (e.ctrlKey) return;
         this.colorActive = 60;
         const classes = e.target.classList[0];
         if (classes === 'neuron'|| classes === 'neuronPopupParagraph') {
@@ -128,7 +127,6 @@ class Neuron extends Component {
 
     mouseOutEvent = (e) => {
         this.colorActive = 0;
-
         const classes = e.target.classList[0];
         if (classes === 'neuron'|| classes === 'neuronPopupParagraph') {
             this.changeIsActive(false);

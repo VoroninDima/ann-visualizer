@@ -96,7 +96,9 @@ class Line extends React.Component {
 
     };
 
-    handleMouseOver = (e) => {
+    handleMouseOver = e => {
+        if (e.ctrlKey) return;
+
         this.showWeights();
         this.zIndexChange(10);
         this.changeSelectedColor('white');

@@ -30,18 +30,17 @@ class Main extends Component {
 
     onMouseDown = (e) => {
         e.preventDefault();
-
-        const coordX = e.clientX;
-        const coordY = e.clientY;
-        const posX = this.state.left;
-        const posY = this.state.top;
+        const zoomValue = this.props.sliderValue/50;
+        const coordX = e.pageX;
+        const coordY = e.pageY;
+        const posX = this.state.left*zoomValue;
+        const posY = this.state.top*zoomValue;
 
         if (!e.ctrlKey) return;
 
         window.onmousemove = e => {
-            let left = e.clientX - coordX + posX;
-            let top = e.clientY - coordY + posY;
-
+            let left = (e.clientX - coordX + posX)/zoomValue;
+            let top = (e.clientY - coordY + posY)/zoomValue;
             this.setState({ left, top });
         };
 
@@ -53,13 +52,16 @@ class Main extends Component {
         const transform = this.setNetTransform();
         const style = {
             transform,
-            width: this.props.netWidth+'%',
+            width: this.props.netWidth,
             display: `flex`
         };
         return (
-            <div onMouseDown={this.onMouseDown} style={style} className="main">
-                {this.renderMain()}
+            <div style={this.parentStyle()}>
+                <div onMouseDown={this.onMouseDown} style={style} className="main">
+                    {this.renderMain()}
+                </div>
             </div>
+
         )
     }
 
@@ -67,6 +69,13 @@ class Main extends Component {
         const scale = this.props.sliderValue / 50;
         const {left, top} = this.state;
         return `scale(${scale}) translate(${left}px, ${top}px)`
+    }
+
+    parentStyle = () => {
+        return {
+            display: 'flex',
+            justifyContent: 'center'
+        }
     }
 }
 

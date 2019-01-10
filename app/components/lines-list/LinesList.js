@@ -35,7 +35,6 @@ function LinesList (props) {
         neuronNextNum = neuronNextNum + 1;
         return (
             <Line key={key}
-              zIndex={zIndex}
               isActive={isActive}
               getNextListName={getNextListName()}
               neuronNextNum={neuronNextNum}
