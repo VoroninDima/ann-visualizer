@@ -1,4 +1,3 @@
-import Main from 'components/main/Main';
 import React from 'react'
 import {connect} from 'react-redux';
 import {LinePopup} from 'components/linePopup'
@@ -10,19 +9,17 @@ class Line extends React.Component {
         this.state = {
             weightsShow: false,
             isActive: false,
-            popupPos: null
+            popupPos: null,
         };
         this.ref = React.createRef();
     }
 
 
-    zIndexIncrease = () => {
-        this.ref.current.parentElement.style.zIndex = '111'
+    zIndexChange = (index) => {
+        this.ref.current.parentElement.style.zIndex = index
     };
 
-    zIndexDecrease = () => {
-        this.ref.current.parentElement.style.zIndex = '0'
-    };
+
 
 
     getPosition = () => {
@@ -49,25 +46,29 @@ class Line extends React.Component {
     };
 
     color = () => {
+
         const {lineClassSelected, isActive, hideHeatMap} = this.props;
-        if (this.setClassName() === lineClassSelected) return 'red';
-        if (isActive) return 'red';
+        if (this.setClassName() === lineClassSelected) return this.changeSelectedColor();
+        if (isActive) return this.changeSelectedColor();
         if (hideHeatMap) return '#bdbdbd';
 
         else return this.setLineColor()
     };
+
+
 
     setStyle = () => {
         let lineStyle = {
             display: 'block',
             backgroundColor: this.color(),
             height: this.setLineHeight(),
-            zIndex: 0,
             width: this.getPosition().width,
             transform: `rotate(${this.getPosition().angle}deg)`
         };
         if(!this.props.btnActive) lineStyle.display = 'none';
-        if(this.state.weightsShow) {lineStyle.backgroundColor = 'red'; lineStyle.zIndex= 111;}
+        if(this.state.weightsShow) {
+            lineStyle.backgroundColor = this.changeSelectedColor();
+        }
 
         return lineStyle
     };
@@ -82,7 +83,6 @@ class Line extends React.Component {
         const redColor = () => Math.floor((this.getLineWeights()/10) * 500);
         const greenColor = () => Math.floor((1 - this.getLineWeights()/10) * 500);
         return `rgb(${redColor()}, ${greenColor()}, 0)`
-
     };
 
     getLineWeights = () => {
@@ -90,9 +90,16 @@ class Line extends React.Component {
         return this.props.weights.weights[neuronListNum][neuronOrderNum][neuronNextNum]
     };
 
+    changeSelectedColor = () => {
+        if (!this.props.hideHeatMap) return 'white';
+        return 'red'
+
+    };
+
     handleMouseOver = (e) => {
         this.showWeights();
-        this.zIndexIncrease();
+        this.zIndexChange(10);
+        this.changeSelectedColor('white');
         if (e.target.classList.value === 'line') {
             this.setPopupPosition(e)
         }
@@ -100,7 +107,9 @@ class Line extends React.Component {
 
     handleMouseOut = () => {
         this.hideWeights();
-        this.zIndexDecrease()
+        this.zIndexChange(0);
+        this.changeSelectedColor('red');
+
     };
 
     setClassName = () => {

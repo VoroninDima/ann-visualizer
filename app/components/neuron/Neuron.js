@@ -16,7 +16,8 @@ class Neuron extends Component {
         this.neuron = this.props.neuron;
         this.neuronOrderNum = this.props.neuronOrderNum;
         this.neuronListNum = this.props.neuronListNum;
-        this.neuronSize = this.props.neuronSize
+        this.neuronSize = this.props.neuronSize;
+        this.colorActive = null;
 	}
 
 
@@ -26,6 +27,7 @@ class Neuron extends Component {
                 isActive: false,
                 size: this.props.neuronSize,
                 neuronListLength: null,
+                linesListZIndex: 0,
                 neuronProperties: {
                     neuronWidth: null,
                     neuronOffsetLeft: null,
@@ -34,6 +36,8 @@ class Neuron extends Component {
             }
         )
     };
+
+
     componentWillReceiveProps() {
         if (this.listName !== 'output') {
             this.getNeuronPosition();
@@ -49,16 +53,21 @@ class Neuron extends Component {
     }
 
 
-	render() {
+    setColor = () => {
+        const {neuronListNum, neuronColor} = this.props;
+        return neuronColor[neuronListNum];
+    };
 
+	render() {
         const {listName, neuron, neuronSize, offsetTop} = this.props;
         const classes = classnames('neuron', listName, neuron);
-
+        let {r, g, b} = this.setColor();
+        const activeColor = this.colorActive;
         let style = {
             width: neuronSize,
             height: neuronSize,
             marginTop: offsetTop,
-            border: `5px solid ${this.setColor()}`
+            border: `5px solid rgba(${r-activeColor}, ${g-activeColor}, ${b-activeColor})`
         };
 		return (
 			<div
@@ -75,16 +84,13 @@ class Neuron extends Component {
 	}
 
 
-    setColor = () => {
-	    const {neuronListNum, neuronColor} = this.props;
-        return neuronColor[neuronListNum];
-    };
 
 	renderLinesList = () => {
 	    const {neuronListLength, isActive,  neuronProperties} = this.state;
 	    const {offsetTop, listName} = this.props;
 	    if (neuronListLength && neuronProperties.neuronWidth) return (
             <LinesList
+                zIndex={this.state.linesListZIndex}
                 getNextListName={this.getNextListName}
                 neuronListNum={this.neuronListNum}
                 neuronOrderNum={this.neuronOrderNum}
@@ -106,36 +112,34 @@ class Neuron extends Component {
             activationFunction={activationFunction}/>;
     };
 
+    changeLinesListZIndex = linesListZIndex => {
+        this.setState({linesListZIndex})
+    }
 
     mouseOverEvent = (e) => {
+        this.colorActive = 60;
         const classes = e.target.classList[0];
         if (classes === 'neuron'|| classes === 'neuronPopupParagraph') {
-            this.setActive();
-            this.prevLineChangeColorActive();
+            this.changeIsActive(true);
+            this.prevLineChangeColor(this.getPrevListName());
+            this.changeLinesListZIndex(1)
         }
     };
 
     mouseOutEvent = (e) => {
+        this.colorActive = 0;
+
         const classes = e.target.classList[0];
         if (classes === 'neuron'|| classes === 'neuronPopupParagraph') {
-            this.setDisactive();
-            this.prevLineChangeColorDisactive()
+            this.changeIsActive(false);
+            this.prevLineChangeColor(null);
+            this.changeLinesListZIndex(0)
         }
     };
 
+    prevLineChangeColor = prevListName => this.props.setLineColorActive(prevListName);
 
-    prevLineChangeColorActive = () => {
-        this.props.setLineColorActive(this.getPrevListName())
-    };
-    prevLineChangeColorDisactive = () => {
-        this.props.setLineColorActive(null)
-    };
-
-
-    setActive = () => this.setState({ isActive: true });
-    setDisactive = () => this.setState({ isActive: false });
-
-
+    changeIsActive = boolean => this.setState({ isActive: boolean });
 
     getNextListName = () => {
         let className = this.ref.current

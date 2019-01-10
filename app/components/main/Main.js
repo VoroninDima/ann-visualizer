@@ -12,7 +12,6 @@ class Main extends Component {
         };
     }
 
-
     renderMain() {
         const {nika, neuronColor} = this.props;
         let neuronListNum = -1;
@@ -54,7 +53,7 @@ class Main extends Component {
         const transform = this.setNetTransform();
         const style = {
             transform,
-            width: this.props.netWidth,
+            width: this.props.netWidth+'%',
             display: `flex`
         };
         return (

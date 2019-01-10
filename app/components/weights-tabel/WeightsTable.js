@@ -1,5 +1,4 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
 
 import {
     TableBody,
@@ -11,11 +10,7 @@ import {
     Table
 } from '@material-ui/core';
 
-const styles = () => ({
-    dialogButton: {
-        display:  'none'
-    }
-});
+
 
 
 class WeightsTable extends React.Component {
@@ -23,12 +18,11 @@ class WeightsTable extends React.Component {
         const ifIsOpen = {
             display: 'block',
             overflow: 'scroll',
-            maxHeight: 400
+            maxHeight: 400,
+            maxWidth: 800
         };
         const ifIsClosed = {
             display: 'none',
-            overflow: 'scroll',
-            maxHeight: 400
         };
         return this.props.isOpen ? ifIsOpen : ifIsClosed;
 
@@ -84,7 +78,7 @@ class WeightsTable extends React.Component {
         })
     }
 }
-export default withStyles(styles)(WeightsTable);
+export default WeightsTable
 
 
 

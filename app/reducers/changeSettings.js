@@ -1,5 +1,5 @@
 const initialState = {
-    netWidth: 1200,
+    netWidth: 100,
     offsetTop: 20,
     neuronSize: 60,
     lineSize: 1

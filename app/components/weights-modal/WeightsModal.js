@@ -9,7 +9,6 @@ import {
 import WeightsTable from 'components/weights-tabel/WeightsTable'
 
 
-
 class WeightsModal extends React.Component {
     constructor(props) {
         super(props);
@@ -93,4 +92,5 @@ class WeightsModal extends React.Component {
     }
 }
 
-export  default  WeightsModal
+export default WeightsModal
+

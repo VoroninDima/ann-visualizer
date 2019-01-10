@@ -4,5 +4,9 @@ export function RandColorGenerator() {
         rand = Math.floor(rand);
         return rand;
     };
-    return `rgba(${random(100, 255)}, ${random(100, 255)}, ${random(100, 255)})`;
+    return {
+        r: random(100,255),
+        g: random(100,255),
+        b: random(100,255)
+    };
 }

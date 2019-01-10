@@ -4,7 +4,18 @@ import Line from 'components/line/Line'
 import {connect} from "react-redux";
 
 function LinesList (props) {
-    const{neuronListLength, isActive, listName, getNextListName, neuronProperties, neuronOrderNum, neuronListNum, neuronSize, offsetTop} = props;
+    const {
+        neuronListLength,
+        zIndex,
+        isActive,
+        listName,
+        getNextListName,
+        neuronProperties,
+        neuronOrderNum,
+        neuronListNum,
+        neuronSize,
+        offsetTop
+    } = props;
 
     let lineEndsOffsetTop = [];
 
@@ -24,13 +35,14 @@ function LinesList (props) {
         neuronNextNum = neuronNextNum + 1;
         return (
             <Line key={key}
+              zIndex={zIndex}
               isActive={isActive}
               getNextListName={getNextListName()}
               neuronNextNum={neuronNextNum}
               neuronListLength={neuronListLength}
               neuronOrderNum={neuronOrderNum}
               neuronListNum={neuronListNum}
-              neuronSize={props.neuronSize}
+              neuronSize={neuronSize}
               lineData={props}
               lineEndsOffsetTop={line}
               listName={listName}
@@ -38,9 +50,9 @@ function LinesList (props) {
     });
 
     const setStyle = () => {
-        const translate = props.neuronSize / 2+6;
+        const translate = neuronSize / 2+6;
         const transform = `translateX(${translate}px)`;
-        return {transform}
+        return {transform, zIndex}
     };
 
     return (
