@@ -69,12 +69,12 @@ class WeightsModal extends React.Component {
                 open={this.state.open}
                 onClose={this.handleClose}
             >
-                <DialogTitle>Weight Table</DialogTitle>
+                <DialogTitle className='weightTableTitle'>Weight Table</DialogTitle>
                 <DialogContent>
                     {this.renderWeightsTable()}
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={this.handleClose} color="primary" autoFocus>
+                    <Button style={{color: 'whitesmoke'}} onClick={this.handleClose} autoFocus>
                         Close
                     </Button>
                 </DialogActions>

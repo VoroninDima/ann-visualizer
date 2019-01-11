@@ -56,19 +56,20 @@ class Settings extends React.Component {
     };
 
     static renderDialogTitle() {
-        return <DialogTitle style={{width: 400}}>Settings</DialogTitle>
+        return <DialogTitle className='settingsTitle'>Settings</DialogTitle>
     }
 
     static renderDialogContent() {
+        const textColor = {color: 'whitesmoke'};
         return (
             <DialogContent>
-                <DialogContentText>Change line size:</DialogContentText>
+                <DialogContentText style={textColor}>Change line size:</DialogContentText>
                 <LineSizeSetting/>
-                <DialogContentText>Change neuron size:</DialogContentText>
+                <DialogContentText style={textColor}>Change neuron size:</DialogContentText>
                 <NeuronSizeSetting/>
-                <DialogContentText>Change net width:</DialogContentText>
+                <DialogContentText style={textColor}>Change net width:</DialogContentText>
                 <NetWidthSetting/>
-                <DialogContentText>Change neuron offset top:</DialogContentText>
+                <DialogContentText style={textColor}>Change neuron offset top:</DialogContentText>
                 <NeuronOffsetTopSetting/>
             </DialogContent>
         )
@@ -77,7 +78,7 @@ class Settings extends React.Component {
     renderDialogActions = () => {
         return (
             <DialogActions>
-                <Button onClick={this.handleClose} color="primary" autoFocus>
+                <Button onClick={this.handleClose} style={{color: 'whitesmoke'}} autoFocus>
                     Close
                 </Button>
             </DialogActions>

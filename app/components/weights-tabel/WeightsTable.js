@@ -31,7 +31,7 @@ class WeightsTable extends React.Component {
 
     render() {
         return (
-            <Paper style={{margin: 10}}>
+            <Paper style={{margin: 10, backgroundColor: 'whitesmoke'}}>
                 {this.renderButton()}
                 <Table style={this.setStyle()}>
                     <TableHead>

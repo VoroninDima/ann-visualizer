@@ -2,9 +2,15 @@ import React, {Component} from 'react'
 import { Slider } from 'material-ui-slider';
 import {connect} from 'react-redux'
 import actionChangeSize from '../../actions/actionChangeSize';
+import actionResetSettings from '../../actions/actionResetSettings';
 import Button from '@material-ui/core/Button';
 
 class Slide extends Component {
+    resetSettings = () => {
+        this.props.setSliderValue(50);
+        this.props.setSettings([1200, 20, 60, 1])
+    };
+
     render() {
         return (
             <React.Fragment>
@@ -16,7 +22,7 @@ class Slide extends Component {
                     onChange={value => this.props.setSliderValue(value)}
                     style={{width: '200px'}}
                 />
-                <Button className='refresh__btn' onClick={() => this.props.setSliderValue(50)}>Refresh</Button>
+                <Button className='refresh__btn' onClick={() => this.resetSettings()}>reset settings</Button>
             </React.Fragment>
         )
     }
@@ -30,6 +36,9 @@ function mapDispatchToProps(dispatch) {
     return {
         setSliderValue: sliderValue => {
             dispatch(actionChangeSize(sliderValue))
+        },
+        setSettings: settingsValue => {
+            dispatch(actionResetSettings(settingsValue))
         }
     }
 }

@@ -59,9 +59,7 @@ button {
 	align-items: center;
 	justify-content: center;
 }
-.MuiButton-textPrimary-4 {
-    color: darkred;
-}
+
 .linesList {
     position: relative;
 }
@@ -71,7 +69,6 @@ button {
 	height: 1px;
 	transform-origin: left;
 	background-color: black;
-	z-index: -1;
 }
 .resizeText {
     font-family: 'Quicksand', sans-serif;
@@ -110,8 +107,8 @@ button {
 	font-size: 12px;
 }
 .MuiDialog-paperWidthSm-38 {
-	max-width: none;
 	min-width: 800px;
+	background-color: #030406;
 }
 
 .table_btn {
@@ -120,4 +117,9 @@ button {
 .activationFunction {
     font-size: 15px!important;
 }
-
+.settingsTitle h2{
+    color: whitesmoke;
+}
+.weightTableTitle h2{
+    color: whitesmoke;
+}

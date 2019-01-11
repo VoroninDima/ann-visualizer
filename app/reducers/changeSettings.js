@@ -29,5 +29,14 @@ export default function changeSettings(state=initialState, action) {
             netWidth: action.payload
         };
     }
+    if (action.type === 'RESET_SETTINGS') {
+        return {
+            ...state,
+            netWidth: action.payload[0],
+            offsetTop: action.payload[1],
+            neuronSize: action.payload[2],
+            lineSize: action.payload[3]
+        };
+    }
     return state
 }

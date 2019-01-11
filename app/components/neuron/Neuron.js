@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import LinesList from 'components/lines-list/LinesList';
 import {NeuronPopup} from 'components/neuron-popup';
 import {connect} from 'react-redux'
-import changeLinesColorAction from '../../actions/actionChangeLinesColor';
+import changeLinesColorAction from '../../actions/actionChangePrevLinesColor';
 
 class Neuron extends Component {
 	constructor(props) {

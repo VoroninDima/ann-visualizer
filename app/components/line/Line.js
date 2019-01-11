@@ -10,17 +10,16 @@ class Line extends React.Component {
             weightsShow: false,
             isActive: false,
             popupPos: null,
+            zIndex: 0
         };
         this.ref = React.createRef();
     }
 
 
-    zIndexChange = (index) => {
-        this.ref.current.parentElement.style.zIndex = index
+    zIndexChange = (zIndex) => {
+        this.ref.current.parentElement.style.zIndex = zIndex;
+        this.setState({zIndex})
     };
-
-
-
 
     getPosition = () => {
         const {lineData, lineEndsOffsetTop, neuronSize} = this.props;
@@ -46,15 +45,17 @@ class Line extends React.Component {
     };
 
     color = () => {
-
-        const {lineClassSelected, isActive, hideHeatMap} = this.props;
-        if (this.setClassName() === lineClassSelected) return this.changeSelectedColor();
+        const {isActive, hideHeatMap} = this.props;
+        if (this.prevLineCheck()) return this.changeSelectedColor();
         if (isActive) return this.changeSelectedColor();
         if (hideHeatMap) return '#bdbdbd';
 
         else return this.setLineColor()
     };
 
+    prevLineCheck = () => {
+        if (this.setClassName() === this.props.lineClassSelected) return true;
+    };
 
 
     setStyle = () => {
@@ -63,7 +64,8 @@ class Line extends React.Component {
             backgroundColor: this.color(),
             height: this.setLineHeight(),
             width: this.getPosition().width,
-            transform: `rotate(${this.getPosition().angle}deg)`
+            transform: `rotate(${this.getPosition().angle}deg)`,
+            zIndex: this.state.zIndex
         };
         if(!this.props.btnActive) lineStyle.display = 'none';
         if(this.state.weightsShow) {
@@ -99,8 +101,8 @@ class Line extends React.Component {
     handleMouseOver = e => {
         if (e.ctrlKey) return;
 
-        this.showWeights();
-        this.zIndexChange(10);
+        this.toggleWeights(true);
+        this.zIndexChange(1);
         this.changeSelectedColor('white');
         if (e.target.classList.value === 'line') {
             this.setPopupPosition(e)
@@ -108,7 +110,7 @@ class Line extends React.Component {
     };
 
     handleMouseOut = () => {
-        this.hideWeights();
+        this.toggleWeights(false);
         this.zIndexChange(0);
         this.changeSelectedColor('red');
 
@@ -120,15 +122,9 @@ class Line extends React.Component {
 
     };
 
-    showWeights = () => {
+    toggleWeights = (boolean) => {
         this.setState({
-            weightsShow: true
-        })
-    };
-
-    hideWeights = () => {
-        this.setState({
-            weightsShow: false
+            weightsShow: boolean
         })
     };
 
