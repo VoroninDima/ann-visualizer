@@ -72,7 +72,7 @@ class WeightsTable extends React.Component {
                     <TableCell component="th" scope="row">
                         {name}
                     </TableCell>
-                    {tableData.weights[num].map((weight, key) => <TableCell key={key}>{weight}</TableCell> )}
+                    {tableData.weights[num].map((weight, key) => <TableCell style={{paddingLeft: 40}} key={key}>{weight}</TableCell> )}
                 </TableRow>
             )
         })

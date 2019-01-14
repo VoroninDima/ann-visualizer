@@ -108,11 +108,13 @@ button {
 }
 .MuiDialog-paperWidthSm-38 {
 	min-width: 800px;
-	background-color: #030406;
+	background-color: #282c34;
 }
 
 .table_btn {
 	width: 100%;
+    text-transform: none;
+    font-size: 16px;
 }
 .activationFunction {
     font-size: 15px!important;

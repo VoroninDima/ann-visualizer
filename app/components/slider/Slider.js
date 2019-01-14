@@ -20,7 +20,7 @@ class Slide extends Component {
                     min='20'
                     max='200'
                     onChange={value => this.props.setSliderValue(value)}
-                    style={{width: '200px'}}
+                    style={{width: 200}}
                 />
                 <Button className='refresh__btn' onClick={() => this.resetSettings()}>reset settings</Button>
             </React.Fragment>

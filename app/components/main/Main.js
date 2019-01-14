@@ -12,6 +12,8 @@ class Main extends Component {
         };
     }
 
+
+
     renderMain() {
         const {nika, neuronColor} = this.props;
         let neuronListNum = -1;

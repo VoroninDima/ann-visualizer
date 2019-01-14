@@ -20,24 +20,43 @@ export function NeuronList(props) {
     };
 
 	const renderLists = () => {
-        let ar = [];
+        let units = [];
 
         if(unitsData.length === 1) {
-            return renderNeuronSubList(unitsData)
-        } else {
-            for (let i = 0; i < unitsData.length; i++) {
-                ar.push(...unitsData[i].names);
-            }
-            let ar2 = [{names: ar}];
-            return renderNeuronSubList(ar2)
-        }
-	};
+            const {ActivationFunction} = unitsData[0];
+            if (unitsData[0].names) {
+                unitsData[0].names.forEach(name => {
+                    units.push({name, ActivationFunction})
+                });
+                const unitsToObj = [{units}];
+                return renderNeuronSubList(unitsToObj)
+            } else {
+                for (let i = 0; i < unitsData[0].num; i++) {
+                    units.push({name, ActivationFunction})
+                }
+                const unitsToObj = [{units}];
+                return renderNeuronSubList(unitsToObj)
 
+            }
+        }
+
+        if(unitsData.length !== 1) {
+            for (let i = 0; i < unitsData.length; i++) {
+                const ActivationFunction = unitsData[i].ActivationFunction;
+                unitsData[i].names.forEach(name => {
+                    units.push({name, ActivationFunction})
+                })
+            }
+            const unitsToObj = [{units}];
+            return renderNeuronSubList(unitsToObj)
+        }
+
+
+	};
 	const setClass = () => {
         const {type, name} = list;
         return `${type} ${name}`
     };
-
 
 
     return (
