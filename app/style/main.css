@@ -55,6 +55,8 @@ button {
 .neuron {
 	border-radius: 50%;
 	text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 

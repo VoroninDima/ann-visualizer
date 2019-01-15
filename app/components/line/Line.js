@@ -64,8 +64,6 @@ class Line extends React.Component {
     setStyle = () => {
         let lineStyle = {
             display: 'block',
-            marginTop: this.props.neuronSize/2,
-            marginLeft: this.props.neuronSize+6,
             backgroundColor: this.color(),
             height: this.setLineHeight(),
             width: this.getPosition().width,
@@ -146,7 +144,6 @@ class Line extends React.Component {
     };
 
     render() {
-
         this.setStyle();
         return (
             <div

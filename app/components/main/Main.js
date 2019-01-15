@@ -11,6 +11,7 @@ class Main extends Component {
             left: 0,
             top:0
         };
+        this.ref = React.createRef()
     }
 
 
@@ -31,15 +32,13 @@ class Main extends Component {
     }
 
     onMouseDown = (e) => {
+        if (!e.ctrlKey) return;
 
-        e.preventDefault();
         const zoomValue = this.props.sliderValue/50;
         const coordX = e.pageX;
         const coordY = e.pageY;
         const posX = this.state.left*zoomValue;
         const posY = this.state.top*zoomValue;
-
-        if (!e.ctrlKey) return;
 
         window.onmousemove = e => {
             let left = (e.clientX - coordX + posX)/zoomValue;
@@ -52,19 +51,22 @@ class Main extends Component {
     };
 
     wheelZoom = (e) => {
-            if (!e.altKey) return;
-            const zoomValue = this.props.sliderValue;
-            let newZoomValue = zoomValue + e.deltaY/10;
-            if (newZoomValue < 20) newZoomValue=20;
-            if (newZoomValue > 300) newZoomValue=300;
-            this.props.setSliderValue(newZoomValue);
+        if (!e.altKey) return;
+        const scrollValue = e.deltaY
+        const zoomValue = this.props.sliderValue;
+        let newZoomValue = zoomValue + scrollValue/10;
+        if (newZoomValue < 20 && scrollValue < 0) return;
+        if (newZoomValue > 300 && scrollValue > 0) return;
+        this.props.setSliderValue(newZoomValue);
 
-
-            // let x = e.clientX;
-            // let y = e.clientY;
-            // let left = this.state.left;
-            // let top = this.state.top;
-            // this.setState({top: e.deltaY/100*y/10+top, left: e.deltaY/100*x/10+left})
+        const centerX = this.ref.current.offsetWidth/2+200;
+        const centerY = this.ref.current.offsetHeight/2;
+        const {left, top} = this.state;
+        let x = e.clientX;
+        let y = e.clientY;
+        let xResize = scrollValue/100*(centerX-x)/7/(zoomValue/50)+left;
+        let yResize = scrollValue/100*(centerY-y)/7/(zoomValue/50)+top;
+        this.setState({top: yResize, left: xResize});
     };
 
     render() {
@@ -75,10 +77,9 @@ class Main extends Component {
             display: `flex`
         };
         return (
-            <div style={this.parentStyle()}>
+            <div style={this.parentStyle()} ref={this.ref} onWheel={this.wheelZoom}>
                 <div
                     onMouseDown={this.onMouseDown}
-                    onWheel={this.wheelZoom}
                     style={style}
                     className="main">
                     {this.renderMain()}

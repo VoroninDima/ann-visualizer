@@ -47,12 +47,12 @@ function LinesList (props) {
         />);
     });
 
-
+    const style = {marginLeft: neuronSize+12, marginTop: neuronSize/2};
 
     return (
-		<React.Fragment>
+		<div className={'linesList'} style={style}>
             {lines}
-		</React.Fragment>
+		</div>
 	)
 }
 function mapStateToProps(state) {
