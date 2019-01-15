@@ -51,8 +51,7 @@ class Main extends Component {
     };
 
     wheelZoom = (e) => {
-        if (!e.altKey) return;
-        const scrollValue = e.deltaY
+        const scrollValue = e.deltaY;
         const zoomValue = this.props.sliderValue;
         let newZoomValue = zoomValue + scrollValue/10;
         if (newZoomValue < 20 && scrollValue < 0) return;
