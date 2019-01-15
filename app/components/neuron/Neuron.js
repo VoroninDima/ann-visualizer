@@ -27,7 +27,6 @@ class Neuron extends Component {
                 isActive: false,
                 size: this.props.neuronSize,
                 neuronListLength: null,
-                linesListZIndex: 0,
                 neuronProperties: {
                     neuronWidth: null,
                     neuronOffsetLeft: null,
@@ -90,7 +89,6 @@ class Neuron extends Component {
 	    const {offsetTop, listName} = this.props;
 	    if (neuronListLength && neuronProperties.neuronWidth) return (
             <LinesList
-                zIndex={this.state.linesListZIndex}
                 getNextListName={this.getNextListName}
                 neuronListNum={this.neuronListNum}
                 neuronOrderNum={this.neuronOrderNum}
@@ -112,7 +110,6 @@ class Neuron extends Component {
             activationFunction={activationFunction}/>;
     };
 
-    changeLinesListZIndex = linesListZIndex => this.setState({linesListZIndex})
 
     mouseOverEvent = (e) => {
         if (e.ctrlKey) return;
@@ -121,7 +118,6 @@ class Neuron extends Component {
         if (classes === 'neuron'|| classes === 'neuronPopupParagraph') {
             this.changeIsActive(true);
             this.prevLineChangeColor(this.getPrevListName());
-            this.changeLinesListZIndex(1)
         }
     };
 
@@ -131,7 +127,6 @@ class Neuron extends Component {
         if (classes === 'neuron'|| classes === 'neuronPopupParagraph') {
             this.changeIsActive(false);
             this.prevLineChangeColor(null);
-            this.changeLinesListZIndex(0)
         }
     };
 

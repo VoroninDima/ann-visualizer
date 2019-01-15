@@ -55,14 +55,9 @@ button {
 .neuron {
 	border-radius: 50%;
 	text-align: center;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 }
 
-.linesList {
-    position: relative;
-}
+
 .line {
 	position: absolute;
 	border-radius: 20px;

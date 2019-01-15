@@ -18,7 +18,7 @@ class Slide extends Component {
                     type='range'
                     value={this.props.sliderValue}
                     min='20'
-                    max='200'
+                    max='300'
                     onChange={value => this.props.setSliderValue(value)}
                     style={{width: 200}}
                 />

@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux';
 import {NeuronList} from 'components/neuron-list';
+import actionChangeSize from '../../actions/actionChangeSize';
 
 
 class Main extends Component {
@@ -11,7 +12,6 @@ class Main extends Component {
             top:0
         };
     }
-
 
 
     renderMain() {
@@ -31,6 +31,7 @@ class Main extends Component {
     }
 
     onMouseDown = (e) => {
+
         e.preventDefault();
         const zoomValue = this.props.sliderValue/50;
         const coordX = e.pageX;
@@ -50,6 +51,22 @@ class Main extends Component {
         window.onkeyup = () => window.onmousemove = null
     };
 
+    wheelZoom = (e) => {
+            if (!e.altKey) return;
+            const zoomValue = this.props.sliderValue;
+            let newZoomValue = zoomValue + e.deltaY/10;
+            if (newZoomValue < 20) newZoomValue=20;
+            if (newZoomValue > 300) newZoomValue=300;
+            this.props.setSliderValue(newZoomValue);
+
+
+            // let x = e.clientX;
+            // let y = e.clientY;
+            // let left = this.state.left;
+            // let top = this.state.top;
+            // this.setState({top: e.deltaY/100*y/10+top, left: e.deltaY/100*x/10+left})
+    };
+
     render() {
         const transform = this.setNetTransform();
         const style = {
@@ -59,11 +76,14 @@ class Main extends Component {
         };
         return (
             <div style={this.parentStyle()}>
-                <div onMouseDown={this.onMouseDown} style={style} className="main">
+                <div
+                    onMouseDown={this.onMouseDown}
+                    onWheel={this.wheelZoom}
+                    style={style}
+                    className="main">
                     {this.renderMain()}
                 </div>
             </div>
-
         )
     }
 
@@ -81,12 +101,17 @@ class Main extends Component {
     }
 }
 
-
-
-export default connect(
-    state => ({
+function mapStateToProps(state) {
+    return {
         sliderValue: state.changeSize.sliderValue,
-        netWidth: state.changeSettings.netWidth
-    })
+        netWidth: state.changeSettings.netWidth    }
+}
+function mapDispatchToProps(dispatch) {
+    return {
+        setSliderValue: sliderValue => {
+            dispatch(actionChangeSize(sliderValue))
+        }
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Main)
 
-)(Main)

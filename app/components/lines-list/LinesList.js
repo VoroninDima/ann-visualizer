@@ -6,7 +6,6 @@ import {connect} from "react-redux";
 function LinesList (props) {
     const {
         neuronListLength,
-        zIndex,
         isActive,
         listName,
         getNextListName,
@@ -48,16 +47,12 @@ function LinesList (props) {
         />);
     });
 
-    const setStyle = () => {
-        const translate = neuronSize / 2+6;
-        const transform = `translateX(${translate}px)`;
-        return {transform, zIndex}
-    };
+
 
     return (
-		<div style={setStyle()} className="lineList">
+		<React.Fragment>
             {lines}
-		</div>
+		</React.Fragment>
 	)
 }
 function mapStateToProps(state) {
