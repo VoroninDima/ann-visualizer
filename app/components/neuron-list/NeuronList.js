@@ -19,50 +19,51 @@ export function NeuronList(props) {
         )
     };
 
-    const renderLists = () => {
+	const unitsPushLoop = (length, neuronName) => {
+        let units = [];
+        let name = neuronName;
+        const {ActivationFunction} = unitsData[0];
+        for (let i = 0; i < length; i++) {
+            if (neuronName.length > 1) name = neuronName[i];
+            units.push({name, ActivationFunction})
+        }
+        const unitsToObj = [{units}];
+        return renderNeuronSubList(unitsToObj)
+    };
+
+	const makeSingleUnitsDataArray = () => {
+        const {num, names} = unitsData[0];
+        if (names)
+            return unitsPushLoop(names.length, names);
+        else
+            return unitsPushLoop(num, [name])
+    };
+
+    const makeMultiUnitsDataArray = () => {
         let units = [];
 
-        if(unitsData.length === 1) {
-
-            const {ActivationFunction, num, names} = unitsData[0];
-            if (names) {
-                names.forEach(name => {
-                    units.push({name, ActivationFunction})
-                });
-                const unitsToObj = [{units}];
-                return renderNeuronSubList(unitsToObj)
-            } else {
-                for (let i = 0; i < num; i++) {
-                    units.push({name, ActivationFunction})
-                }
-                const unitsToObj = [{units}];
-                return renderNeuronSubList(unitsToObj)
-
-            }
+        for (let j = 0; j < unitsData.length; j++) {
+            const {ActivationFunction, names} = unitsData[j];
+            names.forEach(name => {
+                units.push({name, ActivationFunction})
+            })
         }
-        if(unitsData.length !== 1) {
-            for (let i = 0; i < unitsData.length; i++) {
-                const {ActivationFunction, names} = unitsData[i];
-                names.forEach(name => {
-                    units.push({name, ActivationFunction})
-                })
-            }
-            const unitsToObj = [{units}];
-            return renderNeuronSubList(unitsToObj)
-        }
+        const unitsToObj = [{units}];
+        return renderNeuronSubList(unitsToObj)
+    };
+
+    const renderLists = () => {
+        if(unitsData.length === 1)
+            return makeSingleUnitsDataArray();
+        else
+            return makeMultiUnitsDataArray()
 	};
+
 	const setClass = () => {
         const {type, name} = list;
         return `${type} ${name}`
     };
 
 
-    return (
-    	<div className={setClass()}>
-			{renderLists()}
-		</div>
-	)
-
-
-
+    return <div className={setClass()}>{renderLists()}</div>;
 }

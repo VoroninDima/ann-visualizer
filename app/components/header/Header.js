@@ -15,12 +15,12 @@ class Header extends Component{
         else this.props.onHideLinesBtnClicked('Show lines');
     };
     renderWeightsModal = () => {
-        if (this.props.names.length !== 0 ) return (
+        if (this.props.names.length !== 0 )
+            return (
             <WeightsModal
                 layersName={this.props.layersName}
                 weights={this.props.weights}
-                names={this.props.names}
-            />
+                names={this.props.names} />
         )
     };
 
@@ -28,8 +28,8 @@ class Header extends Component{
         return (
             <Button
                 onClick={this.hideLinesBtnClicked}
-                className='header__btn'
-            >
+                className='header__btn' >
+
                 {this.props.innerText}
             </Button>
         )
@@ -49,6 +49,7 @@ class Header extends Component{
         )
     }
 }
+
 function mapStateToProps(state) {
     return {
         innerText: state.hideBtnClick.btnText,
@@ -59,6 +60,7 @@ function mapStateToProps(state) {
 
     }
 }
+
 function mapDispatchToProps(dispatch) {
     return {
         onHideLinesBtnClicked: (innerText) => {

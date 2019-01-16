@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux';
 import {LinePopup} from 'components/linePopup'
+import getPos from './getLinePosition'
 
 
 class Line extends React.Component {
@@ -12,62 +13,42 @@ class Line extends React.Component {
             popupPos: null,
         };
         this.ref = React.createRef();
+        this.setStyle();
+
     }
 
-
-
-    zIndexChange = (zIndex) => {
+    zIndexChange(zIndex) {
         this.ref.current.style.zIndex = zIndex;
-    };
+    }
 
     prevLinesChangeZIndex = () => {
         if (this.prevLineCheck() || this.props.isActive) return 1;
     };
 
-    getPosition = () => {
-        const {lineData, lineEndsOffsetTop, neuronSize} = this.props;
-        const {neuronProperties} = lineData;
-        const {neuronOffsetTop, neuronOffsetLeft, nextNeuronOffsetLeft} = neuronProperties;
-        this.aOffsetTop = neuronOffsetTop;
-        this.aOffsetLeft = neuronOffsetLeft+neuronSize+12;
-        this.bOffsetTop = lineEndsOffsetTop-neuronSize;
-        this.bOffsetLeft = nextNeuronOffsetLeft;
-        this.angle = Math.atan2(
-            this.bOffsetTop - this.aOffsetTop,
-            this.bOffsetLeft - this.aOffsetLeft
-        ) * 180 / Math.PI;
-        this.length = Math.sqrt(
-            (this.bOffsetLeft - this.aOffsetLeft)
-            * (this.bOffsetLeft - this.aOffsetLeft)
-            + (this.bOffsetTop - this.aOffsetTop)
-            * (this.bOffsetTop - this.aOffsetTop)
-        );
-        this.width = Math.abs(this.length) + 'px';
-
-        return {angle: this.angle, width: this.width}
-    };
-
     color = () => {
         const {isActive, hideHeatMap} = this.props;
-        if (this.prevLineCheck()) return this.changeSelectedColor();
-        if (isActive) return this.changeSelectedColor();
-        if (hideHeatMap) return '#bdbdbd';
-
-        else return this.setLineColor()
+        if (this.prevLineCheck())
+            return this.changeSelectedColor();
+        if (isActive)
+            return this.changeSelectedColor();
+        if (hideHeatMap)
+            return '#bdbdbd';
+        else
+            return this.setLineColor()
     };
 
     prevLineCheck = () => {
         if (this.setClassName() === this.props.lineClassSelected) return true;
     };
 
-
     setStyle = () => {
+
         let lineStyle = {
             display: 'block',
             backgroundColor: this.color(),
             height: this.setLineHeight(),
-            width: this.getPosition().width,
-            transform: `rotate(${this.getPosition().angle}deg)`,
+            width: getPos.bind(this)().width,
+            transform: `rotate(${getPos.bind(this)().angle}deg)`,
             zIndex: this.prevLinesChangeZIndex()
         };
         if(!this.props.btnActive) lineStyle.display = 'none';
@@ -134,17 +115,22 @@ class Line extends React.Component {
     setPopupPosition = (e) => {
         const zoomValue = this.props.sliderValue/50;
         const rect = e.target.getBoundingClientRect();
-        const angle = this.getPosition().angle;
+        const angle = getPos.bind(this)().angle;
         let top = Math.pow((e.clientY-rect.top)/zoomValue, 2);
-        if (angle < 0) top = Math.pow((rect.bottom-e.clientY)/zoomValue, 2);
         const left = Math.pow((e.clientX-rect.left)/zoomValue, 2);
+
+        if (angle < 0)
+            top = Math.pow((rect.bottom-e.clientY)/zoomValue, 2);
+
         let popupPos = Math.sqrt(top+left) ;
-        if (angle < 0) popupPos = popupPos - 20;
+
+        if (angle < 0)
+            popupPos = popupPos - 20;
+
         this.setState({ popupPos });
     };
 
     render() {
-        this.setStyle();
         return (
             <div
                 ref={this.ref}
@@ -152,24 +138,27 @@ class Line extends React.Component {
                 onMouseOver={this.handleMouseOver}
                 onMouseOut={this.handleMouseOut}
                 className='line'>
+
                 <LinePopup active={this.state.weightsShow}
-                           rotate={this.getPosition().angle}
+                           rotate={getPos.bind(this)().angle}
                            weightsValue={this.getLineWeights()}
-                           popupPos={this.state.popupPos}
-                />
+                           popupPos={this.state.popupPos} />
             </div>
         )
     }
 }
 
-export default connect(
-    state => ({
+function mapStateToProps(state) {
+    return {
         btnActive: !state.hideBtnClick.btnActive,
         lineSize: state.changeSettings.lineSize,
         weights: state.weightsValue,
         lineClassSelected: state.changeLineColor.lineClassName,
         hideHeatMap: state.hideHeatMap.isActive,
         weightsToSize: state.lineWeightsToSize.isActive,
-        sliderValue: state.changeSize.sliderValue,
-    })
-)(Line);
+        sliderValue: state.changeSize.sliderValue
+    }
+}
+export default connect(mapStateToProps)(Line)
+
+

@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux';
 import {NeuronList} from 'components/neuron-list';
 import actionChangeSize from '../../actions/actionChangeSize';
-
+import zoom from './wheelZoom'
+import moveNetwork from './moveNetwork'
 
 class Main extends Component {
     constructor(props) {
@@ -32,60 +33,14 @@ class Main extends Component {
     }
 
     onMouseDown = (e) => {
-        if (!e.ctrlKey) return;
-
-        const zoomValue = this.props.sliderValue/50;
-        const coordX = e.pageX;
-        const coordY = e.pageY;
-        const posX = this.state.left*zoomValue;
-        const posY = this.state.top*zoomValue;
-
-        window.onmousemove = e => {
-            let left = (e.clientX - coordX + posX)/zoomValue;
-            let top = (e.clientY - coordY + posY)/zoomValue;
-            this.setState({ left, top });
-        };
-
-        window.onmouseup = () => window.onmousemove = null;
-        window.onkeyup = () => window.onmousemove = null
+        moveNetwork.bind(this)(e)
     };
+
 
     wheelZoom = (e) => {
-        const scrollValue = e.deltaY;
-        const zoomValue = this.props.sliderValue;
-        let newZoomValue = zoomValue + scrollValue/10;
-        if (newZoomValue < 20 && scrollValue < 0) return;
-        if (newZoomValue > 300 && scrollValue > 0) return;
-        this.props.setSliderValue(newZoomValue);
+        zoom.bind(this)(e)
 
-        const centerX = this.ref.current.offsetWidth/2+200;
-        const centerY = this.ref.current.offsetHeight/2;
-        const {left, top} = this.state;
-        let x = e.clientX;
-        let y = e.clientY;
-        let xResize = scrollValue/100*(centerX-x)/7/(zoomValue/50)+left;
-        let yResize = scrollValue/100*(centerY-y)/7/(zoomValue/50)+top;
-        this.setState({top: yResize, left: xResize});
     };
-
-    render() {
-        const transform = this.setNetTransform();
-        const style = {
-            transform,
-            width: this.props.netWidth,
-            display: `flex`
-        };
-        return (
-            <div style={this.parentStyle()} ref={this.ref} onWheel={this.wheelZoom}>
-                <div
-                    onMouseDown={this.onMouseDown}
-                    style={style}
-                    className="main">
-                    {this.renderMain()}
-                </div>
-            </div>
-        )
-    }
 
     setNetTransform() {
         const scale = this.props.sliderValue / 50;
@@ -98,7 +53,28 @@ class Main extends Component {
             display: 'flex',
             justifyContent: 'center'
         }
+    };
+
+    render() {
+        const transform = this.setNetTransform();
+        const style = {
+            transform,
+            width: this.props.netWidth,
+            display: `flex`
+        };
+        return (
+            <div style={this.parentStyle()} ref={this.ref} onWheel={this.wheelZoom.bind(this)}>
+                <div
+                    onMouseDown={this.onMouseDown}
+                    style={style}
+                    className="main">
+                    {this.renderMain()}
+                </div>
+            </div>
+        )
     }
+
+
 }
 
 function mapStateToProps(state) {

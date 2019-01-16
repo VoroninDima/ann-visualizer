@@ -49,11 +49,7 @@ function LinesList (props) {
 
     const style = {marginLeft: neuronSize+12, marginTop: neuronSize/2};
 
-    return (
-		<div className={'linesList'} style={style}>
-            {lines}
-		</div>
-	)
+    return <div className={'linesList'} style={style}>{lines}</div>
 }
 function mapStateToProps(state) {
     return {

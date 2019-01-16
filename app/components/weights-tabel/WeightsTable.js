@@ -49,8 +49,12 @@ class WeightsTable extends React.Component {
     }
 
     renderFirstNeuronLayerRow() {
-        const secondNeuronLayerNames = this.props.tableData.secondNeuronLayerNames;
-        return secondNeuronLayerNames.map((name, key) => <TableCell key={key}>{name}</TableCell> )
+        const {tableData} =this.props;
+
+        const secondNeuronLayerNames = tableData.secondNeuronLayerNames;
+        return secondNeuronLayerNames.map((name, key) =>
+            <TableCell key={key}>{name}</TableCell>
+        )
     }
 
     renderButton() {
@@ -72,10 +76,17 @@ class WeightsTable extends React.Component {
                     <TableCell component="th" scope="row">
                         {name}
                     </TableCell>
-                    {tableData.weights[num].map((weight, key) => <TableCell style={{paddingLeft: 40}} key={key}>{weight}</TableCell> )}
+                    {this.renderCell(num)}
                 </TableRow>
             )
         })
+    }
+
+    renderCell(num) {
+        const {tableData} =this.props;
+        return tableData.weights[num].map((weight, key) =>
+            <TableCell style={{paddingLeft: 40}} key={key}>{weight}</TableCell>
+        )
     }
 }
 export default WeightsTable

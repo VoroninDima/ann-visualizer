@@ -41,12 +41,14 @@ class WeightsModal extends React.Component {
     }
 
     renderWeightsTable() {
-        return this.createTableArray().map((table, key) =>
+        const tableArray = this.createTableArray();
+        return tableArray.map((table, key) =>
             <WeightsTable
                 onButtonClick={this.handleClick.bind(this, table.id)}
                 key={key}
                 isOpen={this.state.openTableId === table.id}
-                tableData={table}/> )
+                tableData={table}/>
+        )
     }
 
     handleClick = openTableId => {
