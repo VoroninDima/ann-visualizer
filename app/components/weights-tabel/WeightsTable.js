@@ -11,8 +11,6 @@ import {
 } from '@material-ui/core';
 
 
-
-
 class WeightsTable extends React.Component {
     setStyle() {
         const ifIsOpen = {
@@ -25,9 +23,7 @@ class WeightsTable extends React.Component {
             display: 'none',
         };
         return this.props.isOpen ? ifIsOpen : ifIsClosed;
-
     }
-
 
     render() {
         return (
@@ -50,7 +46,6 @@ class WeightsTable extends React.Component {
 
     renderFirstNeuronLayerRow() {
         const {tableData} =this.props;
-
         const secondNeuronLayerNames = tableData.secondNeuronLayerNames;
         return secondNeuronLayerNames.map((name, key) =>
             <TableCell key={key}>{name}</TableCell>
@@ -59,19 +54,20 @@ class WeightsTable extends React.Component {
 
     renderButton() {
         const {tableData, onButtonClick} = this.props;
+        const tableName = `Weights between ${tableData.layersName} and ${tableData.nextLayersName}`;
         return (
             <Button className='table_btn' onClick={onButtonClick}>
-                {`Weights between ${tableData.layersName} and ${tableData.nextLayersName}`}
+                {tableName}
             </Button>
         )
     }
 
     renderRow() {
-        const {tableData} =this.props;
+        const {tableData} = this.props;
         let num = -1;
         return tableData.firstNeuronLayerNames.map((name, key) => {
             num = num + 1;
-            return(
+            return (
                 <TableRow key={key}>
                     <TableCell component="th" scope="row">
                         {name}
@@ -85,7 +81,9 @@ class WeightsTable extends React.Component {
     renderCell(num) {
         const {tableData} =this.props;
         return tableData.weights[num].map((weight, key) =>
-            <TableCell style={{paddingLeft: 40}} key={key}>{weight}</TableCell>
+            <TableCell style={{paddingLeft: 40}} key={key}>
+                {weight}
+            </TableCell>
         )
     }
 }

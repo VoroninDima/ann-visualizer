@@ -15,20 +15,16 @@ class Main extends Component {
         this.ref = React.createRef()
     }
 
-
     renderMain() {
         const {nika, neuronColor} = this.props;
         let neuronListNum = -1;
         return nika.map((list, key) => {
             neuronListNum = neuronListNum + 1;
-            return (
-                <NeuronList
+            return (<NeuronList
                     neuronListNum={neuronListNum}
                     neuronColor={neuronColor}
                     key={key}
-                    list = {list}
-                />
-            )
+                    list = {list} />)
         });
     }
 
@@ -36,10 +32,8 @@ class Main extends Component {
         moveNetwork.bind(this)(e)
     };
 
-
     wheelZoom = (e) => {
         zoom.bind(this)(e)
-
     };
 
     setNetTransform() {
@@ -55,18 +49,21 @@ class Main extends Component {
         }
     };
 
-    render() {
+    setStyle() {
         const transform = this.setNetTransform();
-        const style = {
+        return {
             transform,
             width: this.props.netWidth,
             display: `flex`
         };
+    }
+
+    render() {
         return (
             <div style={this.parentStyle()} ref={this.ref} onWheel={this.wheelZoom.bind(this)}>
                 <div
                     onMouseDown={this.onMouseDown}
-                    style={style}
+                    style={this.setStyle()}
                     className="main">
                     {this.renderMain()}
                 </div>
@@ -77,11 +74,13 @@ class Main extends Component {
 
 }
 
+
 function mapStateToProps(state) {
     return {
         sliderValue: state.changeSize.sliderValue,
         netWidth: state.changeSettings.netWidth    }
 }
+
 function mapDispatchToProps(dispatch) {
     return {
         setSliderValue: sliderValue => {
@@ -89,5 +88,6 @@ function mapDispatchToProps(dispatch) {
         }
     }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(Main)
 

@@ -1,88 +1,50 @@
 import React, {Component} from 'react'
-import classnames from 'classnames';
 
 import LinesList from 'components/lines-list/LinesList';
 import {NeuronPopup} from 'components/neuron-popup';
 import {connect} from 'react-redux'
 import changeLinesColorAction from '../../actions/actionChangePrevLinesColor';
+import getNeuronPosition from './getNeuronPosition';
+import {setDefaultState, setClassProperties} from './setClassConstructor';
+import {setClassName, setStyle} from './setStyle'
+
 
 class Neuron extends Component {
 	constructor(props) {
 		super(props);
-		this.state = this.setDefaultState();
+		this.state = setDefaultState.bind(this)();
+        setClassProperties.bind(this)()
 
-		this.ref = React.createRef();
-        this.listName = this.props.listName;
-        this.neuron = this.props.neuron;
-        this.neuronOrderNum = this.props.neuronOrderNum;
-        this.neuronListNum = this.props.neuronListNum;
-        this.neuronSize = this.props.neuronSize;
-        this.colorActive = null;
 	}
-
-
-    setDefaultState = () => {
-	    return (
-            {
-                isActive: false,
-                size: this.props.neuronSize,
-                neuronListLength: null,
-                neuronProperties: {
-                    neuronWidth: null,
-                    neuronOffsetLeft: null,
-                    neuronOffsetTop: null
-                }
-            }
-        )
-    };
-
 
     componentWillReceiveProps() {
         if (this.listName !== 'output') {
-            this.getNeuronPosition();
+            getNeuronPosition.bind(this)();
             this.getNeuronListLength();
         }
     }
 
     componentDidMount() {
         if (this.listName !== 'output') {
-            this.getNeuronPosition();
+            getNeuronPosition.bind(this)();
             this.getNeuronListLength();
         }
     }
 
-
-    setColor = () => {
-        const {neuronListNum, neuronColor} = this.props;
-        return neuronColor[neuronListNum];
-    };
-
 	render() {
-        const {listName, neuron, neuronSize, offsetTop} = this.props;
-        const classes = classnames('neuron', listName, neuron);
-        let {r, g, b} = this.setColor();
-        const activeColor = this.colorActive;
-        let style = {
-            width: neuronSize,
-            height: neuronSize,
-            marginTop: offsetTop,
-            border: `5px solid rgba(${r-activeColor}, ${g-activeColor}, ${b-activeColor})`
-        };
 		return (
 			<div
                 onMouseOver={this.mouseOverEvent}
                 onMouseOut={this.mouseOutEvent}
-                style={style}
+                style={setStyle.bind(this)()}
                 ref={this.ref}
-                className={classes}
+                className={setClassName.bind(this)()}
             >
                 {this.renderLinesList()}
                 {this.renderNeuronPopup()}
             </div>
 		)
 	}
-
-
 
 	renderLinesList = () => {
 	    const {neuronListLength, isActive,  neuronProperties} = this.state;
@@ -109,7 +71,6 @@ class Neuron extends Component {
             neuronName={this.neuron}
             activationFunction={activationFunction}/>;
     };
-
 
     mouseOverEvent = (e) => {
         if (e.ctrlKey) return;
@@ -158,7 +119,6 @@ class Neuron extends Component {
 
     };
 
-
     getNeuronListLength = () => {
         const neuronListLength = this.ref.current
                                 .parentElement
@@ -168,29 +128,8 @@ class Neuron extends Component {
                                 .children
                                 .length;
 
-        this.setState({ neuronListLength})
+        this.setState({ neuronListLength })
     };
-
-    getNeuronPosition = () => {
-	    const ref = this.ref.current;
-	    const refNext = this.ref.current.parentElement.parentElement.nextElementSibling;
-        setTimeout(() => {
-            const nextNeuronOffsetTop = refNext.offsetTop;
-            const nextNeuronOffsetLeft = refNext.offsetLeft;
-            const neuronWidth = 30;
-            const neuronOffsetLeft = ref.offsetLeft;
-            const neuronOffsetTop = ref.offsetTop;
-            this.setState({
-                 neuronProperties: {
-                     neuronWidth,
-                     neuronOffsetLeft,
-                     neuronOffsetTop,
-                     nextNeuronOffsetTop,
-                     nextNeuronOffsetLeft
-                 }
-            });
-        }, 0)
-    }
 }
 
 function mapStateToProps(state) {

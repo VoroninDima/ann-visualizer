@@ -1,5 +1,3 @@
-
-
 function wheelZoom(e) {
     const scrollValue = e.deltaY;
     const zoomValue = this.props.sliderValue;
@@ -10,28 +8,27 @@ function wheelZoom(e) {
         return;
     this.props.setSliderValue(newZoomValue);
     wheelZoomTranslate.bind(this)(e)
-
 }
 
 function wheelZoomTranslate(e) {
     this.scrollValue = e.deltaY/100;
     this.zoomValue = this.props.sliderValue/50;
     const {left, top} = this.state;
-    const newLeft = getXResize.bind(this)(e)+left;
-    const newTop = getYResize.bind(this)(e)+top;
+    const newLeft = getXResize.bind(this)(e) + left;
+    const newTop = getYResize.bind(this)(e) + top;
     this.setState({top: newTop, left: newLeft});
 }
 
 function getXResize(e) {
-    return this.scrollValue*wheelZoomGetCenterX.bind(this)(e)/7/this.zoomValue;
+    return this.scrollValue * wheelZoomGetCenterX.bind(this)(e) / 7 / this.zoomValue;
 }
 
 function getYResize(e) {
-    return this.scrollValue*wheelZoomGetCenterY.bind(this)(e)/7/this.zoomValue;
+    return this.scrollValue * wheelZoomGetCenterY.bind(this)(e) / 7 / this.zoomValue;
 }
 
 function wheelZoomGetCenterX(e) {
-    const centerX = this.ref.current.offsetWidth/2+200;
+    const centerX = this.ref.current.offsetWidth/2 + 200;
     let x = e.clientX;
     return centerX-x
 }

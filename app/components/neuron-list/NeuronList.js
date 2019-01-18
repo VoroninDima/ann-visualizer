@@ -24,7 +24,9 @@ export function NeuronList(props) {
         let name = neuronName;
         const {ActivationFunction} = unitsData[0];
         for (let i = 0; i < length; i++) {
-            if (neuronName.length > 1) name = neuronName[i];
+            if (neuronName.length > 1)
+                name = neuronName[i];
+
             units.push({name, ActivationFunction})
         }
         const unitsToObj = [{units}];
@@ -41,7 +43,6 @@ export function NeuronList(props) {
 
     const makeMultiUnitsDataArray = () => {
         let units = [];
-
         for (let j = 0; j < unitsData.length; j++) {
             const {ActivationFunction, names} = unitsData[j];
             names.forEach(name => {

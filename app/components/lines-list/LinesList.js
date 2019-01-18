@@ -16,21 +16,19 @@ function LinesList (props) {
         offsetTop
     } = props;
 
-    let lineEndsOffsetTop = [];
-
-    let nextNeuronOffsetTop = neuronProperties.nextNeuronOffsetTop-10;
-
     let getLineEndsOffsetTop = () => {
+        let lineEndsOffsetTop = [];
+        let nextNeuronOffsetTop = neuronProperties.nextNeuronOffsetTop-10;
         for (let i = 0; i < neuronListLength; i++) {
             nextNeuronOffsetTop = nextNeuronOffsetTop + neuronSize+offsetTop+10;
             lineEndsOffsetTop.push(nextNeuronOffsetTop)
         }
+        return lineEndsOffsetTop
     };
-    getLineEndsOffsetTop();
 
     let neuronNextNum = -1;
 
-    const lines = lineEndsOffsetTop.map((line, key) => {
+    const lines = getLineEndsOffsetTop().map((line, key) => {
         neuronNextNum = neuronNextNum + 1;
         return (
             <Line key={key}
@@ -51,9 +49,12 @@ function LinesList (props) {
 
     return <div className={'linesList'} style={style}>{lines}</div>
 }
+
+
 function mapStateToProps(state) {
     return {
         neuronSize: state.changeSettings.neuronSize
     }
 }
+
 export default connect(mapStateToProps)(LinesList)

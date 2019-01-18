@@ -11,11 +11,13 @@ class LinesHeightButton extends React.Component {
     }
 }
 
+
 function mapStateToProps(state) {
     return {
         isActive: state.lineWeightsToSize.isActive
     }
 }
+
 function mapDispatchToProps(dispatch) {
     return {
         weightSize: value => {
@@ -23,4 +25,5 @@ function mapDispatchToProps(dispatch) {
         }
     }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(LinesHeightButton);

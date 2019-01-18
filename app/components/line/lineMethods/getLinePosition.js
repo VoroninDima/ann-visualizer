@@ -15,7 +15,7 @@ function setWidth() {
         lineLeftSubtraction.bind(this)() * lineLeftSubtraction.bind(this)()
         + lineTopSubtraction.bind(this)() * lineTopSubtraction.bind(this)()
     );
-    return Math.abs(length) + 'px';
+    return Math.abs(length);
 
 }
 
@@ -28,9 +28,8 @@ function lineTopSubtraction() {
 }
 
 function setAngle () {
+    getLinePosition.bind(this)();
     return Math.atan2(lineTopSubtraction.bind(this)(), lineLeftSubtraction.bind(this)()) * 180 / Math.PI;
 }
-function getPos() {
-    return {angle: setAngle.bind(this)(), width: setWidth.bind(this)()}
-}
-export default getPos;
+
+export {setAngle, setWidth};

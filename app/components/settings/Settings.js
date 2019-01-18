@@ -40,7 +40,6 @@ class Settings extends React.Component {
         )
     }
 
-
     renderSettingsButton = () => {
         return <Button className='settings__btn' onClick={this.handleClickOpen}>Settings</Button>
     };
