@@ -3,20 +3,22 @@ import changeSize from './sliderChange';
 import hideBtnClick from './hideBtnClick'
 import changeSettings from './changeSettings'
 import weightsValue from './weightsValue'
-import neuronsNames from './neuronsNames'
 import changeLineColor from './changeLineColor'
 import hideHeatMap from './hideHeatMap'
 import lineWeightsToSize from './lineWeightsToSize'
+import setNetworkStructure from './setNetworkStructure'
+import setWeightsValue from './setWeightsValue'
 
 const rootReducer = combineReducers({
     hideBtnClick,
     changeSize,
     changeSettings,
     weightsValue,
-    neuronsNames,
     changeLineColor,
     hideHeatMap,
-    lineWeightsToSize
+    setNetworkStructure,
+    lineWeightsToSize,
+    setWeightsValue
 
 });
 export default rootReducer

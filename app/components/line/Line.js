@@ -1,7 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux';
-import {LinePopup} from 'components/linePopup'
-import {getLinePosition, setLineColor, setPopupPosition, setStyle, setAngle} from './lineMethods/setPopupPosition'
+
+import {LinePopup} from 'components/linePopup';
+import {setPopupPosition, setStyle, setAngle} from './lineMethods';
 
 class Line extends React.Component {
     constructor(props) {
@@ -24,7 +25,8 @@ class Line extends React.Component {
 
     getLineWeights = () => {
         const {neuronNextNum, neuronOrderNum, neuronListNum, weights} = this.props;
-        return weights.weights[neuronListNum][neuronOrderNum][neuronNextNum]
+
+        return weights[neuronListNum][neuronOrderNum][neuronNextNum];
     };
 
     changeSelectedColor = () => {
@@ -36,9 +38,11 @@ class Line extends React.Component {
 
     handleMouseOver = e => {
         if (e.ctrlKey) return;
+
         this.toggleWeights(true);
         this.zIndexChange(1);
         this.changeSelectedColor();
+
         if (e.target.classList.value === 'line')
             setPopupPosition.bind(this)(e)
     };
@@ -59,21 +63,38 @@ class Line extends React.Component {
     };
 
     render() {
-        const {weightsShow, popupPos} = this.state;
+        const style = setStyle.call(this);
+
+        const popup = this.renderLinePopup();
+
         return (
             <div
                 ref={this.ref}
-                style={setStyle.bind(this)()}
+                style={style}
                 onMouseOver={this.handleMouseOver}
                 onMouseOut={this.handleMouseOut}
                 className='line'>
-
-                <LinePopup active={weightsShow}
-                           rotate={setAngle.bind(this)()}
-                           weightsValue={this.getLineWeights()}
-                           popupPos={popupPos} />
+                {popup}
             </div>
         )
+    }
+
+    /**
+     *
+     * @return {*}
+     */
+    renderLinePopup() {
+        const angle = setAngle.call(this);
+        const weights = this.getLineWeights();
+
+        const {weightsShow, popupPos} = this.state;
+
+        return (
+            <LinePopup active={weightsShow}
+                       rotate={angle}
+                       weightsValue={weights}
+                       popupPos={popupPos}/>
+        );
     }
 }
 
@@ -81,7 +102,6 @@ function mapStateToProps(state) {
     return {
         btnActive: !state.hideBtnClick.btnActive,
         lineSize: state.changeSettings.lineSize,
-        weights: state.weightsValue,
         lineClassSelected: state.changeLineColor.lineClassName,
         hideHeatMap: state.hideHeatMap.isActive,
         weightsToSize: state.lineWeightsToSize.isActive,

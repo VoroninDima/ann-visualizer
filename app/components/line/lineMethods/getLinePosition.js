@@ -1,9 +1,16 @@
+import neuronConfig from 'configs/components/neuron'
+
 function getLinePosition() {
     const {lineData, lineEndsOffsetTop, neuronSize} = this.props;
     const {neuronProperties} = lineData;
+
     const {neuronOffsetTop, neuronOffsetLeft, nextNeuronOffsetLeft} = neuronProperties;
+
+    const {borderSize} = neuronConfig;
+    const offsetLeft = neuronOffsetLeft+neuronSize+borderSize;
+
     this.beginTop = neuronOffsetTop;
-    this.beginLeft = neuronOffsetLeft+neuronSize+12;
+    this.beginLeft = offsetLeft;
     this.endTop = lineEndsOffsetTop-neuronSize;
     this.endLeft = nextNeuronOffsetLeft;
 }

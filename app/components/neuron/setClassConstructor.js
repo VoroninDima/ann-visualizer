@@ -17,12 +17,16 @@ function setDefaultState() {
 
 function setClassProperties() {
     const {listName, neuron, neuronOrderNum, neuronListNum, neuronSize} = this.props;
+
     this.ref = React.createRef();
+
     this.listName = listName;
+
     this.neuron = neuron;
     this.neuronOrderNum = neuronOrderNum;
     this.neuronListNum = neuronListNum;
     this.neuronSize = neuronSize;
+
     this.colorActive = null;
 }
 

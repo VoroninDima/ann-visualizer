@@ -1,7 +1,10 @@
 import React from 'react'
+import {connect} from "react-redux";
 
 import Line from 'components/line/Line'
-import {connect} from "react-redux";
+
+import LinesListConfig from 'configs/components/linesList'
+import NeuronConfig from 'configs/components/neuron'
 
 function LinesList (props) {
     const {
@@ -13,14 +16,15 @@ function LinesList (props) {
         neuronOrderNum,
         neuronListNum,
         neuronSize,
-        offsetTop
+        offsetTop,
+        weights
     } = props;
-
     let getLineEndsOffsetTop = () => {
+        const {nextOffsetTop} = LinesListConfig;
         let lineEndsOffsetTop = [];
-        let nextNeuronOffsetTop = neuronProperties.nextNeuronOffsetTop-10;
+        let nextNeuronOffsetTop = neuronProperties.nextNeuronOffsetTop-nextOffsetTop;
         for (let i = 0; i < neuronListLength; i++) {
-            nextNeuronOffsetTop = nextNeuronOffsetTop + neuronSize+offsetTop+10;
+            nextNeuronOffsetTop = nextNeuronOffsetTop + neuronSize+offsetTop+nextOffsetTop;
             lineEndsOffsetTop.push(nextNeuronOffsetTop)
         }
         return lineEndsOffsetTop
@@ -32,8 +36,9 @@ function LinesList (props) {
         neuronNextNum = neuronNextNum + 1;
         return (
             <Line key={key}
+              weights={weights}
               isActive={isActive}
-              getNextListName={getNextListName()}
+              getNextListName={getNextListName}
               neuronNextNum={neuronNextNum}
               neuronListLength={neuronListLength}
               neuronOrderNum={neuronOrderNum}
@@ -45,7 +50,12 @@ function LinesList (props) {
         />);
     });
 
-    const style = {marginLeft: neuronSize+12, marginTop: neuronSize/2};
+    const {borderSize} = NeuronConfig;
+
+    const style = {
+        marginLeft: neuronSize+borderSize,
+        marginTop: neuronSize/2
+    };
 
     return <div className={'linesList'} style={style}>{lines}</div>
 }

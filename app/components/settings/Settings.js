@@ -6,22 +6,31 @@ import {
     DialogActions,
     DialogContent,
     DialogContentText,
-    DialogTitle
+    DialogTitle,
+    AppBar,
+    Tabs,
+    Tab
 } from '@material-ui/core';
-
 
 import LineSizeSetting from 'settings/LineSizeSetting'
 import NeuronSizeSetting from 'settings/NeuronSizeSetting'
 import NetWidthSetting from 'settings/NetWidthSetting'
 import NeuronOffsetTopSetting from 'settings/NeuronOffsetTopSetting'
 
+import FileUpload from './file-upload/FileUpload'
+
 class Settings extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            open: false
+            open: true,
+            value: 1
         };
     }
+
+    confirmClose = value => {
+        this.setState({open: value})
+    };
 
     handleClickOpen = () => {
         this.setState({ open: true });
@@ -29,6 +38,10 @@ class Settings extends React.Component {
 
     handleClose = () => {
         this.setState({ open: false });
+    };
+
+    handleChange = (event, value) => {
+        this.setState({ value });
     };
 
     render() {
@@ -45,14 +58,33 @@ class Settings extends React.Component {
     };
 
     renderSettingsDialog = () => {
+        const {value} = this.state;
+
         return (
-            <Dialog open={this.state.open} onClose={this.handleClose}>
-                {Settings.renderDialogTitle()}
-                {Settings.renderDialogContent()}
-                {this.renderDialogActions()}
-            </Dialog>
+                <Dialog open={this.state.open} onClose={this.handleClose}>
+                    <AppBar position="static">
+                        <Tabs value={value} onChange={this.handleChange}>
+                            <Tab label="Settings" />
+                            <Tab label="Upload file" />
+                        </Tabs>
+                    </AppBar>
+                    {value === 0 && Settings.renderSettings()}
+                    {value === 1 && <FileUpload confirmClose={this.confirmClose} />}
+
+                    {this.renderDialogActions()}
+                </Dialog>
         )
     };
+
+    static renderSettings() {
+        return (
+            <div>
+                {Settings.renderDialogTitle()}
+                {Settings.renderDialogContent()}
+            </div>
+        )
+    }
+
 
     static renderDialogTitle() {
         return <DialogTitle className='settingsTitle'>Settings</DialogTitle>

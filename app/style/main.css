@@ -119,6 +119,16 @@ button {
 .settingsTitle h2{
     color: whitesmoke;
 }
+
+.weightsTable {
+	margin: 10px;
+    background-color: whitesmoke;
+}
+
+.tableCell {
+    padding-left: 40px;
+}
+
 .weightTableTitle h2{
     color: whitesmoke;
 }

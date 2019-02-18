@@ -1,19 +1,21 @@
 import React from 'react';
+import {connect} from "react-redux";
+
 import changeLineSizeAction from '../../../actions/actionChangeLineSize'
 
 import {Slider} from "material-ui-slider";
-import {connect} from "react-redux";
+
+import lineSizeConfig from 'configs/components/lineSizeSettings'
 
 class LineSizeSetting extends React.Component {
-
     render() {
+        const {lineSizeMin, lineSizeMax} = lineSizeConfig;
 
         return <Slider
             value={this.props.lineSize}
             onChange={value => this.props.setLineSizeValue(value)}
-            min='1'
-            max='5'
-        />
+            min={lineSizeMin}
+            max={lineSizeMax}/>
     }
 }
 
@@ -22,6 +24,7 @@ function mapStateToProps(state) {
         lineSize: state.changeSettings.lineSize
     }
 }
+
 function mapDispatchToProps(dispatch) {
     return {
         setLineSizeValue: sliderValue => {
@@ -29,4 +32,5 @@ function mapDispatchToProps(dispatch) {
         }
     }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(LineSizeSetting);

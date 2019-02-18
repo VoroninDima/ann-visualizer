@@ -5,31 +5,67 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce1f50df-6706-46f2-9edd-c54f92d9aab3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/components/line/lineMethods/setLineColor.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/components/line/lineMethods/setPopupPosition.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/components/line/lineMethods/setStyle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/components/neuron/getNeuronPosition.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/components/neuron/setClassConstructor.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/components/neuron/setStyle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.babelrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/actions/actionSetNetStructure.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/actions/actionSetWeights.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/components/main/mainMethods/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/components/neuron/NeuronPositionGetter.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/components/settings/file-upload/FileUpload.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/reducers/setNetworkStructure.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/reducers/setWeightsValue.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client-dummy-files/structure.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client-dummy-files/structure2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client-dummy-files/weights.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client-dummy-files/weights2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configs/components/defSettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configs/components/linePopUp.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configs/components/lineSizeSettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configs/components/linesList.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configs/components/main.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configs/components/netWidthSettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configs/components/neuron.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configs/components/neuronOffsetTopSettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configs/components/weightTable.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/CODER_7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/CODER_7.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.jsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/header/index.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/line/Line.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/line/Line.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/line/css.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/line/lineMethods/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/line/getLinePosition.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/line/lineMethods/getLinePosition.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/line/lineMethods/getLinePosition.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/line/lineMethods/getLinePosition.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/line/lineMethods/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/line/lineMethods/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/line/lineMethods/setPopupPosition.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/line/lineMethods/setPopupPosition.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/line/lineMethods/setStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/line/lineMethods/setStyle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/linePopup/LinePopup.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/linePopup/LinePopup.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/lines-height-button/LinesHeightButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/lines-height-button/LinesHeightButton.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/lines-list/LinesList.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/lines-list/LinesList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/lines-list/index.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/main/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/main/wheelZoom.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/main/wheelZoom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/main/moveNetwork.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/main/mainMethods/moveNetwork.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/main/wheelZoom.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/main/mainMethods/wheelZoom.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/neuron-list/NeuronList.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/neuron-list/NeuronList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/neuron-popup/NeuronPopup.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/neuron-popup/NeuronPopup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/neuron-sub-list/NeuronSubList.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/neuron-sub-list/NeuronSubList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/neuron/Neuron.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/neuron/Neuron.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/neuron/css.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/neuron/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/neuron/getNeuronPosition.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/neuron/setClassConstructor.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/neuron/setClassConstructor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/neuron/setStyle.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/neuron/setStyle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/settings/Settings.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/settings/Settings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/settings/setting/LineSizeSetting.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/settings/setting/LineSizeSetting.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/settings/setting/NetWidthSetting.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/settings/setting/NetWidthSetting.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/settings/setting/NeuronOffsetTopSetting.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/settings/setting/NeuronOffsetTopSetting.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/settings/setting/NeuronSizeSetting.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/settings/setting/NeuronSizeSetting.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/slider/Slider.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/slider/Slider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/slider/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/weights-modal/WeightsModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/weights-modal/WeightsModal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/weights-tabel/WeightsTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/weights-tabel/WeightsTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/reducers/weightsValue.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/reducers/weightsValue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/lib/RandColorGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/lib/RandColorGenerator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/reducers/neuronsNames.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/reducers/neuronsNames.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/style/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/style/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/weights.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/weights.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -43,95 +79,101 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="moveNetwork.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/components/main/moveNetwork.js">
+      <file leaf-file-name="FileUpload.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/components/settings/file-upload/FileUpload.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+            <state relative-caret-position="1428">
+              <caret line="78" column="33" selection-start-line="78" selection-start-column="33" selection-end-line="78" selection-end-column="33" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/components/main/mainMethods/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="42">
+              <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="wheelZoom.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/components/main/wheelZoom.js">
+        <entry file="file://$PROJECT_DIR$/app/components/main/mainMethods/wheelZoom.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+            <state relative-caret-position="1197">
+              <caret line="50" column="75" selection-start-line="50" selection-start-column="64" selection-end-line="50" selection-end-column="75" />
+              <caret line="57" column="75" selection-start-line="57" selection-start-column="64" selection-end-line="57" selection-end-column="75" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="setPopupPosition.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/components/line/lineMethods/setPopupPosition.js">
+      <file leaf-file-name="Main.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/components/main/Main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="231">
+              <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="webpack.config.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webpack.config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="package-lock.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package-lock.json">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="273">
-              <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
+              <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="getLinePosition.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/components/line/lineMethods/getLinePosition.js">
+      <file leaf-file-name="Modal.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/components/modal/Modal.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/components/line/lineMethods/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="1" selection-start-column="1" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Line.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/components/line/Line.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="3" selection-start-line="3" selection-end-line="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="setClassConstructor.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/components/neuron/setClassConstructor.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LinesList.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/components/lines-list/LinesList.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="34" column="12" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LinePopup.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/components/linePopup/LinePopup.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="setStyle.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/components/line/lineMethods/setStyle.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="5" column="17" lean-forward="true" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+            <state relative-caret-position="231">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
               <folding>
-                <element signature="e#0#67#0" expanded="true" />
+                <element signature="e#0#39#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Neuron.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/components/neuron/Neuron.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="609">
+              <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="moveNetwork.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/components/main/mainMethods/moveNetwork.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="714">
+              <caret line="34" column="31" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -141,8 +183,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -160,6 +202,9 @@
       <find>moveMain</find>
       <find>Next</find>
       <find>getNextListName</find>
+      <find>@babel/plugin-transform-runtime</find>
+      <find>getLineW</find>
+      <find>consol</find>
     </findStrings>
     <replaceStrings>
       <replace>this.ref</replace>
@@ -177,57 +222,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/actions/changePrevLinesColor.js" />
-        <option value="$PROJECT_DIR$/app/reducers/changePrevLineColor.js" />
-        <option value="$PROJECT_DIR$/app/actions/changeLinesColor.js" />
-        <option value="$PROJECT_DIR$/app/reducers/changeLineColor.js" />
-        <option value="$PROJECT_DIR$/app/components/hide-heat-map/hideHeatMapBtn.js" />
-        <option value="$PROJECT_DIR$/app/actions/actionHideHeatMap.js" />
-        <option value="$PROJECT_DIR$/app/components/hide-heat-map/HideHeatMapBtn.js" />
-        <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/app/actions/actionShowLineWeightsToSize.js" />
-        <option value="$PROJECT_DIR$/app/reducers/lineWeightsToSize.js" />
-        <option value="$PROJECT_DIR$/app/reducers/index.js" />
-        <option value="$PROJECT_DIR$/app/reducers/sliderChange.js" />
-        <option value="$PROJECT_DIR$/app/components/linePopup/LinePopup.js" />
-        <option value="$PROJECT_DIR$/app/reducers/hideHeatMap.js" />
-        <option value="$PROJECT_DIR$/app/lib/RandColorGenerator.js" />
-        <option value="$PROJECT_DIR$/app/components/settings/setting/NetWidthSetting.js" />
-        <option value="$PROJECT_DIR$/app/actions/actionChangeLinesColor.js" />
-        <option value="$PROJECT_DIR$/app/actions/actionResetSettings.js" />
-        <option value="$PROJECT_DIR$/app/reducers/changeSettings.js" />
-        <option value="$PROJECT_DIR$/assets/config.json" />
-        <option value="$PROJECT_DIR$/app/components/neuron-sub-list/NeuronSubList.js" />
-        <option value="$PROJECT_DIR$/app/style/main.css" />
-        <option value="$PROJECT_DIR$/app/components/neuron-popup/NeuronPopup.js" />
-        <option value="$PROJECT_DIR$/app/components/weights-modal/WeightsModal.js" />
-        <option value="$PROJECT_DIR$/app/components/line/zIndexChange.js" />
-        <option value="$PROJECT_DIR$/app/components/line/setLineColor.js" />
-        <option value="$PROJECT_DIR$/app/reducers/weightsValue.js" />
-        <option value="$PROJECT_DIR$/app/components/header/Header.js" />
-        <option value="$PROJECT_DIR$/app/components/lines-height-button/LinesHeightButton.js" />
-        <option value="$PROJECT_DIR$/app/components/main/moveNetwork.js" />
-        <option value="$PROJECT_DIR$/app/components/main/wheelZoom.js" />
-        <option value="$PROJECT_DIR$/app/components/neuron/css.css" />
-        <option value="$PROJECT_DIR$/app/components/neuron/setDefaultState.js" />
-        <option value="$PROJECT_DIR$/app/components/neuron/getListNames.js" />
-        <option value="$PROJECT_DIR$/app/components/neuron/setNeuronConstructor.js" />
-        <option value="$PROJECT_DIR$/app/components/lines-list/LinesList.js" />
-        <option value="$PROJECT_DIR$/app/components/line/getLinePosition.js" />
-        <option value="$PROJECT_DIR$/app/components/line/setPopupPosition.js" />
-        <option value="$PROJECT_DIR$/app/components/line/setStyle.js" />
-        <option value="$PROJECT_DIR$/app/components/neuron/getListsNames.js" />
-        <option value="$PROJECT_DIR$/app/components/neuron/setStyle.js" />
-        <option value="$PROJECT_DIR$/app/components/neuron/getNeuronPosition.js" />
-        <option value="$PROJECT_DIR$/app/components/neuron/Neuron.js" />
-        <option value="$PROJECT_DIR$/app/components/neuron-list/NeuronList.js" />
-        <option value="$PROJECT_DIR$/app/components/settings/Settings.js" />
-        <option value="$PROJECT_DIR$/app/components/weights-tabel/WeightsTable.js" />
+        <option value="$PROJECT_DIR$/configs/components/defSettings.json" />
         <option value="$PROJECT_DIR$/app/components/slider/Slider.js" />
-        <option value="$PROJECT_DIR$/app/components/neuron/setClassConstructor.js" />
+        <option value="$PROJECT_DIR$/configs/components/weightTable.json" />
+        <option value="$PROJECT_DIR$/configs/components/neuron.json" />
+        <option value="$PROJECT_DIR$/app/style/main.css" />
+        <option value="$PROJECT_DIR$/app/app.jsx" />
+        <option value="$PROJECT_DIR$/app/reducers/lineWeightsToSize.js" />
+        <option value="$PROJECT_DIR$/app/actions/actionSetNetStructure.js" />
+        <option value="$PROJECT_DIR$/app/reducers/setWightsValue.js" />
+        <option value="$PROJECT_DIR$/app/actions/actionSetWeights.js" />
+        <option value="$PROJECT_DIR$/assets/weights.json" />
+        <option value="$PROJECT_DIR$/app/components/neuron/getNeuronPosition.js" />
+        <option value="$PROJECT_DIR$/webpack.config.js" />
+        <option value="$PROJECT_DIR$/.babelrc" />
+        <option value="$PROJECT_DIR$/../app/components/settings/file-upload/FileUpload.js" />
+        <option value="$PROJECT_DIR$/client-dummy-files/structure2.json" />
+        <option value="$PROJECT_DIR$/client-dummy-files/weights2.json" />
+        <option value="$PROJECT_DIR$/app/components/neuron-popup/NeuronPopup.js" />
+        <option value="$PROJECT_DIR$/app/components/neuron-list/NeuronList.js" />
+        <option value="$PROJECT_DIR$/client-dummy-files/weights.json" />
+        <option value="$PROJECT_DIR$/client-dummy-files/structure.json" />
+        <option value="$PROJECT_DIR$/app/components/lines-list/LinesList.js" />
+        <option value="$PROJECT_DIR$/client-dummy-files/weights3.json" />
+        <option value="$PROJECT_DIR$/app/reducers/setWeightsValue.js" />
+        <option value="$PROJECT_DIR$/app/components/neuron-sub-list/NeuronSubList.js" />
+        <option value="$PROJECT_DIR$/app/app.js" />
+        <option value="$PROJECT_DIR$/app/reducers/setNetworkStructure.js" />
+        <option value="$PROJECT_DIR$/app/components/neuron/setStyle.js" />
+        <option value="$PROJECT_DIR$/app/components/neuron/Neuron.js" />
+        <option value="$PROJECT_DIR$/app/components/weights-tabel/WeightsTable.js" />
+        <option value="$PROJECT_DIR$/app/reducers/neuronsNames.js" />
+        <option value="$PROJECT_DIR$/app/reducers/index.js" />
+        <option value="$PROJECT_DIR$/app/components/header/Header.js" />
+        <option value="$PROJECT_DIR$/client-dummy-files/structure3.json" />
+        <option value="$PROJECT_DIR$/app/components/settings/file-upload/FileUploadGetData.js" />
+        <option value="$PROJECT_DIR$/app/components/neuron/NeuronPositionGetter.js" />
         <option value="$PROJECT_DIR$/app/components/main/Main.js" />
+        <option value="$PROJECT_DIR$/app/components/main/mainMethods/wheelZoom.js" />
+        <option value="$PROJECT_DIR$/app/components/settings/Settings.js" />
+        <option value="$PROJECT_DIR$/app/components/main/mainMethods/index.js" />
+        <option value="$PROJECT_DIR$/app/components/main/mainMethods/moveNetwork.js" />
+        <option value="$PROJECT_DIR$/app/components/settings/file-upload/FileUploadDataGetter.js" />
+        <option value="$PROJECT_DIR$/app/components/settings/file-upload/FileUpload.css" />
+        <option value="$PROJECT_DIR$/app/components/Modal/Modal.js" />
+        <option value="$PROJECT_DIR$/app/components/modal/modal.css" />
+        <option value="$PROJECT_DIR$/app/components/settings/file-upload/fileUpload.css" />
+        <option value="$PROJECT_DIR$/app/components/settings/file-upload/FileUpload.js" />
+        <option value="$PROJECT_DIR$/app/components/modal/Modal.js" />
+        <option value="$PROJECT_DIR$/app/components/weights-modal/WeightsModal.js" />
         <option value="$PROJECT_DIR$/app/components/line/Line.js" />
-        <option value="$PROJECT_DIR$/app/components/line/lineMethods/index.js" />
+        <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
   </component>
@@ -253,11 +298,14 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="105" />
-    <option name="y" value="101" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="314" />
+    <option name="y" value="284" />
     <option name="width" value="1827" />
-    <option name="height" value="794" />
+    <option name="height" value="832" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -294,77 +342,6 @@
               <item name="ann-visualizer" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="line" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ann-visualizer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ann-visualizer" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="line" type="462c0819:PsiDirectoryNode" />
-              <item name="lineMethods" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ann-visualizer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ann-visualizer" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="linePopup" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ann-visualizer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ann-visualizer" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="lines-height-button" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ann-visualizer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ann-visualizer" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="lines-list" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ann-visualizer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ann-visualizer" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ann-visualizer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ann-visualizer" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="neuron" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ann-visualizer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ann-visualizer" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="neuron-list" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ann-visualizer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ann-visualizer" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="neuron-popup" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ann-visualizer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ann-visualizer" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="neuron-sub-list" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ann-visualizer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ann-visualizer" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="settings" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -373,51 +350,23 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="settings" type="462c0819:PsiDirectoryNode" />
-              <item name="setting" type="462c0819:PsiDirectoryNode" />
+              <item name="file-upload" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ann-visualizer" type="b2602c69:ProjectViewProjectNode" />
               <item name="ann-visualizer" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="client-dummy-files" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ann-visualizer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ann-visualizer" type="462c0819:PsiDirectoryNode" />
+              <item name="configs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ann-visualizer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ann-visualizer" type="462c0819:PsiDirectoryNode" />
+              <item name="configs" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="slider" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ann-visualizer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ann-visualizer" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="weights-modal" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ann-visualizer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ann-visualizer" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="weights-tabel" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ann-visualizer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ann-visualizer" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ann-visualizer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ann-visualizer" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="reducers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ann-visualizer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ann-visualizer" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="style" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ann-visualizer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ann-visualizer" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -438,11 +387,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\projects\test\ann-visualizer\app\components\main\mainMethods" />
       <recent name="D:\projects\test\ann-visualizer\app\components\line\lineMethods" />
       <recent name="D:\projects\test\ann-visualizer\app" />
       <recent name="D:\projects\test\ann-visualizer\app\components" />
       <recent name="D:\projects\test\ann-visualizer\app\components\neuron-sub-list" />
-      <recent name="D:\projects\test\ann-visualizer\app\components\neuron-popup" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\projects\test\ann-visualizer\app\components\line" />
@@ -462,6 +411,14 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="line.json" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/configs/components/line.json" working-dir="$PROJECT_DIR$/configs/components" />
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.line.json" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -498,16 +455,30 @@
       <workItem from="1547536518670" duration="21241000" />
       <workItem from="1547623327858" duration="22660000" />
       <workItem from="1547709545575" duration="10824000" />
-      <workItem from="1547796788127" duration="1144000" />
+      <workItem from="1547796788127" duration="1473000" />
+      <workItem from="1548407237532" duration="4062000" />
+      <workItem from="1548660525877" duration="82000" />
+      <workItem from="1548663070502" duration="4728000" />
+      <workItem from="1548833624556" duration="1690000" />
+      <workItem from="1549027739533" duration="1282000" />
+      <workItem from="1549264321977" duration="2980000" />
+      <workItem from="1549270034474" duration="25117000" />
+      <workItem from="1549350860988" duration="30008000" />
+      <workItem from="1549437622285" duration="1209000" />
+      <workItem from="1549538029728" duration="723000" />
+      <workItem from="1549610377868" duration="426000" />
+      <workItem from="1550128872667" duration="3153000" />
+      <workItem from="1550132413121" duration="20793000" />
+      <workItem from="1550215235970" duration="6215000" />
+      <workItem from="1550230077047" duration="150000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="373332000" />
+    <option name="totallyTimeSpent" value="476279000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14322917" />
       <window_info anchor="bottom" id="TODO" order="7" />
@@ -543,307 +514,347 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/reducers/hideHeatMap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/actions/actionResetSettings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/actions/actionChangePrevLinesColor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="26" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/hide-heat-map/HideHeatMapBtn.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/actions/actionHideHeatMap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="1" selection-end-line="5" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/style/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/weights.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="15" column="47" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/line/index.js" />
-    <entry file="file://$PROJECT_DIR$/app/components/settings/setting/LineSizeSetting.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/settings/setting/NetWidthSetting.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/line/zIndexChange.js" />
-    <entry file="file://$PROJECT_DIR$/app/components/lines-list/index.js" />
-    <entry file="file://$PROJECT_DIR$/app/components/line/css.css" />
-    <entry file="file://$PROJECT_DIR$/app/reducers/weightsValue.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/reducers/changeLineColor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" column="25" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/header/index.js" />
-    <entry file="file://$PROJECT_DIR$/app/reducers/changeSettings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="599">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/linePopup/index.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/neuron/css.css" />
-    <entry file="file://$PROJECT_DIR$/app/components/neuron/index.js" />
-    <entry file="file://$PROJECT_DIR$/app/components/neuron/setNeuronConstructor.js" />
-    <entry file="file://$PROJECT_DIR$/app/components/neuron/getListNames.js" />
-    <entry file="file://$PROJECT_DIR$/app/components/neuron/getListsNames.js" />
-    <entry file="file://$PROJECT_DIR$/app/components/line/lineMethods/setLineColor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="38" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/header/Header.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-378">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/lines-height-button/LinesHeightButton.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/neuron-list/NeuronList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-243">
-          <caret line="23" column="30" lean-forward="true" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/weights-modal/WeightsModal.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
-          <caret line="50" column="8" selection-start-line="50" selection-start-column="8" selection-end-line="50" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/lib/RandColorGenerator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/reducers/index.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/reducers/neuronsNames.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="861">
-          <caret line="41" column="12" lean-forward="true" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="12" />
+        <state relative-caret-position="756">
+          <caret line="36" column="1" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/config.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-252">
-          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+        <state relative-caret-position="336">
+          <caret line="16" column="5" selection-end-line="75" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/settings/Settings.js">
+    <entry file="file://$PROJECT_DIR$/.babelrc">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
+        <state relative-caret-position="147">
+          <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../app/components/settings/file-upload/FileUpload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="828">
+          <caret line="105" column="72" selection-end-line="105" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client-dummy-files/weights2.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+          <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+          <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+          <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+          <caret line="21" column="24" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+          <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+          <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+          <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
+          <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client-dummy-files/structure2.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1080">
+          <caret line="57" column="6" selection-start-line="57" selection-start-column="6" selection-end-line="57" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client-dummy-files/weights.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="16" column="4" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="16" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client-dummy-files/weights3.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="609">
+          <caret line="29" column="2" selection-end-line="50" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client-dummy-files/structure.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="15" column="7" lean-forward="true" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/reducers/weightsValue.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client-dummy-files/structure3.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="50" column="21" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/reducers/setWeightsValue.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="51" column="5" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/reducers/neuronsNames.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/reducers/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/reducers/setNetworkStructure.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="51" column="29" selection-start-line="51" selection-start-column="29" selection-end-line="51" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/components/weights-tabel/WeightsTable.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-357">
-          <caret line="34" column="40" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
+        <state relative-caret-position="798">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/neuron/NeuronPositionGetter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configs/components/main.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/style/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="618">
+          <caret line="128" column="23" selection-start-line="128" selection-start-column="23" selection-end-line="128" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/settings/Settings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1869">
+          <caret line="108" column="24" selection-start-line="108" selection-start-column="24" selection-end-line="108" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/modal/modal.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="26" selection-start-column="26" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/settings/file-upload/fileUpload.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="38" column="18" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/neuron/setClassConstructor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/neuron/setStyle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/neuron-sub-list/NeuronSubList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/neuron-popup/NeuronPopup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/neuron-list/NeuronList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-525">
+          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/slider/Slider.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="693">
+          <caret line="42" column="12" lean-forward="true" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/weights-modal/WeightsModal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1302">
+          <caret line="68" selection-start-line="68" selection-end-line="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/header/Header.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-168">
+          <caret line="26" column="18" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/hide-heat-map/HideHeatMapBtn.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/line/Line.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1029">
+          <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/line/lineMethods/index.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/line/lineMethods/setLineColor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="14" column="50" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/line/lineMethods/setStyle.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/line/lineMethods/setPopupPosition.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/line/lineMethods/getLinePosition.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-126" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/lines-height-button/LinesHeightButton.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/lines-list/LinesList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/main/mainMethods/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/main/mainMethods/moveNetwork.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="34" column="31" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/main/mainMethods/wheelZoom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1197">
+          <caret line="50" column="75" selection-start-line="50" selection-start-column="64" selection-end-line="50" selection-end-column="75" />
+          <caret line="57" column="75" selection-start-line="57" selection-start-column="64" selection-end-line="57" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/modal/Modal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/neuron/Neuron.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="609">
+          <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/settings/file-upload/FileUpload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1428">
+          <caret line="78" column="33" selection-start-line="78" selection-start-column="33" selection-end-line="78" selection-end-column="33" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/slider/Slider.js">
+    <entry file="file://$PROJECT_DIR$/app/components/settings/file-upload/FileUploadDataGetter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/neuron-sub-list/NeuronSubList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/neuron-popup/NeuronPopup.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/neuron/Neuron.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2730">
-          <caret line="130" column="41" selection-start-line="130" selection-start-column="41" selection-end-line="130" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/neuron/setStyle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/neuron/getNeuronPosition.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
+        <state relative-caret-position="-231">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/components/main/Main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
+        <state relative-caret-position="231">
+          <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
           <folding>
-            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/main/moveNetwork.js">
+    <entry file="file://$PROJECT_DIR$/webpack.config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+        <state relative-caret-position="189">
+          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/main/wheelZoom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/linePopup/LinePopup.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/line/lineMethods/setPopupPosition.js">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
-          <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/line/lineMethods/getLinePosition.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/line/lineMethods/setStyle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="17" lean-forward="true" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#67#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/lines-list/LinesList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="34" column="12" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/neuron/setClassConstructor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/line/Line.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" selection-start-line="3" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/line/lineMethods/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="1" selection-start-column="1" selection-end-column="1" />
+          <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
         </state>
       </provider>
     </entry>

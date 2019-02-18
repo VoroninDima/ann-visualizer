@@ -19,37 +19,98 @@ class WeightsModal extends React.Component {
     }
 
     handleClickOpen = () => {
-        this.setState({ open: true });
+        this.setState({open: true});
     };
 
     handleClose = () => {
         this.setState({ open: false });
     };
+
+
+
+    getNames(structure) {
+        let namesArray = [];
+        let ar = [];
+
+        for(let i = 0; i < structure.length; i++) {
+            if (structure[i].unitsData.length === 1) {
+                if (structure[i].unitsData[0].names) {
+                    namesArray.push(structure[i].unitsData[0].names)
+                } else namesArray.push(...this.getNameless(structure[i]))
+            }
+            else structure[i].unitsData.forEach(el => ar.push(...el.names))
+        }
+        namesArray.push(ar);
+
+        return namesArray
+    };
+
+    getNameless(array) {
+        let ar = [];
+        array.unitsData.forEach(data => {
+            if (!data.names) {
+                let ar2 = [];
+                for (let i = 0; i < data.num; i++) {
+                    ar2.push(array.name)
+                }
+                ar.push(ar2)
+            }
+        });
+        return ar
+    };
+
+    getLayersNames(structure) {
+        let ar = [];
+        structure.forEach(el => {
+            ar.push(el.name)
+        });
+        return ar
+    };
+
     createTableArray() {
         let tablesArray = [];
-        for (let i = 0; i<this.props.weights.length; i++) {
+        const {structure, weights} = this.props;
+        for (let i = 0; i < weights.length; i++) {
+            const firstNeuronLayerNames = this.getNames(structure)[i],
+                  secondNeuronLayerNames = this.getNames(structure)[i+1],
+                  layersName = this.getLayersNames(structure)[i],
+                  nextLayersName = this.getLayersNames(structure)[i+1];
+
             tablesArray.push({
                 id: i,
-                weights: this.props.weights[i],
-                firstNeuronLayerNames: this.props.names[i],
-                secondNeuronLayerNames: this.props.names[i+1],
-                layersName: this.props.layersName[i],
-                nextLayersName: this.props.layersName[i+1]
+                weights: weights[i],
+                firstNeuronLayerNames,
+                secondNeuronLayerNames,
+                layersName,
+                nextLayersName
             })
         }
+
         return tablesArray
     }
 
     renderWeightsTable() {
-        const tableArray = this.createTableArray();
-        return tableArray.map((table, key) =>
-            <WeightsTable
-                onButtonClick={this.handleClick.bind(this, table.id)}
-                key={key}
-                isOpen={this.state.openTableId === table.id}
-                tableData={table}/>
-        )
+        const tables = this.createTableArray();
+
+        return tables.map((table, key) =>
+            this.doRenderWeightsTable(table, key)
+        );
     }
+
+    doRenderWeightsTable(table, key) {
+        const isOpen = this.state.openTableId === table.id;
+        const handleClick = this.handleClick.bind(this, table.id);
+
+        return (
+            <WeightsTable
+                onButtonClick={handleClick}
+                key={key}
+                isOpen={isOpen}
+                tableData={table}
+            />
+        );
+    }
+
 
     handleClick = openTableId => {
         this.setState({ openTableId })
@@ -69,8 +130,8 @@ class WeightsModal extends React.Component {
             <Dialog
                 className='weights_modal'
                 open={this.state.open}
-                onClose={this.handleClose}
-            >
+                onClose={this.handleClose}>
+
                 <DialogTitle className='weightTableTitle'>Weight Table</DialogTitle>
                 <DialogContent>
                     {this.renderWeightsTable()}

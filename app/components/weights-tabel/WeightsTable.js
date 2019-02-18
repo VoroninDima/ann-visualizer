@@ -10,24 +10,29 @@ import {
     Table
 } from '@material-ui/core';
 
+import weightsTableConfig from 'configs/components/weightTable'
 
 class WeightsTable extends React.Component {
     setStyle() {
+        const {maxWidth, maxHeight} = weightsTableConfig;
+
         const ifIsOpen = {
             display: 'block',
             overflow: 'scroll',
-            maxHeight: 400,
-            maxWidth: 800
+            maxHeight,
+            maxWidth
         };
+
         const ifIsClosed = {
             display: 'none',
         };
+
         return this.props.isOpen ? ifIsOpen : ifIsClosed;
     }
 
     render() {
         return (
-            <Paper style={{margin: 10, backgroundColor: 'whitesmoke'}}>
+            <Paper className="weightsTable">
                 {this.renderButton()}
                 <Table style={this.setStyle()}>
                     <TableHead>
@@ -46,7 +51,9 @@ class WeightsTable extends React.Component {
 
     renderFirstNeuronLayerRow() {
         const {tableData} =this.props;
+
         const secondNeuronLayerNames = tableData.secondNeuronLayerNames;
+
         return secondNeuronLayerNames.map((name, key) =>
             <TableCell key={key}>{name}</TableCell>
         )
@@ -55,6 +62,7 @@ class WeightsTable extends React.Component {
     renderButton() {
         const {tableData, onButtonClick} = this.props;
         const tableName = `Weights between ${tableData.layersName} and ${tableData.nextLayersName}`;
+
         return (
             <Button className='table_btn' onClick={onButtonClick}>
                 {tableName}
@@ -64,9 +72,12 @@ class WeightsTable extends React.Component {
 
     renderRow() {
         const {tableData} = this.props;
+
         let num = -1;
+
         return tableData.firstNeuronLayerNames.map((name, key) => {
             num = num + 1;
+
             return (
                 <TableRow key={key}>
                     <TableCell component="th" scope="row">
@@ -80,16 +91,16 @@ class WeightsTable extends React.Component {
 
     renderCell(num) {
         const {tableData} =this.props;
+
         return tableData.weights[num].map((weight, key) =>
-            <TableCell style={{paddingLeft: 40}} key={key}>
+            <TableCell className="tableCell" key={key}>
                 {weight}
             </TableCell>
         )
     }
 }
-export default WeightsTable
 
-
+export default WeightsTable;
 
 
 

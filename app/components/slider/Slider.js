@@ -1,14 +1,20 @@
 import React, {Component} from 'react'
-import { Slider } from 'material-ui-slider';
 import {connect} from 'react-redux'
+
+import {Slider} from 'material-ui-slider';
+import Button from '@material-ui/core/Button';
+
 import actionChangeSize from '../../actions/actionChangeSize';
 import actionResetSettings from '../../actions/actionResetSettings';
-import Button from '@material-ui/core/Button';
+
+import defSettingsConfig from 'configs/components/defSettings'
 
 class Slide extends Component {
     resetSettings = () => {
+        const {netWidth, lineSize, neuronOffsetTop, neuronSize} = defSettingsConfig;
+
         this.props.setSliderValue(50);
-        this.props.setSettings([1200, 20, 60, 1])
+        this.props.setSettings([netWidth, neuronOffsetTop, neuronSize, lineSize])
     };
 
     render() {

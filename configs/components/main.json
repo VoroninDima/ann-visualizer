@@ -1,0 +1,7 @@
+{
+  "defZoomValue": 50,
+  "minZoomValue": 20,
+  "maxZoomValue": 300,
+  "zoomStep": 11,
+  "sidebarWidth": 200
+}

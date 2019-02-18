@@ -1,39 +1,57 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 
 import LinesList from 'components/lines-list/LinesList';
 import {NeuronPopup} from 'components/neuron-popup';
-import {connect} from 'react-redux'
 import changeLinesColorAction from '../../actions/actionChangePrevLinesColor';
-import getNeuronPosition from './getNeuronPosition';
+import getNeuronPosition from './NeuronPositionGetter';
+
 import {setDefaultState, setClassProperties} from './setClassConstructor';
 import {setClassName, setStyle} from './setStyle'
 
+import neuronConfig from 'configs/components/neuron'
 
 class Neuron extends Component {
-	constructor(props) {
-		super(props);
-		this.state = setDefaultState.bind(this)();
+    constructor(props) {
+        super(props);
+
+        this.state = setDefaultState.bind(this)();
         setClassProperties.bind(this)()
 
-	}
+    }
 
     componentWillReceiveProps() {
-        if (this.listName !== 'output') {
+        const isNotLastLayer = this.ref.current
+                                    .parentElement
+                                    .parentElement
+                                    .nextSibling;
+
+        if (isNotLastLayer) {
             getNeuronPosition.bind(this)();
             this.getNeuronListLength();
+
         }
+        setClassProperties.bind(this)();
+
     }
 
     componentDidMount() {
-        if (this.listName !== 'output') {
+        const isNotLastLayer = this.ref.current
+                                    .parentElement
+                                    .parentElement
+                                    .nextSibling;
+
+        if (isNotLastLayer) {
             getNeuronPosition.bind(this)();
             this.getNeuronListLength();
         }
+
+
     }
 
-	render() {
-		return (
-			<div
+    render() {
+        return (
+            <div
                 onMouseOver={this.mouseOverEvent}
                 onMouseOut={this.mouseOutEvent}
                 style={setStyle.bind(this)()}
@@ -43,15 +61,22 @@ class Neuron extends Component {
                 {this.renderLinesList()}
                 {this.renderNeuronPopup()}
             </div>
-		)
-	}
+        )
+    }
 
-	renderLinesList = () => {
-	    const {neuronListLength, isActive,  neuronProperties} = this.state;
-	    const {offsetTop, listName} = this.props;
-	    if (neuronListLength && neuronProperties.neuronWidth) return (
+    renderLinesList = () => {
+        if (!this.ref.current) return;
+        const isNotLastLayer = this.ref.current
+            .parentElement
+            .parentElement
+            .nextSibling;
+        if (!isNotLastLayer) return;
+        const {neuronListLength, isActive,  neuronProperties} = this.state;
+        const {offsetTop, listName, weights} = this.props;
+        if (neuronListLength && neuronProperties.neuronWidth) return (
             <LinesList
-                getNextListName={this.getNextListName}
+                weights={weights}
+                getNextListName={this.getNextListName()}
                 neuronListNum={this.neuronListNum}
                 neuronOrderNum={this.neuronOrderNum}
                 neuronSize={this.neuronSize}
@@ -65,8 +90,8 @@ class Neuron extends Component {
     };
 
     renderNeuronPopup = () => {
-	    const {activationFunction} = this.props;
-	    return <NeuronPopup
+        const {activationFunction} = this.props;
+        return <NeuronPopup
             active={this.state.isActive}
             neuronName={this.neuron}
             activationFunction={activationFunction}/>;
@@ -74,8 +99,11 @@ class Neuron extends Component {
 
     mouseOverEvent = (e) => {
         if (e.ctrlKey) return;
-        this.colorActive = 60;
+
+        const {selectedColorDifference} = neuronConfig;
+        this.colorActive = selectedColorDifference;
         const classes = e.target.classList[0];
+
         if (classes === 'neuron'|| classes === 'neuronPopupParagraph') {
             this.changeIsActive(true);
             this.prevLineChangeColor(this.getPrevListName());
@@ -96,45 +124,57 @@ class Neuron extends Component {
     changeIsActive = boolean => this.setState({ isActive: boolean });
 
     getNextListName = () => {
+        if (this.ref.current.classList[1] ==='output' ) return;
         let className = this.ref.current
             .parentElement
             .parentElement
             .nextSibling
             .classList[1];
-        if (!className) className = 'output';
+
+        if (!className)
+            className = 'output';
         return className
 
     };
 
     getPrevListName = () => {
         const {listName, neuronOrderNum} = this.props;
-        if(listName === 'input') return;
+
+        if(listName === 'input')
+            return;
+
         let className = this.ref.current
             .parentElement
             .parentElement
             .previousSibling
             .classList[1];
-        if (!className) className = 'input';
-        return `from_${className}_to_${listName}_num_${neuronOrderNum+1}`
 
+        if (!className)
+            className = 'input';
+
+        return `from_${className}_to_${listName}_num_${neuronOrderNum+1}`
     };
 
     getNeuronListLength = () => {
-        const neuronListLength = this.ref.current
-                                .parentElement
-                                .parentElement
-                                .nextElementSibling
-                                .children[0]
-                                .children
-                                .length;
+        if (this.ref.current.classList[1] ==='output' ) return;
 
-        this.setState({ neuronListLength })
+        const neuronListLength = this.ref.current
+            .parentElement
+            .parentElement
+            .nextElementSibling
+            .children[0]
+            .children
+            .length;
+
+        this.setState({neuronListLength})
     };
 }
 
 function mapStateToProps(state) {
     return {
-        offsetTop: state.changeSettings.offsetTop
+        offsetTop: state.changeSettings.offsetTop,
+        weights: state.setWeightsValue.weights,
+
     }
 }
 

@@ -13,17 +13,20 @@ import hideBtnClickAction from '../../actions/actionHideBtnClick'
 
 class Header extends Component{
     hideLinesBtnClicked = () => {
-        if (!this.props.btnActive) this.props.onHideLinesBtnClicked('Hide lines');
-        else this.props.onHideLinesBtnClicked('Show lines');
+        if (!this.props.btnActive)
+            this.props.onHideLinesBtnClicked('Hide lines');
+        else
+            this.props.onHideLinesBtnClicked('Show lines');
     };
 
     renderWeightsModal = () => {
-        if (this.props.names.length !== 0 )
+        const {structure, weights} = this.props;
+
+        if (structure.length !== 0 )
             return (
             <WeightsModal
-                layersName={this.props.layersName}
-                weights={this.props.weights}
-                names={this.props.names} />
+                structure={structure}
+                weights={weights}/>
         )
     };
 
@@ -39,6 +42,8 @@ class Header extends Component{
 
     };
 
+
+
     render() {
         return (
             <div className='header'>
@@ -46,7 +51,7 @@ class Header extends Component{
                 <Slide/>
                 <HideHeatMapBtn/>
                 <LinesHeightsButton/>
-                {this.renderWeightsModal()}
+                {this.props.weights ? this.renderWeightsModal(): ''}
                 {this.renderButton()}
             </div>
         )
@@ -57,11 +62,9 @@ function mapStateToProps(state) {
     return {
         innerText: state.hideBtnClick.btnText,
         btnActive: !state.hideBtnClick.btnActive,
-        weights: state.weightsValue.weights,
-        names: state.neuronsNames.neuronsNamesArray,
-        layersName: state.neuronsNames.layersName,
-
-    }
+        weights: state.setWeightsValue.weights,
+        structure: state.setNetworkStructure.structure
+}
 }
 
 function mapDispatchToProps(dispatch) {

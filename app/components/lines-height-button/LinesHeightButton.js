@@ -1,7 +1,8 @@
 import React from 'react';
-
 import {connect} from "react-redux";
+
 import Button from '@material-ui/core/Button';
+
 import showLineWeightsToSizeAction from '../../actions/actionShowLineWeightsToSize'
 
 class LinesHeightButton extends React.Component {

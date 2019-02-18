@@ -4,6 +4,7 @@ export function NeuronPopup(props) {
     const setStyle = () => {
         const isShow = {display: 'block'};
         const isHidden = {display: 'none'};
+
         return props.active ? isShow : isHidden;
     };
     const {neuronName, activationFunction} = props;
