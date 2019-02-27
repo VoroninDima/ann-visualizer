@@ -1,9 +1,5 @@
 import mainConfig from 'configs/components/main'
 
-class Move {
-
-}
-
 function onMouseDown(e) {
     if (!e.ctrlKey) return;
 

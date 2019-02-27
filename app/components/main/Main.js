@@ -3,10 +3,15 @@ import {connect} from 'react-redux';
 
 import {NeuronList} from 'components/neuron-list';
 import actionChangeSize from '../../actions/actionChangeSize';
+import actionSetStructure from '../../actions/actionSetNetStructure';
+import actionSetWeights from '../../actions/actionSetWeights';
 import {RandColorGenerator} from '../../lib/RandColorGenerator';
-import {moveNetwork} from './mainMethods';
-import  {Wheel} from './mainMethods/wheelZoom.js'
+
+import moveNetwork from './mainMethods/moveNetwork';
+import WheelZoom from './mainMethods/wheelZoom'
+
 import mainConfig from 'configs/components/main'
+
 
 class Main extends Component {
     constructor(props) {
@@ -20,10 +25,10 @@ class Main extends Component {
         this.wheelData = null;
     }
 
-
     componentWillMount() {
-        this.getNeuronColor()
+        this.getNeuronColor();
     }
+
 
     getNeuronColor() {
         let randomColorArray = [];
@@ -39,16 +44,16 @@ class Main extends Component {
         if (!structure)
             return;
         let neuronListNum = -1;
-            return structure.map((list, key) => {
-                neuronListNum = neuronListNum + 1;
-                return (
-                    <NeuronList
-                        neuronListNum={neuronListNum}
-                        neuronColor={this.color}
-                        key={key}
-                        list = {list} />
-                )
-            });
+        return structure.map((list, key) => {
+            neuronListNum = neuronListNum + 1;
+            return (
+                <NeuronList
+                    neuronListNum={neuronListNum}
+                    neuronColor={this.color}
+                    key={key}
+                    list = {list} />
+            )
+        });
 
     }
 
@@ -59,20 +64,21 @@ class Main extends Component {
     wheelZoom = (e) => {
         this.wheelData = e;
 
-        const wheel = new Wheel(this);
+        const wheel = new WheelZoom(this);
 
         const {zoomTranslate, wheelZoomValue} = wheel.get();
 
-        if (zoomTranslate) {
-            const {newTop, newLeft} = zoomTranslate;
+        if (!zoomTranslate)
+            return;
 
-            this.setState({
-                top: newTop,
-                left: newLeft
-            });
+        const {newTop, newLeft} = zoomTranslate;
+        this.setState({
+            top: newTop,
+            left: newLeft,
+        });
 
-            this.props.setSliderValue(wheelZoomValue);
-        }
+        this.props.setSliderValue(wheelZoomValue);
+
     };
 
 
@@ -136,6 +142,12 @@ function mapDispatchToProps(dispatch) {
     return {
         setSliderValue: sliderValue => {
             dispatch(actionChangeSize(sliderValue))
+        },
+        setStructure: structure => {
+            dispatch(actionSetStructure(structure))
+        },
+        setWeights: weights => {
+            dispatch(actionSetWeights(weights))
         }
     }
 }

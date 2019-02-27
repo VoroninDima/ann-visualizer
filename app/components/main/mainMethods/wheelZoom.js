@@ -1,19 +1,19 @@
 import mainConfig from 'configs/components/main'
 
-export class Wheel {
+export default class WheelZoom {
     constructor(main) {
         const {defZoomValue, sidebarWidth} = mainConfig;
         const {wheelData, ref, props, state} = main;
         this.x = wheelData.clientX;
         this.y = wheelData.clientY;
-
+        this.test = 11;
         this.centerX = ref.current.offsetWidth/2 + sidebarWidth;
         this.centerY = ref.current.offsetHeight/2;
 
         this.zoomValue = props.sliderValue;
         this.scrollValue = wheelData.deltaY;
         this.zoomKoef = this.zoomValue / defZoomValue;
-        this.mainState = state
+        this.mainState = state;
     }
 
     get() {
@@ -41,7 +41,8 @@ export class Wheel {
         const {left, top} = this.mainState;
 
         const newLeft = this.getXResize() + left;
-        const newTop = this.getYResize() + top;
+        const newTop = this.getYResize() +  top;
+
         return {newLeft, newTop}
     }
 

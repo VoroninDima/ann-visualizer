@@ -6,7 +6,7 @@ import Settings from 'components/settings/Settings';
 import WeightsModal from 'components/weights-modal/WeightsModal'
 import HideHeatMapBtn from 'components/hide-heat-map/HideHeatMapBtn'
 import LinesHeightsButton from 'components/lines-height-button/LinesHeightButton'
-
+import UpdateWeightBtn from 'components/update-weights-btn/UpdateWeightsBtn'
 import {connect} from 'react-redux';
 import hideBtnClickAction from '../../actions/actionHideBtnClick'
 
@@ -50,6 +50,7 @@ class Header extends Component{
                 <Settings/>
                 <Slide/>
                 <HideHeatMapBtn/>
+                <UpdateWeightBtn/>
                 <LinesHeightsButton/>
                 {this.props.weights ? this.renderWeightsModal(): ''}
                 {this.renderButton()}

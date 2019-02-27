@@ -18,13 +18,14 @@ import NetWidthSetting from 'settings/NetWidthSetting'
 import NeuronOffsetTopSetting from 'settings/NeuronOffsetTopSetting'
 
 import FileUpload from './file-upload/FileUpload'
+import ChooseStructureModal from './choose-structure-modal/ChooseStructureModal'
 
 class Settings extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             open: true,
-            value: 1
+            value: 2
         };
     }
 
@@ -66,11 +67,12 @@ class Settings extends React.Component {
                         <Tabs value={value} onChange={this.handleChange}>
                             <Tab label="Settings" />
                             <Tab label="Upload file" />
+                            <Tab label="Select structure" />
                         </Tabs>
                     </AppBar>
                     {value === 0 && Settings.renderSettings()}
                     {value === 1 && <FileUpload confirmClose={this.confirmClose} />}
-
+                    {value === 2 && <ChooseStructureModal />}
                     {this.renderDialogActions()}
                 </Dialog>
         )
