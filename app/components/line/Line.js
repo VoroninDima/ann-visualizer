@@ -24,7 +24,12 @@ class Line extends React.Component {
     };
 
     getLineWeights = () => {
-        const {neuronNextNum, neuronOrderNum, neuronListNum, weights} = this.props;
+        let weights = this.props.weights;
+
+        if (this.props.weightsUpdate)
+            weights = this.props.weightsUpdate;
+
+        const {neuronNextNum, neuronOrderNum, neuronListNum} = this.props;
 
         return weights[neuronListNum][neuronOrderNum][neuronNextNum];
     };
@@ -58,6 +63,10 @@ class Line extends React.Component {
         return `from_${listName}_to_${getNextListName}_num_${neuronNextNum+1}`
     };
 
+    shouldComponentUpdate(nextState, nextProps) {
+        return true
+    }
+
     toggleWeights = boolean => {
         this.setState({ weightsShow: boolean })
     };
@@ -79,10 +88,8 @@ class Line extends React.Component {
         )
     }
 
-    /**
-     *
-     * @return {*}
-     */
+
+
     renderLinePopup() {
         const angle = setAngle.call(this);
         const weights = this.getLineWeights();
@@ -105,7 +112,9 @@ function mapStateToProps(state) {
         lineClassSelected: state.changeLineColor.lineClassName,
         hideHeatMap: state.hideHeatMap.isActive,
         weightsToSize: state.lineWeightsToSize.isActive,
-        sliderValue: state.changeSize.sliderValue
+        sliderValue: state.changeSize.sliderValue,
+        weightsUpdate: state.weightsUpdate.weights,
+
     }
 }
 export default connect(mapStateToProps)(Line)

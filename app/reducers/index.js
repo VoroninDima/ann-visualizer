@@ -8,6 +8,7 @@ import hideHeatMap from './hideHeatMap'
 import lineWeightsToSize from './lineWeightsToSize'
 import setNetworkStructure from './setNetworkStructure'
 import setWeightsValue from './setWeightsValue'
+import weightsUpdate from './weightsUpdate'
 
 const rootReducer = combineReducers({
     hideBtnClick,
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
     hideHeatMap,
     setNetworkStructure,
     lineWeightsToSize,
-    setWeightsValue
+    setWeightsValue,
+    weightsUpdate
 
 });
 export default rootReducer

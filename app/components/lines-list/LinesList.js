@@ -49,7 +49,6 @@ function LinesList (props) {
               listName={listName}
         />);
     });
-
     const {borderSize} = NeuronConfig;
 
     const style = {

@@ -49,6 +49,10 @@ class Neuron extends Component {
 
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        return true
+    }
+
     render() {
         return (
             <div
@@ -174,7 +178,6 @@ function mapStateToProps(state) {
     return {
         offsetTop: state.changeSettings.offsetTop,
         weights: state.setWeightsValue.weights,
-
     }
 }
 

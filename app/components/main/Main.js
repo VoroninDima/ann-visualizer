@@ -109,6 +109,7 @@ class Main extends Component {
     }
 
     render() {
+
         return (
             <div style={this.parentStyle()} ref={this.ref} onWheel={this.wheelZoom.bind(this)}>
                 <div

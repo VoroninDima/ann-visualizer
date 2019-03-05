@@ -54,7 +54,9 @@ const initialState = {
 export default function setWeightsValue(state=initialState, action) {
     if (action.type === 'SET_WEIGHTS') {
         return {
-            weights: action.payload
+            weights: action.payload,
+            server: false
         };
     }
-    return state}
+    return state
+}

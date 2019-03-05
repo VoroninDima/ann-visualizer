@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import actionSetStructure from '../../../actions/actionSetNetStructure';
 import actionSetWeights from '../../../actions/actionSetWeights';
+import actionUpdateWeights from '../../../actions/updateWeights';
 
 class ChooseStructureModal extends Component {
     constructor(props) {
@@ -9,7 +10,6 @@ class ChooseStructureModal extends Component {
         this.state = {
             data: null
         };
-
         this.ws = new WebSocket('ws://localhost:3000');
     }
     getSocket() {
@@ -17,8 +17,7 @@ class ChooseStructureModal extends Component {
             const messagType = event.data.split('?')[0];
 
             if (messagType === 'updateWeights') {
-                // console.log(event.data)
-                this.props.setWeights(JSON.parse(JSON.parse(event.data.split('?')[1])[0].weights));
+                this.props.updateWeights(JSON.parse(JSON.parse(event.data.split('?')[1])[0].weights));
                 return;
             }
             if (messagType === 'update') {
@@ -84,6 +83,9 @@ function mapDispatchToProps(dispatch) {
         },
         setWeights: weights => {
             dispatch(actionSetWeights(weights))
+        },
+        updateWeights: weights => {
+            dispatch(actionUpdateWeights(weights))
         }
     }
 }
