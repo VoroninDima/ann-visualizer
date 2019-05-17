@@ -26,7 +26,7 @@ export function NeuronSubList(props) {
         });
     };
 
-    return <div>{neuronMap()}</div>;
+    return <React.Fragment>{neuronMap()}</React.Fragment>;
 }
 function mapStateToProps(state) {
     return {

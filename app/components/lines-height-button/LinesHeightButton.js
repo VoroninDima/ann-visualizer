@@ -5,13 +5,8 @@ import Button from '@material-ui/core/Button';
 
 import showLineWeightsToSizeAction from '../../actions/actionShowLineWeightsToSize'
 
-class LinesHeightButton extends React.Component {
-
-    render() {
-        return <Button onClick={() => {this.props.weightSize()}}>line size</Button>
-    }
-}
-
+const LinesHeightButton = (props) =>
+    <Button onClick={() => {props.weightSize()}}>line size</Button>;
 
 function mapStateToProps(state) {
     return {

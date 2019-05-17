@@ -21,9 +21,11 @@ export function LinePopup(props) {
 
     };
 
+    const weightValue = props.weightsValue.toFixed(6);
+
     return (
         <div style={setStyle()} className='popup linePopup'>
-            <p>Weights: {props.weightsValue}</p>
+            <p>Weights: {weightValue}</p>
         </div>
     )
 }

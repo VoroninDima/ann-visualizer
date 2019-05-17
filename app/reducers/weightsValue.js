@@ -1,6 +1,6 @@
 const weights = () => {
     const weightsJSON = new XMLHttpRequest();
-    weightsJSON.open('GET', '../assets/weights.json', false);
+    weightsJSON.open('GET', './assets/weights.json', false);
     weightsJSON.send();
     return JSON.parse(weightsJSON.responseText);
 };

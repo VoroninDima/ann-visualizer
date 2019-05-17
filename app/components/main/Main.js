@@ -25,10 +25,22 @@ class Main extends Component {
         this.wheelData = null;
     }
 
+    render() {
+        return (
+            <div style={this.parentStyle()} ref={this.ref} onWheel={this.wheelZoom.bind(this)}>
+                <div
+                    onMouseDown={this.onMouseDown}
+                    style={this.setStyle()}
+                    className="main">
+                    {this.renderMain()}
+                </div>
+            </div>
+        )
+    }
+
     componentWillMount() {
         this.getNeuronColor();
     }
-
 
     getNeuronColor() {
         let randomColorArray = [];
@@ -81,8 +93,6 @@ class Main extends Component {
 
     };
 
-
-
     setNetTransform() {
         const {defZoomValue} = mainConfig;
         const scale = this.props.sliderValue / defZoomValue;
@@ -107,23 +117,6 @@ class Main extends Component {
             display: `flex`
         };
     }
-
-    render() {
-
-        return (
-            <div style={this.parentStyle()} ref={this.ref} onWheel={this.wheelZoom.bind(this)}>
-                <div
-                    onMouseDown={this.onMouseDown}
-                    style={this.setStyle()}
-                    className="main">
-                    {this.renderMain()}
-                </div>
-            </div>
-        )
-    }
-
-
-
 }
 
 function mapStateToProps(state) {

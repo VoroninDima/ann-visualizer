@@ -12,6 +12,17 @@ class ChooseStructureModal extends Component {
         };
         this.ws = new WebSocket('ws://localhost:3000');
     }
+
+    render() {
+        this.getSocket();
+
+        return (
+            <div>
+                {this.renderButtons()}
+            </div>
+        )
+    }
+
     getSocket() {
         this.ws.onmessage = event => {
             const messagType = event.data.split('?')[0];
@@ -20,6 +31,7 @@ class ChooseStructureModal extends Component {
                 this.props.updateWeights(JSON.parse(JSON.parse(event.data.split('?')[1])[0].weights));
                 return;
             }
+
             if (messagType === 'update') {
                 const structure = JSON.parse(event.data.split('?')[1]).structure;
                 const weights = JSON.parse(event.data.split('?')[1]).weights;
@@ -36,6 +48,8 @@ class ChooseStructureModal extends Component {
     }
 
     handleClick = e => {
+        this.props.updateWeights(null);
+
         this.ws.send('update?'+e.target.textContent);
     };
 
@@ -44,25 +58,13 @@ class ChooseStructureModal extends Component {
 
         if (!data) return;
 
-        return data.map(network => {
-            return (
-                <button
-                    key={network.id}
-                    onClick={this.handleClick}>
+        return data.map(network =>
+            <button
+                key={network.id}
+                onClick={this.handleClick}>
 
-                    {network.id}
-                </button>
-            )
-        })
-    }
-
-    render() {
-        this.getSocket();
-        return (
-            <div>
-               {this.renderButtons()}
-            </div>
-
+                {network.id}
+            </button>
         )
     }
 }

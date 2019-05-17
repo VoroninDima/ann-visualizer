@@ -20,39 +20,6 @@ class Neuron extends Component {
 
     }
 
-    componentWillReceiveProps() {
-        const isNotLastLayer = this.ref.current
-                                    .parentElement
-                                    .parentElement
-                                    .nextSibling;
-
-        if (isNotLastLayer) {
-            getNeuronPosition.bind(this)();
-            this.getNeuronListLength();
-
-        }
-        setClassProperties.bind(this)();
-
-    }
-
-    componentDidMount() {
-        const isNotLastLayer = this.ref.current
-                                    .parentElement
-                                    .parentElement
-                                    .nextSibling;
-
-        if (isNotLastLayer) {
-            getNeuronPosition.bind(this)();
-            this.getNeuronListLength();
-        }
-
-
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return true
-    }
-
     render() {
         return (
             <div
@@ -68,10 +35,36 @@ class Neuron extends Component {
         )
     }
 
+    componentWillReceiveProps() {
+        const isNotLastLayer = this.ref.current
+                                    .parentElement
+                                    .nextSibling;
+
+        if (isNotLastLayer) {
+            getNeuronPosition.bind(this)();
+            this.getNeuronListLength();
+
+        }
+        setClassProperties.bind(this)();
+
+    }
+
+    componentDidMount() {
+        const isNotLastLayer = this.ref.current
+                                    .parentElement
+                                    .nextSibling;
+
+        if (isNotLastLayer) {
+            getNeuronPosition.bind(this)();
+            this.getNeuronListLength();
+        }
+
+
+    }
+
     renderLinesList = () => {
         if (!this.ref.current) return;
         const isNotLastLayer = this.ref.current
-            .parentElement
             .parentElement
             .nextSibling;
         if (!isNotLastLayer) return;
@@ -131,7 +124,6 @@ class Neuron extends Component {
         if (this.ref.current.classList[1] ==='output' ) return;
         let className = this.ref.current
             .parentElement
-            .parentElement
             .nextSibling
             .classList[1];
 
@@ -149,7 +141,6 @@ class Neuron extends Component {
 
         let className = this.ref.current
             .parentElement
-            .parentElement
             .previousSibling
             .classList[1];
 
@@ -164,9 +155,7 @@ class Neuron extends Component {
 
         const neuronListLength = this.ref.current
             .parentElement
-            .parentElement
             .nextElementSibling
-            .children[0]
             .children
             .length;
 

@@ -2,7 +2,10 @@ import React from 'react'
 import {connect} from 'react-redux';
 
 import {LinePopup} from 'components/linePopup';
-import {setPopupPosition, setStyle, setAngle} from './lineMethods';
+import PopUpPosGetter from './lineMethods/PopUpPosGetter'
+import LinePositionGetter from './lineMethods/LinePositionGetter'
+
+import StyleGetter from './lineMethods/StyleGetter'
 
 class Line extends React.Component {
     constructor(props) {
@@ -13,6 +16,7 @@ class Line extends React.Component {
             popupPos: null,
         };
         this.ref = React.createRef();
+
     }
 
     zIndexChange(zIndex) {
@@ -48,14 +52,18 @@ class Line extends React.Component {
         this.zIndexChange(1);
         this.changeSelectedColor();
 
-        if (e.target.classList.value === 'line')
-            setPopupPosition.bind(this)(e)
+        if (e.target.classList.value === 'line') {
+            const popUpPosGetter = new PopUpPosGetter(e, this.props);
+            const popupPos = popUpPosGetter.getter();
+
+            this.setState({popupPos})
+        }
     };
 
     handleMouseOut = () => {
-        this.toggleWeights(false);
-        this.zIndexChange(0);
-        this.changeSelectedColor();
+            this.toggleWeights(false);
+            this.zIndexChange(0);
+            this.changeSelectedColor();
     };
 
     setClassName = () => {
@@ -63,16 +71,23 @@ class Line extends React.Component {
         return `from_${listName}_to_${getNextListName}_num_${neuronNextNum+1}`
     };
 
-    shouldComponentUpdate(nextState, nextProps) {
-        return true
-    }
-
     toggleWeights = boolean => {
         this.setState({ weightsShow: boolean })
     };
 
+    createLineData() {
+        return {
+            isActive: this.state.isActive,
+            prevLineCheck : this.prevLineCheck(),
+            weightsShow : this.state.weightsShow,
+            getLineWeights: this.getLineWeights(),
+            changeSelectedColor: this.changeSelectedColor()
+        }
+    }
+
     render() {
-        const style = setStyle.call(this);
+        const styleGetter = new StyleGetter(this.props, this.createLineData());
+        const style = styleGetter.getter();
 
         const popup = this.renderLinePopup();
 
@@ -88,10 +103,10 @@ class Line extends React.Component {
         )
     }
 
-
-
     renderLinePopup() {
-        const angle = setAngle.call(this);
+        const linePositionGetter = new LinePositionGetter(this.props);
+        const angle = linePositionGetter.getter().angle;
+
         const weights = this.getLineWeights();
 
         const {weightsShow, popupPos} = this.state;

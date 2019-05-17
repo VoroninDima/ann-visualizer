@@ -2,7 +2,7 @@ import neuronConfig from 'configs/components/neuron'
 
 function getNeuronPosition() {
     const ref = this.ref.current;
-    const refNext = ref.parentElement.parentElement.nextElementSibling;
+    const refNext = ref.parentElement.nextElementSibling;
 
     setTimeout(() => {
         const {neuronWidth} = neuronConfig;

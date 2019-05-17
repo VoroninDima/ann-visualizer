@@ -41,6 +41,7 @@ export function NeuronList(props) {
 
             }
         }
+
         if(unitsData.length !== 1) {
             for (let i = 0; i < unitsData.length; i++) {
                 const {ActivationFunction, names} = unitsData[i];
@@ -54,6 +55,7 @@ export function NeuronList(props) {
             return renderNeuronSubList(unitsToObj)
         }
     };
+
     const setClass = () => {
         const {type, name} = list;
 

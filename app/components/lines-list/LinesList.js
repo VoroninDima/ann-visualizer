@@ -19,6 +19,7 @@ function LinesList (props) {
         offsetTop,
         weights
     } = props;
+
     let getLineEndsOffsetTop = () => {
         const {nextOffsetTop} = LinesListConfig;
         let lineEndsOffsetTop = [];

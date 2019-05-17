@@ -13,23 +13,6 @@ import {
 import weightsTableConfig from 'configs/components/weightTable'
 
 class WeightsTable extends React.Component {
-    setStyle() {
-        const {maxWidth, maxHeight} = weightsTableConfig;
-
-        const ifIsOpen = {
-            display: 'block',
-            overflow: 'scroll',
-            maxHeight,
-            maxWidth
-        };
-
-        const ifIsClosed = {
-            display: 'none',
-        };
-
-        return this.props.isOpen ? ifIsOpen : ifIsClosed;
-    }
-
     render() {
         return (
             <Paper className="weightsTable">
@@ -47,6 +30,23 @@ class WeightsTable extends React.Component {
                 </Table>
             </Paper>
         )
+    }
+
+    setStyle() {
+        const {maxWidth, maxHeight} = weightsTableConfig;
+
+        const ifIsOpen = {
+            display: 'block',
+            overflow: 'scroll',
+            maxHeight,
+            maxWidth
+        };
+
+        const ifIsClosed = {
+            display: 'none',
+        };
+
+        return this.props.isOpen ? ifIsOpen : ifIsClosed;
     }
 
     renderFirstNeuronLayerRow() {

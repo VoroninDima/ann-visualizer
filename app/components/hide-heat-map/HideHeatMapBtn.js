@@ -4,13 +4,16 @@ import {connect} from "react-redux";
 import Button from '@material-ui/core/Button';
 import hideHeatMapAction from '../../actions/actionHideHeatMap'
 
-class hideHeatMapBtn extends React.Component {
-    action = () => this.props.isActive ? 'show' : 'hide';
+const hideHeatMapBtn = (props) => {
+    const action = () => props.isActive ? 'show' : 'hide';
 
-    render() {
-        return <Button onClick={() => {this.props.hideMap()}}>Heat map {this.action()}</Button>
-    }
-}
+
+    return (
+        <Button onClick={() => {props.hideMap()}}>
+            Heat map {action()}
+        </Button>
+    )
+};
 
 function mapStateToProps(state) {
     return {

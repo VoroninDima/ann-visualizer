@@ -10,12 +10,6 @@ class Modal extends Component {
     state = {
         open: true,
     };
-
-    handleClose = () => {
-        this.setState({ open: false });
-        this.props.hideModal(false);
-    };
-
     render() {
         const {innerText} = this.props;
 
@@ -37,6 +31,11 @@ class Modal extends Component {
             </div>
         );
     }
+
+    handleClose = () => {
+        this.setState({ open: false });
+        this.props.hideModal(false);
+    };
 }
 
 export default Modal;

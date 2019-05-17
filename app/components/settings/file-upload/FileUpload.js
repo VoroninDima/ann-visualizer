@@ -21,6 +21,40 @@ class FileUpload extends React.Component {
         }
     }
 
+    render() {
+        const {weightsFileName, structureFileName} = this.state;
+
+        return (
+            <React.Fragment>
+                {this.whichModalRender()}
+                <div className="input-file-modal">
+                    <input
+                        onChange={this.changeStructureSpan}
+                        style={styles['inputfile']}
+                        className="inputfile"
+                        type="file"
+                        id="structure_file"
+                        name="structure_file"/>
+                    <label htmlFor="structure_file">
+                        <span>{structureFileName}</span><p>Choose structure</p>
+                    </label>
+                    <input
+                        onChange={this.changeWeightsSpan}
+                        style={styles['inputfile']}
+                        className="inputfile"
+                        type="file"
+                        id="weights_file"
+                        name="weights_file"/>
+                    <label htmlFor="weights_file">
+                        <span>{weightsFileName}</span><p>Choose weights</p>
+                    </label>
+                </div>
+                <Button onClick={this.handleClick.bind(this)}>Confirm</Button>
+
+            </React.Fragment>
+        )
+    }
+
     async handleClick() {
         const {structureFileName, weightsFileName} = this.state;
 
@@ -84,39 +118,7 @@ class FileUpload extends React.Component {
     };
 
 
-    render() {
-        const {weightsFileName, structureFileName} = this.state;
 
-        return (
-            <React.Fragment>
-                {this.whichModalRender()}
-                <div className="input-file-modal">
-                    <input
-                        onChange={this.changeStructureSpan}
-                        style={styles['inputfile']}
-                        className="inputfile"
-                        type="file"
-                        id="structure_file"
-                        name="structure_file"/>
-                    <label htmlFor="structure_file">
-                        <span>{structureFileName}</span><p>Choose structure</p>
-                    </label>
-                    <input
-                        onChange={this.changeWeightsSpan}
-                        style={styles['inputfile']}
-                        className="inputfile"
-                        type="file"
-                        id="weights_file"
-                        name="weights_file"/>
-                    <label htmlFor="weights_file">
-                        <span>{weightsFileName}</span><p>Choose weights</p>
-                    </label>
-                </div>
-                <Button onClick={this.handleClick.bind(this)}>Confirm</Button>
-
-            </React.Fragment>
-        )
-    }
 }
 
 function mapStateToProps(state) {
