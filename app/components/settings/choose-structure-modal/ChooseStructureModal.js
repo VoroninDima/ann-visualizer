@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import actionSetStructure from '../../../actions/actionSetNetStructure';
 import actionSetWeights from '../../../actions/actionSetWeights';
 import actionUpdateWeights from '../../../actions/updateWeights';
+import switchStructureFromServer from '../../../actions/actionSwitchStructureFromServer';
 
 class ChooseStructureModal extends Component {
     constructor(props) {
@@ -49,6 +50,7 @@ class ChooseStructureModal extends Component {
 
     handleClick = e => {
         this.props.updateWeights(null);
+        this.props.setStructureFromServer(true);
 
         this.ws.send('update?'+e.target.textContent);
     };
@@ -88,7 +90,11 @@ function mapDispatchToProps(dispatch) {
         },
         updateWeights: weights => {
             dispatch(actionUpdateWeights(weights))
+        },
+        setStructureFromServer: boolean => {
+            dispatch(switchStructureFromServer((boolean)))
         }
+
     }
 }
 

@@ -50,10 +50,10 @@ class Header extends Component{
                 <Settings/>
                 <Slide/>
                 <HideHeatMapBtn/>
-                <UpdateWeightBtn/>
                 <LinesHeightsButton/>
                 {this.props.weights ? this.renderWeightsModal(): ''}
                 {this.renderButton()}
+                <UpdateWeightBtn/>
             </div>
         )
     }

@@ -1,9 +1,9 @@
 import React from 'react';
 
 import Button from '@material-ui/core/Button';
+import {connect} from 'react-redux';
 
-
-export default class UpdateWeightsBtn extends React.Component {
+class UpdateWeightsBtn extends React.Component {
     constructor(props) {
         super(props);
 
@@ -13,6 +13,7 @@ export default class UpdateWeightsBtn extends React.Component {
             isActive: false
         }
     }
+
     action = () => {
         const {isActive} = this.state;
 
@@ -30,10 +31,19 @@ export default class UpdateWeightsBtn extends React.Component {
 
     render() {
         let startOrFinish = 'Start';
-
+        console.log()
         if (this.state.isActive)
             startOrFinish = 'Finish';
 
-        return <Button onClick={() => this.action()}>{startOrFinish} weights updating</Button>
+        return <Button disabled={!this.props.isStructureFromServer} onClick={() => this.action()}>{startOrFinish} weights updating</Button>
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        isStructureFromServer: state.isStructureFromServer.isFromServer
+    }
+}
+
+
+export default connect(mapStateToProps)(UpdateWeightsBtn);

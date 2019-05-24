@@ -9,6 +9,7 @@ import lineWeightsToSize from './lineWeightsToSize'
 import setNetworkStructure from './setNetworkStructure'
 import setWeightsValue from './setWeightsValue'
 import weightsUpdate from './weightsUpdate'
+import isStructureFromServer from './isStructureFromServer'
 
 const rootReducer = combineReducers({
     hideBtnClick,
@@ -20,7 +21,7 @@ const rootReducer = combineReducers({
     setNetworkStructure,
     lineWeightsToSize,
     setWeightsValue,
-    weightsUpdate
-
+    weightsUpdate,
+    isStructureFromServer
 });
 export default rootReducer

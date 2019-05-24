@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --mode development --open chrome",
+    "start": "webpack-dev-server --hot --mode development",
     "build": "webpack"
   },
   "author": "",
